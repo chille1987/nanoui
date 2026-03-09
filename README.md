@@ -1,6 +1,6 @@
 # NanoUI
 
-Vanilla CSS + Stimulus component library for Rails. shadcn/ui design quality, zero runtime dependencies.
+Vanilla CSS + Stimulus component library for Rails. Zero runtime dependencies.
 
 18 components. Semantic HTML. Accessible by default. No build step.
 
@@ -537,7 +537,7 @@ NanoUI works great with [Lucide Icons](https://lucide.dev) (MIT licensed). Use i
 
 ## Credits
 
-Built with inspiration from [shadcn/ui](https://ui.shadcn.com). Icons from [Lucide](https://lucide.dev).
+Icons from [Lucide](https://lucide.dev).
 
 ## License
 
