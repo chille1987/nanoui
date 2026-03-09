@@ -1,0 +1,37 @@
+<%# NanoUI Input (wrapped in .field with optional label and error)
+  Options: label, required (false), error, type ("text"), id (auto), class, html
+  Usage:
+    render "components/input", label: "Email", type: "email", required: true
+    render "components/input", label: "Name", error: "Required", html: { placeholder: "Jane" }
+%>
+<%
+  label_text = local_assigns.fetch(:label, nil)
+  required   = local_assigns.fetch(:required, false)
+  error      = local_assigns.fetch(:error, nil)
+  type       = local_assigns.fetch(:type, "text")
+  input_id   = local_assigns.fetch(:id, "input-#{SecureRandom.hex(4)}")
+  classes    = local_assigns.fetch(:class, "")
+  html       = local_assigns.fetch(:html, {})
+
+  css = ["input"]
+  css << "input--error" if error
+  css << classes if classes.present?
+  error_id = "#{input_id}-error" if error
+%>
+
+<div class="field">
+  <% if label_text %>
+    <label for="<%= input_id %>" class="label<%= " label--required" if required %>"><%= label_text %></label>
+  <% end %>
+
+  <input id="<%= input_id %>"
+         type="<%= type %>"
+         class="<%= css.join(" ") %>"
+         <%= "required" if required %>
+         <%= "aria-invalid=\"true\" aria-describedby=\"#{error_id}\"" if error %>
+         <%= html.map { |k, v| "#{k}=\"#{v}\"" }.join(" ").html_safe %>>
+
+  <% if error %>
+    <p id="<%= error_id %>" class="field__error" role="alert"><%= error %></p>
+  <% end %>
+</div>

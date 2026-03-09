@@ -1,0 +1,17 @@
+<%# NanoUI Toast Container (place once in your layout)
+  Options: duration (5000ms auto-dismiss), class
+  Usage (in application.html.erb):
+    render "components/toast_container"
+%>
+<%
+  duration = local_assigns.fetch(:duration, 5000)
+  classes  = local_assigns.fetch(:class, "")
+  css = "toast-container"
+  css += " #{classes}" if classes.present?
+%>
+
+<div class="<%= css.strip %>"
+     data-controller="nanoui-toast"
+     data-nanoui-toast-duration-value="<%= duration %>"
+     aria-live="polite">
+</div>

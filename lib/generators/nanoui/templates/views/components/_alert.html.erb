@@ -1,0 +1,33 @@
+<%# NanoUI Alert
+  Variants: default, destructive, success, warning
+  Options: variant, title, class
+  Yields: default (description), :icon
+  Usage:
+    render "components/alert", variant: "success", title: "Saved!" do
+      "Your changes have been saved."
+    end
+%>
+<%
+  variant = local_assigns.fetch(:variant, nil)
+  title   = local_assigns.fetch(:title, nil)
+  classes = local_assigns.fetch(:class, "")
+
+  css = ["alert"]
+  css << "alert--#{variant}" if variant
+  css << classes if classes.present?
+%>
+
+<div class="<%= css.join(" ").strip %>" role="alert">
+  <% if content_for?(:icon) %>
+    <div class="alert__icon">
+      <%= yield :icon %>
+    </div>
+  <% end %>
+
+  <div class="alert__content">
+    <% if title %>
+      <p class="alert__title"><%= title %></p>
+    <% end %>
+    <p class="alert__description"><%= yield %></p>
+  </div>
+</div>

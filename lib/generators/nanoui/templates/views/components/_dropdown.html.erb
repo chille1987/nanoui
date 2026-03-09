@@ -1,0 +1,33 @@
+<%# NanoUI Dropdown (Stimulus-powered)
+  Options: class
+  Yields: :trigger, default (menu items)
+  Usage:
+    render "components/dropdown" do
+      content_for(:trigger) do
+        render "components/button", variant: "outline" do "Options ▾" end
+      end
+      '<button class="dropdown__item">Profile</button>
+       <button class="dropdown__item">Settings</button>
+       <div class="dropdown__separator"></div>
+       <button class="dropdown__item">Log out</button>'.html_safe
+    end
+%>
+<%
+  classes = local_assigns.fetch(:class, "")
+  css = "dropdown"
+  css += " #{classes}" if classes.present?
+%>
+
+<div class="<%= css.strip %>" data-controller="nanoui-dropdown">
+  <div data-action="click->nanoui-dropdown#toggle"
+       data-nanoui-dropdown-target="trigger"
+       aria-expanded="false"
+       aria-haspopup="true"
+       class="dropdown__trigger">
+    <%= yield :trigger if content_for?(:trigger) %>
+  </div>
+
+  <div class="dropdown__content" data-nanoui-dropdown-target="content">
+    <%= yield %>
+  </div>
+</div>

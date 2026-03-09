@@ -1,0 +1,41 @@
+<%# NanoUI Card
+  Variants: default, elevated, bordered
+  Options: variant, tag (:article), title, description, class, html
+  Yields: default (body), :header, :footer
+  Usage:
+    render "components/card", title: "My Card", description: "Subtitle" do
+      content_for(:footer) { render "components/button", variant: "primary" do "Save" end }
+      "Card body content"
+    end
+%>
+<%
+  variant = local_assigns.fetch(:variant, nil)
+  tag     = local_assigns.fetch(:tag, :article)
+  title   = local_assigns.fetch(:title, nil)
+  desc    = local_assigns.fetch(:description, nil)
+  classes = local_assigns.fetch(:class, "")
+  html    = local_assigns.fetch(:html, {})
+
+  css = ["card"]
+  css << "card--#{variant}" if variant
+  css << classes if classes.present?
+%>
+
+<%= content_tag(tag, class: css.join(" ").strip, **html) do %>
+  <% if title || desc %>
+    <div class="card__header">
+      <% if title %><h3 class="card__title"><%= title %></h3><% end %>
+      <% if desc %><p class="card__description"><%= desc %></p><% end %>
+    </div>
+  <% end %>
+
+  <div class="card__content">
+    <%= yield %>
+  </div>
+
+  <% if content_for?(:footer) %>
+    <div class="card__footer">
+      <%= yield :footer %>
+    </div>
+  <% end %>
+<% end %>

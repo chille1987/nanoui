@@ -1,0 +1,28 @@
+<%# NanoUI Tooltip (Stimulus-powered)
+  Options: text, position (top, bottom, left, right), delay (200), class
+  Yields: default (trigger content)
+  Usage:
+    render "components/tooltip", text: "Add to favorites", position: "top" do
+      render "components/button", variant: "primary", size: "icon" do
+        '<svg>...</svg>'.html_safe
+      end
+    end
+%>
+<%
+  text     = local_assigns.fetch(:text, "")
+  position = local_assigns.fetch(:position, "top")
+  delay    = local_assigns.fetch(:delay, 200)
+  classes  = local_assigns.fetch(:class, "")
+
+  css = ["tooltip"]
+  css << "tooltip--#{position}" unless position == "top"
+  css << classes if classes.present?
+%>
+
+<div class="<%= css.join(" ").strip %>"
+     data-controller="nanoui-tooltip"
+     data-nanoui-tooltip-delay-value="<%= delay %>"
+     data-action="mouseenter->nanoui-tooltip#show mouseleave->nanoui-tooltip#hide focusin->nanoui-tooltip#show focusout->nanoui-tooltip#hide">
+  <%= yield %>
+  <div class="tooltip__content" role="tooltip" data-nanoui-tooltip-target="content"><%= text %></div>
+</div>

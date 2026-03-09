@@ -1,0 +1,41 @@
+<%# NanoUI Table
+  Variants: striped, hoverable
+  Options: headers (array of strings), striped (false), hoverable (false), class
+  Yields: default (tbody rows)
+  Usage:
+    render "components/table", headers: ["Name", "Email", "Status"], striped: true, hoverable: true do
+      '<tr class="table__row">
+        <td class="table__cell">Jane</td>
+        <td class="table__cell">jane@example.com</td>
+        <td class="table__cell">Active</td>
+      </tr>'.html_safe
+    end
+%>
+<%
+  headers   = local_assigns.fetch(:headers, [])
+  striped   = local_assigns.fetch(:striped, false)
+  hoverable = local_assigns.fetch(:hoverable, false)
+  classes   = local_assigns.fetch(:class, "")
+
+  css = ["table"]
+  css << "table--striped" if striped
+  css << "table--hoverable" if hoverable
+  css << classes if classes.present?
+%>
+
+<div class="table-wrapper">
+  <table class="<%= css.join(" ").strip %>">
+    <% if headers.any? %>
+      <thead class="table__head">
+        <tr>
+          <% headers.each do |h| %>
+            <th scope="col" class="table__header"><%= h %></th>
+          <% end %>
+        </tr>
+      </thead>
+    <% end %>
+    <tbody class="table__body">
+      <%= yield %>
+    </tbody>
+  </table>
+</div>

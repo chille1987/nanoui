@@ -1,0 +1,61 @@
+<%# NanoUI Select (wrapped in .field with optional label and error)
+  Options: label, required (false), error, options (array of strings or {label:, value:}),
+           placeholder, id (auto), name, disabled, class, html
+  Usage:
+    render "components/select",
+      label: "Country",
+      placeholder: "Select a country",
+      options: ["United States", "Canada", "United Kingdom"]
+
+    render "components/select",
+      label: "Role",
+      required: true,
+      options: [
+        { label: "Admin", value: "admin" },
+        { label: "Editor", value: "editor" }
+      ]
+%>
+<%
+  label_text  = local_assigns.fetch(:label, nil)
+  required    = local_assigns.fetch(:required, false)
+  error       = local_assigns.fetch(:error, nil)
+  opts        = local_assigns.fetch(:options, [])
+  placeholder = local_assigns.fetch(:placeholder, nil)
+  select_id   = local_assigns.fetch(:id, "select-#{SecureRandom.hex(4)}")
+  name        = local_assigns.fetch(:name, nil)
+  disabled    = local_assigns.fetch(:disabled, false)
+  classes     = local_assigns.fetch(:class, "")
+
+  css = ["select"]
+  css << "select--error" if error
+  css << classes if classes.present?
+  error_id = "#{select_id}-error" if error
+%>
+
+<div class="field">
+  <% if label_text %>
+    <label for="<%= select_id %>" class="label<%= " label--required" if required %>"><%= label_text %></label>
+  <% end %>
+
+  <select id="<%= select_id %>"
+          class="<%= css.join(" ") %>"
+          <%= "name=\"#{name}\"" if name %>
+          <%= "required" if required %>
+          <%= "disabled" if disabled %>
+          <%= "aria-invalid=\"true\" aria-describedby=\"#{error_id}\"" if error %>>
+    <% if placeholder %>
+      <option value="" disabled selected><%= placeholder %></option>
+    <% end %>
+    <% opts.each do |opt| %>
+      <% if opt.is_a?(Hash) %>
+        <option value="<%= opt[:value] %>"><%= opt[:label] %></option>
+      <% else %>
+        <option><%= opt %></option>
+      <% end %>
+    <% end %>
+  </select>
+
+  <% if error %>
+    <p id="<%= error_id %>" class="field__error" role="alert"><%= error %></p>
+  <% end %>
+</div>

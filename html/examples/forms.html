@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NanoUI — Forms &amp; Feedback Components</title>
+  <link rel="stylesheet" href="../../lib/generators/nanoui/templates/css/nanoui.css">
+  <style>
+    .showcase {
+      max-width: 56rem;
+      margin: 0 auto;
+      padding: var(--space-8) var(--space-6);
+    }
+    .showcase h1 {
+      font-size: var(--text-4xl);
+      font-weight: var(--font-bold);
+      letter-spacing: var(--tracking-tight);
+      margin-bottom: var(--space-2);
+    }
+    .showcase > p {
+      font-size: var(--text-lg);
+      color: hsl(var(--color-muted-foreground));
+      margin-bottom: var(--space-10);
+    }
+    .section {
+      margin-bottom: var(--space-12);
+    }
+    .section h2 {
+      font-size: var(--text-2xl);
+      font-weight: var(--font-semibold);
+      margin-bottom: var(--space-1);
+      letter-spacing: var(--tracking-tight);
+    }
+    .section > p {
+      font-size: var(--text-sm);
+      color: hsl(var(--color-muted-foreground));
+      margin-bottom: var(--space-6);
+    }
+    .row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: var(--space-3);
+      margin-bottom: var(--space-4);
+    }
+    .row-label {
+      font-size: var(--text-xs);
+      font-weight: var(--font-medium);
+      color: hsl(var(--color-muted-foreground));
+      text-transform: uppercase;
+      letter-spacing: var(--tracking-wide);
+      width: 100%;
+      margin-bottom: var(--space-1);
+    }
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-6);
+    }
+    @media (max-width: 40rem) {
+      .form-grid { grid-template-columns: 1fr; }
+    }
+    .dark-toggle {
+      position: fixed;
+      top: var(--space-4);
+      right: var(--space-4);
+      z-index: var(--z-sticky);
+    }
+    hr {
+      border: none;
+      border-top: 1px solid hsl(var(--color-border));
+      margin: var(--space-8) 0;
+    }
+  </style>
+</head>
+<body>
+  <!-- Dark mode toggle -->
+  <button class="button button--outline button--icon dark-toggle" type="button" onclick="document.documentElement.classList.toggle('dark')" aria-label="Toggle dark mode">
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/>
+    </svg>
+  </button>
+
+  <div class="showcase">
+    <h1>NanoUI Forms &amp; Feedback</h1>
+    <p>Phase 2 components — checkboxes, radios, switches, selects, badges, and alerts.</p>
+
+    <!-- Checkboxes -->
+    <div class="section">
+      <h2>Checkboxes</h2>
+      <p>Custom-styled checkboxes with accessible markup.</p>
+
+      <div class="row-label">States</div>
+      <div class="row">
+        <div class="checkbox">
+          <input type="checkbox" id="cb-default" class="checkbox__input">
+          <label for="cb-default" class="checkbox__label">Default</label>
+        </div>
+        <div class="checkbox">
+          <input type="checkbox" id="cb-checked" class="checkbox__input" checked>
+          <label for="cb-checked" class="checkbox__label">Checked</label>
+        </div>
+        <div class="checkbox">
+          <input type="checkbox" id="cb-disabled" class="checkbox__input" disabled>
+          <label for="cb-disabled" class="checkbox__label">Disabled</label>
+        </div>
+        <div class="checkbox">
+          <input type="checkbox" id="cb-disabled-checked" class="checkbox__input" disabled checked>
+          <label for="cb-disabled-checked" class="checkbox__label">Disabled checked</label>
+        </div>
+      </div>
+
+      <div class="row-label">Error</div>
+      <div class="row">
+        <div class="checkbox checkbox--error">
+          <input type="checkbox" id="cb-error" class="checkbox__input">
+          <label for="cb-error" class="checkbox__label">Accept terms</label>
+        </div>
+      </div>
+    </div>
+
+    <hr>
+
+    <!-- Radios -->
+    <div class="section">
+      <h2>Radio Buttons</h2>
+      <p>Grouped radio buttons in a fieldset.</p>
+
+      <div class="row-label">Default group</div>
+      <fieldset class="radio-group">
+        <legend class="radio-group__legend">Notification preference</legend>
+        <div class="radio">
+          <input type="radio" id="radio-email" name="notify" class="radio__input" checked>
+          <label for="radio-email" class="radio__label">Email</label>
+        </div>
+        <div class="radio">
+          <input type="radio" id="radio-sms" name="notify" class="radio__input">
+          <label for="radio-sms" class="radio__label">SMS</label>
+        </div>
+        <div class="radio">
+          <input type="radio" id="radio-push" name="notify" class="radio__input">
+          <label for="radio-push" class="radio__label">Push notification</label>
+        </div>
+      </fieldset>
+
+      <div class="row-label" style="margin-top: var(--space-4);">Disabled group</div>
+      <fieldset class="radio-group">
+        <legend class="radio-group__legend">Plan (locked)</legend>
+        <div class="radio">
+          <input type="radio" id="radio-free" name="plan" class="radio__input" checked disabled>
+          <label for="radio-free" class="radio__label">Free</label>
+        </div>
+        <div class="radio">
+          <input type="radio" id="radio-pro" name="plan" class="radio__input" disabled>
+          <label for="radio-pro" class="radio__label">Pro</label>
+        </div>
+      </fieldset>
+    </div>
+
+    <hr>
+
+    <!-- Switches -->
+    <div class="section">
+      <h2>Switches</h2>
+      <p>Toggle switches for boolean settings.</p>
+
+      <div class="row-label">States</div>
+      <div class="row">
+        <div style="display: flex; align-items: center; gap: var(--space-2);">
+          <button type="button" role="switch" aria-checked="false" class="switch" onclick="this.setAttribute('aria-checked', this.getAttribute('aria-checked') === 'true' ? 'false' : 'true')">
+            <span class="switch__thumb"></span>
+          </button>
+          <span style="font-size: var(--text-sm);">Off</span>
+        </div>
+        <div style="display: flex; align-items: center; gap: var(--space-2);">
+          <button type="button" role="switch" aria-checked="true" class="switch" onclick="this.setAttribute('aria-checked', this.getAttribute('aria-checked') === 'true' ? 'false' : 'true')">
+            <span class="switch__thumb"></span>
+          </button>
+          <span style="font-size: var(--text-sm);">On</span>
+        </div>
+        <div style="display: flex; align-items: center; gap: var(--space-2);">
+          <button type="button" role="switch" aria-checked="false" class="switch" disabled>
+            <span class="switch__thumb"></span>
+          </button>
+          <span style="font-size: var(--text-sm);">Disabled</span>
+        </div>
+      </div>
+    </div>
+
+    <hr>
+
+    <!-- Selects -->
+    <div class="section">
+      <h2>Selects</h2>
+      <p>Custom-styled native selects with chevron indicator.</p>
+
+      <div class="form-grid">
+        <div class="field">
+          <label for="sel-default" class="label">Country</label>
+          <select id="sel-default" class="select">
+            <option value="" disabled selected>Select a country</option>
+            <option>United States</option>
+            <option>United Kingdom</option>
+            <option>Canada</option>
+            <option>Australia</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="sel-required" class="label label--required">Role</label>
+          <select id="sel-required" class="select" required>
+            <option value="" disabled selected>Choose a role</option>
+            <option>Admin</option>
+            <option>Editor</option>
+            <option>Viewer</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="sel-disabled" class="label">Status (locked)</label>
+          <select id="sel-disabled" class="select" disabled>
+            <option>Active</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="sel-error" class="label label--required">Category</label>
+          <select id="sel-error" class="select select--error" aria-invalid="true" aria-describedby="sel-error-msg">
+            <option value="" disabled selected>Select a category</option>
+          </select>
+          <p id="sel-error-msg" class="field__error" role="alert">Please select a category.</p>
+        </div>
+      </div>
+    </div>
+
+    <hr>
+
+    <!-- Badges -->
+    <div class="section">
+      <h2>Badges</h2>
+      <p>Small status indicators and labels.</p>
+
+      <div class="row-label">Variants</div>
+      <div class="row">
+        <span class="badge badge--primary">Primary</span>
+        <span class="badge badge--secondary">Secondary</span>
+        <span class="badge badge--destructive">Destructive</span>
+        <span class="badge badge--outline">Outline</span>
+        <span class="badge badge--success">Success</span>
+        <span class="badge badge--warning">Warning</span>
+      </div>
+
+      <div class="row-label">With icons</div>
+      <div class="row">
+        <span class="badge badge--success">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+          Deployed
+        </span>
+        <span class="badge badge--warning">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" x2="12" y1="8" y2="12"/><line x1="12" x2="12.01" y1="16" y2="16"/></svg>
+          Pending
+        </span>
+        <span class="badge badge--destructive">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m15 9-6 6"/><path d="m9 9 6 6"/></svg>
+          Failed
+        </span>
+      </div>
+    </div>
+
+    <hr>
+
+    <!-- Alerts -->
+    <div class="section">
+      <h2>Alerts</h2>
+      <p>Contextual feedback messages.</p>
+
+      <div style="display: flex; flex-direction: column; gap: var(--space-4);">
+        <!-- Default -->
+        <div class="alert" role="alert">
+          <div class="alert__icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" x2="12" y1="16" y2="12"/><line x1="12" x2="12.01" y1="8" y2="8"/></svg>
+          </div>
+          <div class="alert__content">
+            <p class="alert__title">Information</p>
+            <p class="alert__description">This is a default alert with neutral styling for general information.</p>
+          </div>
+        </div>
+
+        <!-- Destructive -->
+        <div class="alert alert--destructive" role="alert">
+          <div class="alert__icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m15 9-6 6"/><path d="m9 9 6 6"/></svg>
+          </div>
+          <div class="alert__content">
+            <p class="alert__title">Error</p>
+            <p class="alert__description">Something went wrong. Please check your input and try again.</p>
+          </div>
+        </div>
+
+        <!-- Success -->
+        <div class="alert alert--success" role="alert">
+          <div class="alert__icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m9 11 3 3L22 4"/></svg>
+          </div>
+          <div class="alert__content">
+            <p class="alert__title">Success</p>
+            <p class="alert__description">Your changes have been saved successfully.</p>
+          </div>
+        </div>
+
+        <!-- Warning -->
+        <div class="alert alert--warning" role="alert">
+          <div class="alert__icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><line x1="12" x2="12" y1="9" y2="13"/><line x1="12" x2="12.01" y1="17" y2="17"/></svg>
+          </div>
+          <div class="alert__content">
+            <p class="alert__title">Warning</p>
+            <p class="alert__description">Your session will expire in 5 minutes. Save your work now.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

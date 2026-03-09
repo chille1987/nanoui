@@ -1,0 +1,33 @@
+<%# NanoUI Toast (single toast item, placed inside .toast-container)
+  Variants: default, success, destructive, warning
+  Options: variant, title, description, class
+  Usage:
+    render "components/toast", variant: "success", title: "Saved!", description: "Changes applied."
+%>
+<%
+  variant = local_assigns.fetch(:variant, nil)
+  title   = local_assigns.fetch(:title, "")
+  desc    = local_assigns.fetch(:description, nil)
+  classes = local_assigns.fetch(:class, "")
+
+  css = ["toast"]
+  css << "toast--#{variant}" if variant
+  css << classes if classes.present?
+%>
+
+<output class="<%= css.join(" ").strip %>" role="status" data-nanoui-toast-target="item">
+  <div class="toast__content">
+    <p class="toast__title"><%= title %></p>
+    <% if desc %>
+      <p class="toast__description"><%= desc %></p>
+    <% end %>
+  </div>
+  <button class="toast__close" data-action="nanoui-toast#dismiss"
+          type="button" aria-label="Dismiss notification">
+    <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="14" height="14"
+         viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+         stroke-linecap="round" stroke-linejoin="round">
+      <path d="M18 6 6 18"/><path d="m6 6 12 12"/>
+    </svg>
+  </button>
+</output>

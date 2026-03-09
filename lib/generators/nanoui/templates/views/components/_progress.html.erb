@@ -1,0 +1,29 @@
+<%# NanoUI Progress (native <progress>)
+  Variants: default, success, warning, destructive
+  Options: value, max (100), variant, label, aria_label, class
+  Usage:
+    render "components/progress", value: 65, label: "65%", aria_label: "Upload progress"
+    render "components/progress", value: 100, variant: "success", label: "Complete"
+%>
+<%
+  value      = local_assigns.fetch(:value, nil)
+  max        = local_assigns.fetch(:max, 100)
+  variant    = local_assigns.fetch(:variant, nil)
+  label      = local_assigns.fetch(:label, nil)
+  aria_label = local_assigns.fetch(:aria_label, "Progress")
+  classes    = local_assigns.fetch(:class, "")
+
+  css = ["progress"]
+  css << "progress--#{variant}" if variant
+  css << classes if classes.present?
+%>
+
+<div class="<%= css.join(" ").strip %>">
+  <progress class="progress__bar"
+            <% if value %> value="<%= value %>"<% end %>
+            max="<%= max %>"
+            aria-label="<%= aria_label %>"><%= "#{value}%" if value %></progress>
+  <% if label %>
+    <span class="progress__label" aria-hidden="true"><%= label %></span>
+  <% end %>
+</div>

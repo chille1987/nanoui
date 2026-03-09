@@ -1,0 +1,40 @@
+<%# NanoUI Accordion (native <details>/<summary> with Stimulus)
+  Options: items (array of {title:, content:, open:}), single (false), class
+  Usage:
+    render "components/accordion", single: true, items: [
+      { title: "Is it free?", content: "Yes, MIT licensed.", open: true },
+      { title: "Build step?", content: "No, vanilla CSS." },
+      { title: "Dark mode?", content: "Add .dark class to html." }
+    ]
+%>
+<%
+  items   = local_assigns.fetch(:items, [])
+  single  = local_assigns.fetch(:single, false)
+  classes = local_assigns.fetch(:class, "")
+
+  css = "accordion"
+  css += " #{classes}" if classes.present?
+%>
+
+<div class="<%= css.strip %>"
+     data-controller="nanoui-accordion"
+     data-nanoui-accordion-single-value="<%= single %>">
+  <% items.each do |item| %>
+    <details class="accordion__item"
+             data-nanoui-accordion-target="item"
+             data-action="toggle->nanoui-accordion#toggle"
+             <%= "open" if item[:open] %>>
+      <summary class="accordion__trigger">
+        <span><%= item[:title] %></span>
+        <svg class="accordion__icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+             viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+             stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="m6 9 6 6 6-6"/>
+        </svg>
+      </summary>
+      <div class="accordion__content">
+        <p><%= item[:content] %></p>
+      </div>
+    </details>
+  <% end %>
+</div>

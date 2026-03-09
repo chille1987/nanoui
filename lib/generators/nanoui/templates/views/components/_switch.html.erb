@@ -1,0 +1,28 @@
+<%# NanoUI Switch
+  Options: checked (false), disabled (false), label (sr-only text), class, html
+  Usage:
+    render "components/switch", label: "Enable notifications"
+    render "components/switch", label: "Dark mode", checked: true
+%>
+<%
+  checked  = local_assigns.fetch(:checked, false)
+  disabled = local_assigns.fetch(:disabled, false)
+  label    = local_assigns.fetch(:label, "Toggle")
+  classes  = local_assigns.fetch(:class, "")
+  html     = local_assigns.fetch(:html, {})
+
+  css = "switch"
+  css += " #{classes}" if classes.present?
+%>
+
+<button type="button"
+        role="switch"
+        aria-checked="<%= checked %>"
+        class="<%= css.strip %>"
+        data-controller="nanoui-switch"
+        data-action="nanoui-switch#toggle"
+        <%= "disabled" if disabled %>
+        <%= html.map { |k, v| "#{k}=\"#{v}\"" }.join(" ").html_safe %>>
+  <span class="switch__thumb"></span>
+  <span class="sr-only"><%= label %></span>
+</button>

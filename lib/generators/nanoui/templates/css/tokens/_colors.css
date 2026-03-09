@@ -1,0 +1,61 @@
+/* tokens/_colors.css */
+:root {
+  /* Base scale — Zinc-inspired neutral palette */
+  --color-background:       0 0% 100%;        /* white */
+  --color-foreground:        240 10% 3.9%;      /* near-black */
+  --color-muted:             240 4.8% 95.9%;    /* light gray bg */
+  --color-muted-foreground:  240 3.8% 40%;      /* gray text, WCAG AA on white */
+  --color-border:            240 5.9% 90%;       /* subtle border */
+  --color-ring:              240 5.9% 10%;       /* focus ring */
+
+  /* Primary — your brand color */
+  --color-primary:           220 70% 50%;
+  --color-primary-foreground: 0 0% 100%;
+
+  /* Secondary */
+  --color-secondary:         240 4.8% 95.9%;
+  --color-secondary-foreground: 240 5.9% 10%;
+
+  /* Destructive */
+  --color-destructive:       0 84.2% 60.2%;
+  --color-destructive-foreground: 0 0% 98%;
+
+  /* Success */
+  --color-success:           142 76% 36%;
+  --color-success-foreground: 0 0% 100%;
+
+  /* Warning */
+  --color-warning:           38 92% 50%;
+  --color-warning-foreground: 0 0% 100%;
+
+  /* Surfaces */
+  --color-card:              0 0% 100%;
+  --color-card-foreground:   240 10% 3.9%;
+  --color-popover:           0 0% 100%;
+  --color-popover-foreground: 240 10% 3.9%;
+
+  /* Input-specific */
+  --color-input:             240 5.9% 90%;
+  --color-input-focus:       220 70% 50%;
+}
+
+/* Dark mode — single class swap */
+.dark {
+  --color-background:        240 10% 3.9%;
+  --color-foreground:         0 0% 98%;
+  --color-muted:              240 3.7% 15.9%;
+  --color-muted-foreground:   240 5% 64.9%;
+  --color-border:             240 3.7% 15.9%;
+  --color-ring:               240 4.9% 83.9%;
+  --color-primary:            220 70% 60%;
+  --color-primary-foreground: 0 0% 100%;
+  --color-secondary:          240 3.7% 15.9%;
+  --color-secondary-foreground: 0 0% 98%;
+  --color-destructive:        0 62.8% 30.6%;
+  --color-destructive-foreground: 0 0% 98%;
+  --color-card:               240 10% 3.9%;
+  --color-card-foreground:    0 0% 98%;
+  --color-popover:            240 10% 3.9%;
+  --color-popover-foreground: 0 0% 98%;
+  --color-input:              240 3.7% 15.9%;
+}
