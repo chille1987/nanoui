@@ -8,11 +8,15 @@ Gem::Specification.new do |spec|
   spec.summary       = "Vanilla CSS + Stimulus component library for Rails"
   spec.description   = "Quality components with semantic HTML, accessibility-first, " \
                         "native CSS nesting, and BEM naming. Zero runtime dependencies."
-  spec.homepage      = "https://github.com/chille/nanoui"
+  spec.homepage      = "https://github.com/chille1987/nanoui"
   spec.license       = "MIT"
   spec.required_ruby_version = ">= 3.1"
+  spec.metadata      = {
+    "source_code_uri" => "https://github.com/chille1987/nanoui",
+    "changelog_uri"   => "https://github.com/chille1987/nanoui/blob/main/CHANGELOG.md"
+  }
   spec.files         = Dir["lib/**/*", "LICENSE.txt", "README.md", "CHANGELOG.md"]
   spec.require_paths = ["lib"]
-  spec.add_dependency "railties", ">= 7.1"
+  spec.add_dependency "railties", "~> 7.1"
   spec.add_development_dependency "rspec", "~> 3.0"
 end
