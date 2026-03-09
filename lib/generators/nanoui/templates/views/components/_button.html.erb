@@ -13,7 +13,7 @@
   tag     = local_assigns.fetch(:tag, :button)
   href    = local_assigns.fetch(:href, nil)
   classes = local_assigns.fetch(:class, "")
-  html    = local_assigns.fetch(:html, {})
+  html    = local_assigns.fetch(:html, {}).symbolize_keys
 
   css = ["button", "button--#{variant}"]
   css << "button--#{size}" if size

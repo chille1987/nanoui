@@ -174,10 +174,10 @@ Text fields wrapped in `.field` with label and error support.
 Container with header, content, and footer sections.
 
 ```erb
-<%= render "components/card", title: "Settings", description: "Manage your account." do %>
-  <% content_for(:footer) do %>
-    <%= render "components/button", variant: "primary" do %>Save<% end %>
-  <% end %>
+<%= render "components/card",
+    title: "Settings",
+    description: "Manage your account.",
+    footer: render("components/button", variant: "primary") { "Save" } do %>
   <p>Card body content here.</p>
 <% end %>
 ```
@@ -323,14 +323,14 @@ Native `<select>` with custom styling.
 Native `<dialog>` with `showModal()` — free focus trap, Escape close, and `::backdrop`.
 
 ```erb
-<%= render "components/dialog", title: "Edit Profile", description: "Update your info." do %>
-  <% content_for(:trigger) do %>
-    <%= render "components/button" do %>Open<% end %>
-  <% end %>
-  <% content_for(:footer) do %>
-    <button class="button button--outline" data-action="nanoui-dialog#close">Cancel</button>
-    <button class="button button--primary">Save</button>
-  <% end %>
+<%= render "components/dialog",
+    title: "Edit Profile",
+    description: "Update your info.",
+    trigger: render("components/button") { "Open" },
+    footer: safe_join([
+      render("components/button", variant: "outline", html: { data: { action: "nanoui-dialog#close" } }) { "Cancel" },
+      render("components/button", variant: "primary") { "Save" }
+    ]) do %>
   <p>Dialog body content.</p>
 <% end %>
 ```
@@ -361,10 +361,8 @@ Native `<dialog>` with `showModal()` — free focus trap, Escape close, and `::b
 Click-activated menu with keyboard navigation.
 
 ```erb
-<%= render "components/dropdown" do %>
-  <% content_for(:trigger) do %>
-    <%= render "components/button", variant: "outline" do %>Options<% end %>
-  <% end %>
+<%= render "components/dropdown",
+    trigger: render("components/button", variant: "outline") { "Options" } do %>
   <button class="dropdown__item">Profile</button>
   <button class="dropdown__item">Settings</button>
   <div class="dropdown__separator"></div>
@@ -438,9 +436,9 @@ WAI-ARIA tabs pattern with arrow key navigation.
 
 ```erb
 <%= render "components/tabs", label: "Settings", tabs: [
-  { id: "general", label: "General", content: "<p>General settings...</p>", active: true },
-  { id: "security", label: "Security", content: "<p>Security settings...</p>" },
-  { id: "billing", label: "Billing", content: "<p>Billing info...</p>" }
+  { id: "general", label: "General", content: tag.p("General settings..."), active: true },
+  { id: "security", label: "Security", content: tag.p("Security settings...") },
+  { id: "billing", label: "Billing", content: tag.p("Billing info...") }
 ] %>
 ```
 

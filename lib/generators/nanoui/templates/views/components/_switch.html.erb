@@ -9,20 +9,24 @@
   disabled = local_assigns.fetch(:disabled, false)
   label    = local_assigns.fetch(:label, "Toggle")
   classes  = local_assigns.fetch(:class, "")
-  html     = local_assigns.fetch(:html, {})
+  html     = local_assigns.fetch(:html, {}).symbolize_keys
 
   css = "switch"
   css += " #{classes}" if classes.present?
+  switch_attributes = {
+    type: "button",
+    role: "switch",
+    :"aria-checked" => checked,
+    class: css.strip,
+    data: {
+      controller: "nanoui-switch",
+      action: "nanoui-switch#toggle"
+    }
+  }.merge(html)
+  switch_attributes[:disabled] = true if disabled
 %>
 
-<button type="button"
-        role="switch"
-        aria-checked="<%= checked %>"
-        class="<%= css.strip %>"
-        data-controller="nanoui-switch"
-        data-action="nanoui-switch#toggle"
-        <%= "disabled" if disabled %>
-        <%= html.map { |k, v| "#{k}=\"#{v}\"" }.join(" ").html_safe %>>
+<%= content_tag(:button, switch_attributes) do %>
   <span class="switch__thumb"></span>
   <span class="sr-only"><%= label %></span>
-</button>
+<% end %>

@@ -11,12 +11,22 @@
   type       = local_assigns.fetch(:type, "text")
   input_id   = local_assigns.fetch(:id, "input-#{SecureRandom.hex(4)}")
   classes    = local_assigns.fetch(:class, "")
-  html       = local_assigns.fetch(:html, {})
+  html       = local_assigns.fetch(:html, {}).symbolize_keys
 
   css = ["input"]
   css << "input--error" if error
   css << classes if classes.present?
   error_id = "#{input_id}-error" if error
+  input_attributes = {
+    id: input_id,
+    type: type,
+    class: css.join(" ")
+  }.merge(html)
+  input_attributes[:required] = true if required
+  if error
+    input_attributes[:"aria-invalid"] = true
+    input_attributes[:"aria-describedby"] = error_id
+  end
 %>
 
 <div class="field">
@@ -24,12 +34,7 @@
     <label for="<%= input_id %>" class="label<%= " label--required" if required %>"><%= label_text %></label>
   <% end %>
 
-  <input id="<%= input_id %>"
-         type="<%= type %>"
-         class="<%= css.join(" ") %>"
-         <%= "required" if required %>
-         <%= "aria-invalid=\"true\" aria-describedby=\"#{error_id}\"" if error %>
-         <%= html.map { |k, v| "#{k}=\"#{v}\"" }.join(" ").html_safe %>>
+  <%= tag.input(**input_attributes) %>
 
   <% if error %>
     <p id="<%= error_id %>" class="field__error" role="alert"><%= error %></p>

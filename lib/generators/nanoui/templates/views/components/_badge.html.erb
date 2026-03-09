@@ -7,10 +7,12 @@
 <%
   variant = local_assigns.fetch(:variant, "primary")
   classes = local_assigns.fetch(:class, "")
-  html    = local_assigns.fetch(:html, {})
+  html    = local_assigns.fetch(:html, {}).symbolize_keys
 
   css = "badge badge--#{variant}"
   css += " #{classes}" if classes.present?
 %>
 
-<span class="<%= css.strip %>" <%= html.map { |k, v| "#{k}=\"#{v}\"" }.join(" ").html_safe %>><%= yield %></span>
+<%= content_tag(:span, { class: css.strip }.merge(html)) do %>
+  <%= yield %>
+<% end %>

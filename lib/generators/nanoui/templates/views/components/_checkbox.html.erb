@@ -20,12 +20,17 @@
 %>
 
 <div class="<%= css.join(" ").strip %>">
-  <input type="checkbox"
-         id="<%= input_id %>"
-         class="checkbox__input"
-         <%= "name=\"#{name}\"" if name %>
-         value="<%= value %>"
-         <%= "checked" if checked %>
-         <%= "disabled" if disabled %>>
+  <%
+    checkbox_attributes = {
+      type: "checkbox",
+      id: input_id,
+      class: "checkbox__input",
+      value: value
+    }
+    checkbox_attributes[:name] = name if name
+    checkbox_attributes[:checked] = true if checked
+    checkbox_attributes[:disabled] = true if disabled
+  %>
+  <%= tag.input(**checkbox_attributes) %>
   <label for="<%= input_id %>" class="checkbox__label"><%= label_text %></label>
 </div>

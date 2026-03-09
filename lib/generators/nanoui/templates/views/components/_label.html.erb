@@ -11,6 +11,10 @@
   css = "label"
   css += " label--required" if required
   css += " #{classes}" if classes.present?
+  label_attributes = { class: css.strip }
+  label_attributes[:for] = label_for if label_for
 %>
 
-<label<%= " for=\"#{label_for}\"" if label_for %> class="<%= css.strip %>"><%= yield %></label>
+<%= content_tag(:label, label_attributes) do %>
+  <%= yield %>
+<% end %>

@@ -66,6 +66,16 @@ RSpec.describe Nanoui::Generators::ComponentGenerator do
     end
   end
 
+  describe "PARTIAL_TEMPLATES" do
+    it "maps radio to the radio_group partial" do
+      expect(described_class::PARTIAL_TEMPLATES.fetch("radio")).to eq(%w[radio_group])
+    end
+
+    it "installs the toast container alongside the toast partial" do
+      expect(described_class::PARTIAL_TEMPLATES.fetch("toast")).to eq(%w[toast toast_container])
+    end
+  end
+
   describe "CSS import ordering" do
     it "COMPONENT_ORDER matches the canonical import order" do
       order = described_class::COMPONENT_ORDER

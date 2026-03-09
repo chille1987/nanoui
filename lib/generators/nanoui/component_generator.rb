@@ -38,6 +38,12 @@ module Nanoui
       }.freeze
 
       STIMULUS_COMPONENTS = %w[dialog dropdown tooltip toast tabs accordion switch].freeze
+      PARTIAL_TEMPLATES = COMPONENT_ORDER.each_with_object({}) do |name, partials|
+        partials[name] = [name]
+      end.merge(
+        "radio" => %w[radio_group],
+        "toast" => %w[toast toast_container]
+      ).freeze
 
       def resolve_components
         @resolved = if options[:all]
@@ -68,9 +74,12 @@ module Nanoui
 
       def copy_partials
         @resolved.each do |name|
-          source = "views/components/_#{name}.html.erb"
-          next unless File.exist?(File.join(self.class.source_root, source))
-          copy_file source, "app/views/components/_#{name}.html.erb"
+          PARTIAL_TEMPLATES.fetch(name, [name]).each do |partial_name|
+            source = "views/components/_#{partial_name}.html.erb"
+            next unless File.exist?(File.join(self.class.source_root, source))
+
+            copy_file source, "app/views/components/_#{partial_name}.html.erb"
+          end
         end
       end
 

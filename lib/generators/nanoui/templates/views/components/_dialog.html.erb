@@ -1,14 +1,11 @@
 <%# NanoUI Dialog (native <dialog> with Stimulus)
-  Options: size (sm, md, lg, full), title, description, title_id (auto), class
-  Yields: :trigger, default (body), :footer
+  Options: size (sm, md, lg, full), title, description, title_id (auto), trigger, footer, class
   Usage:
-    render "components/dialog", title: "Edit Profile", description: "Update your info." do |f|
-      content_for(:trigger) do
-        render "components/button" do "Open" end
-      end
-      content_for(:footer) do
-        '<button class="button button--outline" data-action="nanoui-dialog#close">Cancel</button>'.html_safe
-      end
+    render "components/dialog",
+      title: "Edit Profile",
+      description: "Update your info.",
+      trigger: render("components/button") { "Open" },
+      footer: render("components/button", variant: "outline", html: { data: { action: "nanoui-dialog#close" } }) { "Cancel" } do
       "Dialog body content here"
     end
 %>
@@ -17,6 +14,8 @@
   title     = local_assigns.fetch(:title, "")
   desc      = local_assigns.fetch(:description, nil)
   title_id  = local_assigns.fetch(:title_id, "dialog-title-#{SecureRandom.hex(4)}")
+  trigger   = local_assigns.fetch(:trigger, nil)
+  footer    = local_assigns.fetch(:footer, nil)
   classes   = local_assigns.fetch(:class, "")
 
   css = ["dialog"]
@@ -25,7 +24,11 @@
 %>
 
 <div data-controller="nanoui-dialog">
-  <%= yield :trigger if content_for?(:trigger) %>
+  <% if trigger %>
+    <div class="dialog__trigger" data-action="click->nanoui-dialog#open">
+      <%= trigger %>
+    </div>
+  <% end %>
 
   <dialog data-nanoui-dialog-target="modal"
           data-action="click->nanoui-dialog#clickBackdrop cancel->nanoui-dialog#cancel"
@@ -43,9 +46,9 @@
         <%= yield %>
       </div>
 
-      <% if content_for?(:footer) %>
+      <% if footer %>
         <footer class="dialog__footer">
-          <%= yield :footer %>
+          <%= footer %>
         </footer>
       <% end %>
 

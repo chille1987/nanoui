@@ -26,4 +26,27 @@ RSpec.describe "Stimulus controller templates" do
     files = Dir.glob(File.join(TEMPLATE_ROOT, "js/controllers/*_controller.js"))
     expect(files.size).to eq(7)
   end
+
+  it "uses the toggled details element directly for accordion single mode" do
+    path = File.join(TEMPLATE_ROOT, "js/controllers/accordion_controller.js")
+    content = File.read(path)
+
+    expect(content).to include("const current = event.currentTarget")
+    expect(content).not_to include("data-accordion-target")
+  end
+
+  it "syncs dropdown state with an interactive trigger element" do
+    path = File.join(TEMPLATE_ROOT, "js/controllers/dropdown_controller.js")
+    content = File.read(path)
+
+    expect(content).to include("get triggerElement()")
+    expect(content).to include("syncTriggerState")
+  end
+
+  it "clears any pending tooltip timer before scheduling a new one" do
+    path = File.join(TEMPLATE_ROOT, "js/controllers/tooltip_controller.js")
+    content = File.read(path)
+
+    expect(content).to include("clearTimeout(this.timeout)")
+  end
 end

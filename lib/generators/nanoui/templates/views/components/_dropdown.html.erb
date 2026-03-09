@@ -1,11 +1,8 @@
 <%# NanoUI Dropdown (Stimulus-powered)
-  Options: class
-  Yields: :trigger, default (menu items)
+  Options: trigger, class
   Usage:
-    render "components/dropdown" do
-      content_for(:trigger) do
-        render "components/button", variant: "outline" do "Options ▾" end
-      end
+    render "components/dropdown",
+      trigger: render("components/button", variant: "outline") { "Options ▾" } do
       '<button class="dropdown__item">Profile</button>
        <button class="dropdown__item">Settings</button>
        <div class="dropdown__separator"></div>
@@ -14,17 +11,16 @@
 %>
 <%
   classes = local_assigns.fetch(:class, "")
+  trigger = local_assigns.fetch(:trigger, nil)
   css = "dropdown"
   css += " #{classes}" if classes.present?
 %>
 
 <div class="<%= css.strip %>" data-controller="nanoui-dropdown">
-  <div data-action="click->nanoui-dropdown#toggle"
+  <div data-action="click->nanoui-dropdown#toggle keydown->nanoui-dropdown#activateTrigger"
        data-nanoui-dropdown-target="trigger"
-       aria-expanded="false"
-       aria-haspopup="true"
        class="dropdown__trigger">
-    <%= yield :trigger if content_for?(:trigger) %>
+    <%= trigger || content_tag(:button, "Options", type: "button", class: "button button--outline") %>
   </div>
 
   <div class="dropdown__content" data-nanoui-dropdown-target="content">
