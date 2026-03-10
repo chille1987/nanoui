@@ -67,7 +67,7 @@
 </head>
 <body>
   <!-- Dark mode toggle -->
-  <button class="button button--outline button--icon dark-toggle" type="button" onclick="document.documentElement.classList.toggle('dark')" aria-label="Toggle dark mode">
+  <button class="nano-btn nano-btn--outline nano-btn--icon dark-toggle" type="button" onclick="document.documentElement.classList.toggle('dark')" aria-label="Toggle dark mode">
     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
       <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/>
     </svg>
@@ -84,117 +84,117 @@
 
       <div class="row-label">Sizes</div>
       <div class="row">
-        <button class="button button--outline" type="button" onclick="openDialog('dialog-sm')">Small</button>
-        <button class="button button--primary" type="button" onclick="openDialog('dialog-md')">Default (md)</button>
-        <button class="button button--outline" type="button" onclick="openDialog('dialog-lg')">Large</button>
+        <button class="nano-btn nano-btn--outline" type="button" onclick="openDialog('dialog-sm')">Small</button>
+        <button class="nano-btn nano-btn--primary" type="button" onclick="openDialog('dialog-md')">Default (md)</button>
+        <button class="nano-btn nano-btn--outline" type="button" onclick="openDialog('dialog-lg')">Large</button>
       </div>
 
       <div class="row-label">Use cases</div>
       <div class="row">
-        <button class="button button--destructive" type="button" onclick="openDialog('dialog-confirm')">Confirm Delete</button>
-        <button class="button button--outline" type="button" onclick="openDialog('dialog-form')">Form Dialog</button>
+        <button class="nano-btn nano-btn--destructive" type="button" onclick="openDialog('dialog-confirm')">Confirm Delete</button>
+        <button class="nano-btn nano-btn--outline" type="button" onclick="openDialog('dialog-form')">Form Dialog</button>
       </div>
     </div>
 
     <!-- Small Dialog -->
-    <dialog id="dialog-sm" class="dialog dialog--sm" aria-labelledby="dialog-sm-title" onclick="if(event.target===this)closeDialog(this)">
-      <div class="dialog__content">
-        <header class="dialog__header">
-          <h2 id="dialog-sm-title" class="dialog__title">Small Dialog</h2>
-          <p class="dialog__description">Max-width 24rem for compact content.</p>
+    <dialog id="dialog-sm" class="nano-dialog nano-dialog--sm" aria-labelledby="dialog-sm-title" onclick="if(event.target===this)closeDialog(this)">
+      <div class="nano-dialog__content">
+        <header class="nano-dialog__header">
+          <h2 id="dialog-sm-title" class="nano-dialog__title">Small Dialog</h2>
+          <p class="nano-dialog__description">Max-width 24rem for compact content.</p>
         </header>
-        <div class="dialog__body">
+        <div class="nano-dialog__body">
           <p style="font-size: var(--text-sm); color: hsl(var(--color-muted-foreground));">This is a small dialog ideal for confirmations or brief messages.</p>
         </div>
-        <footer class="dialog__footer">
-          <button class="button button--outline" type="button" onclick="closeDialog(this.closest('dialog'))">Close</button>
+        <footer class="nano-dialog__footer">
+          <button class="nano-btn nano-btn--outline" type="button" onclick="closeDialog(this.closest('dialog'))">Close</button>
         </footer>
-        <button class="dialog__close" type="button" aria-label="Close dialog" onclick="closeDialog(this.closest('dialog'))">
+        <button class="nano-dialog__close" type="button" aria-label="Close dialog" onclick="closeDialog(this.closest('dialog'))">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
         </button>
       </div>
     </dialog>
 
     <!-- Default Dialog -->
-    <dialog id="dialog-md" class="dialog" aria-labelledby="dialog-md-title" onclick="if(event.target===this)closeDialog(this)">
-      <div class="dialog__content">
-        <header class="dialog__header">
-          <h2 id="dialog-md-title" class="dialog__title">Default Dialog</h2>
-          <p class="dialog__description">Standard 32rem max-width for most use cases.</p>
+    <dialog id="dialog-md" class="nano-dialog" aria-labelledby="dialog-md-title" onclick="if(event.target===this)closeDialog(this)">
+      <div class="nano-dialog__content">
+        <header class="nano-dialog__header">
+          <h2 id="dialog-md-title" class="nano-dialog__title">Default Dialog</h2>
+          <p class="nano-dialog__description">Standard 32rem max-width for most use cases.</p>
         </header>
-        <div class="dialog__body">
+        <div class="nano-dialog__body">
           <p style="font-size: var(--text-sm); color: hsl(var(--color-muted-foreground));">The default dialog size works well for displaying information, simple forms, and confirmation messages. The native &lt;dialog&gt; element provides built-in focus trapping and Escape key handling.</p>
         </div>
-        <footer class="dialog__footer">
-          <button class="button button--outline" type="button" onclick="closeDialog(this.closest('dialog'))">Cancel</button>
-          <button class="button button--primary" type="button" onclick="closeDialog(this.closest('dialog'))">Continue</button>
+        <footer class="nano-dialog__footer">
+          <button class="nano-btn nano-btn--outline" type="button" onclick="closeDialog(this.closest('dialog'))">Cancel</button>
+          <button class="nano-btn nano-btn--primary" type="button" onclick="closeDialog(this.closest('dialog'))">Continue</button>
         </footer>
-        <button class="dialog__close" type="button" aria-label="Close dialog" onclick="closeDialog(this.closest('dialog'))">
+        <button class="nano-dialog__close" type="button" aria-label="Close dialog" onclick="closeDialog(this.closest('dialog'))">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
         </button>
       </div>
     </dialog>
 
     <!-- Large Dialog -->
-    <dialog id="dialog-lg" class="dialog dialog--lg" aria-labelledby="dialog-lg-title" onclick="if(event.target===this)closeDialog(this)">
-      <div class="dialog__content">
-        <header class="dialog__header">
-          <h2 id="dialog-lg-title" class="dialog__title">Large Dialog</h2>
-          <p class="dialog__description">Max-width 42rem for content-heavy dialogs.</p>
+    <dialog id="dialog-lg" class="nano-dialog nano-dialog--lg" aria-labelledby="dialog-lg-title" onclick="if(event.target===this)closeDialog(this)">
+      <div class="nano-dialog__content">
+        <header class="nano-dialog__header">
+          <h2 id="dialog-lg-title" class="nano-dialog__title">Large Dialog</h2>
+          <p class="nano-dialog__description">Max-width 42rem for content-heavy dialogs.</p>
         </header>
-        <div class="dialog__body">
+        <div class="nano-dialog__body">
           <p style="font-size: var(--text-sm); color: hsl(var(--color-muted-foreground));">Use the large variant when you need more space for complex forms, data tables, or detailed information. The dialog scales down on smaller viewports thanks to the calc(100% - 2rem) width constraint.</p>
         </div>
-        <footer class="dialog__footer">
-          <button class="button button--outline" type="button" onclick="closeDialog(this.closest('dialog'))">Close</button>
+        <footer class="nano-dialog__footer">
+          <button class="nano-btn nano-btn--outline" type="button" onclick="closeDialog(this.closest('dialog'))">Close</button>
         </footer>
-        <button class="dialog__close" type="button" aria-label="Close dialog" onclick="closeDialog(this.closest('dialog'))">
+        <button class="nano-dialog__close" type="button" aria-label="Close dialog" onclick="closeDialog(this.closest('dialog'))">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
         </button>
       </div>
     </dialog>
 
     <!-- Confirm Delete Dialog -->
-    <dialog id="dialog-confirm" class="dialog dialog--sm" aria-labelledby="dialog-confirm-title" onclick="if(event.target===this)closeDialog(this)">
-      <div class="dialog__content">
-        <header class="dialog__header">
-          <h2 id="dialog-confirm-title" class="dialog__title">Are you sure?</h2>
-          <p class="dialog__description">This action cannot be undone. This will permanently delete your account and remove your data from our servers.</p>
+    <dialog id="dialog-confirm" class="nano-dialog nano-dialog--sm" aria-labelledby="dialog-confirm-title" onclick="if(event.target===this)closeDialog(this)">
+      <div class="nano-dialog__content">
+        <header class="nano-dialog__header">
+          <h2 id="dialog-confirm-title" class="nano-dialog__title">Are you sure?</h2>
+          <p class="nano-dialog__description">This action cannot be undone. This will permanently delete your account and remove your data from our servers.</p>
         </header>
-        <footer class="dialog__footer" style="padding-top: var(--space-4);">
-          <button class="button button--outline" type="button" onclick="closeDialog(this.closest('dialog'))">Cancel</button>
-          <button class="button button--destructive" type="button" onclick="closeDialog(this.closest('dialog'))">Delete</button>
+        <footer class="nano-dialog__footer" style="padding-top: var(--space-4);">
+          <button class="nano-btn nano-btn--outline" type="button" onclick="closeDialog(this.closest('dialog'))">Cancel</button>
+          <button class="nano-btn nano-btn--destructive" type="button" onclick="closeDialog(this.closest('dialog'))">Delete</button>
         </footer>
-        <button class="dialog__close" type="button" aria-label="Close dialog" onclick="closeDialog(this.closest('dialog'))">
+        <button class="nano-dialog__close" type="button" aria-label="Close dialog" onclick="closeDialog(this.closest('dialog'))">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
         </button>
       </div>
     </dialog>
 
     <!-- Form Dialog -->
-    <dialog id="dialog-form" class="dialog" aria-labelledby="dialog-form-title" onclick="if(event.target===this)closeDialog(this)">
-      <div class="dialog__content">
-        <header class="dialog__header">
-          <h2 id="dialog-form-title" class="dialog__title">Edit Profile</h2>
-          <p class="dialog__description">Make changes to your profile here.</p>
+    <dialog id="dialog-form" class="nano-dialog" aria-labelledby="dialog-form-title" onclick="if(event.target===this)closeDialog(this)">
+      <div class="nano-dialog__content">
+        <header class="nano-dialog__header">
+          <h2 id="dialog-form-title" class="nano-dialog__title">Edit Profile</h2>
+          <p class="nano-dialog__description">Make changes to your profile here.</p>
         </header>
-        <div class="dialog__body">
+        <div class="nano-dialog__body">
           <div style="display: flex; flex-direction: column; gap: var(--space-4);">
             <div style="display: flex; flex-direction: column; gap: var(--space-1-5);">
-              <label for="dialog-name" class="label">Name</label>
-              <input id="dialog-name" type="text" class="input" value="Jane Doe">
+              <label for="dialog-name" class="nano-label">Name</label>
+              <input id="dialog-name" type="text" class="nano-input" value="Jane Doe">
             </div>
             <div style="display: flex; flex-direction: column; gap: var(--space-1-5);">
-              <label for="dialog-email" class="label">Email</label>
-              <input id="dialog-email" type="email" class="input" value="jane@example.com">
+              <label for="dialog-email" class="nano-label">Email</label>
+              <input id="dialog-email" type="email" class="nano-input" value="jane@example.com">
             </div>
           </div>
         </div>
-        <footer class="dialog__footer">
-          <button class="button button--outline" type="button" onclick="closeDialog(this.closest('dialog'))">Cancel</button>
-          <button class="button button--primary" type="button" onclick="closeDialog(this.closest('dialog'))">Save Changes</button>
+        <footer class="nano-dialog__footer">
+          <button class="nano-btn nano-btn--outline" type="button" onclick="closeDialog(this.closest('dialog'))">Cancel</button>
+          <button class="nano-btn nano-btn--primary" type="button" onclick="closeDialog(this.closest('dialog'))">Save Changes</button>
         </footer>
-        <button class="dialog__close" type="button" aria-label="Close dialog" onclick="closeDialog(this.closest('dialog'))">
+        <button class="nano-dialog__close" type="button" aria-label="Close dialog" onclick="closeDialog(this.closest('dialog'))">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
         </button>
       </div>
@@ -209,40 +209,40 @@
 
       <div class="row-label">Default</div>
       <div class="row">
-        <div class="dropdown" id="dropdown-1">
-          <button class="button button--outline dropdown__trigger" type="button" aria-expanded="false" aria-haspopup="true" onclick="toggleDropdown('dropdown-1')">
+        <div class="nano-dropdown" id="dropdown-1">
+          <button class="nano-btn nano-btn--outline nano-dropdown__trigger" type="button" aria-expanded="false" aria-haspopup="true" onclick="toggleDropdown('dropdown-1')">
             Options
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
           </button>
-          <div class="dropdown__content">
-            <button class="dropdown__item" type="button">
+          <div class="nano-dropdown__content">
+            <button class="nano-dropdown__item" type="button">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
               Profile
             </button>
-            <button class="dropdown__item" type="button">
+            <button class="nano-dropdown__item" type="button">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg>
               Settings
             </button>
-            <div class="dropdown__separator"></div>
-            <button class="dropdown__item" type="button">
+            <div class="nano-dropdown__separator"></div>
+            <button class="nano-dropdown__item" type="button">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" x2="9" y1="12" y2="12"/></svg>
               Log out
             </button>
           </div>
         </div>
 
-        <div class="dropdown" id="dropdown-2">
-          <button class="button button--primary dropdown__trigger" type="button" aria-expanded="false" aria-haspopup="true" onclick="toggleDropdown('dropdown-2')">
+        <div class="nano-dropdown" id="dropdown-2">
+          <button class="nano-btn nano-btn--primary nano-dropdown__trigger" type="button" aria-expanded="false" aria-haspopup="true" onclick="toggleDropdown('dropdown-2')">
             Actions
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
           </button>
-          <div class="dropdown__content">
-            <div class="dropdown__label">Team</div>
-            <button class="dropdown__item" type="button">Invite Member</button>
-            <button class="dropdown__item" type="button">Create Project</button>
-            <div class="dropdown__separator"></div>
-            <div class="dropdown__label">Danger Zone</div>
-            <button class="dropdown__item" type="button" style="color: hsl(var(--color-destructive));">Delete Team</button>
+          <div class="nano-dropdown__content">
+            <div class="nano-dropdown__label">Team</div>
+            <button class="nano-dropdown__item" type="button">Invite Member</button>
+            <button class="nano-dropdown__item" type="button">Create Project</button>
+            <div class="nano-dropdown__separator"></div>
+            <div class="nano-dropdown__label">Danger Zone</div>
+            <button class="nano-dropdown__item" type="button" style="color: hsl(var(--color-destructive));">Delete Team</button>
           </div>
         </div>
       </div>
@@ -257,42 +257,42 @@
 
       <div class="row-label">Positions</div>
       <div class="row" style="gap: var(--space-6); padding: var(--space-8) 0;">
-        <div class="tooltip tooltip--top" onmouseenter="showTooltip(this)" onmouseleave="hideTooltip(this)" onfocusin="showTooltip(this)" onfocusout="hideTooltip(this)">
-          <button class="button button--outline" type="button">Top</button>
-          <div class="tooltip__content" role="tooltip">Tooltip on top</div>
+        <div class="nano-tooltip nano-tooltip--top" onmouseenter="showTooltip(this)" onmouseleave="hideTooltip(this)" onfocusin="showTooltip(this)" onfocusout="hideTooltip(this)">
+          <button class="nano-btn nano-btn--outline" type="button">Top</button>
+          <div class="nano-tooltip__content" role="tooltip">Tooltip on top</div>
         </div>
 
-        <div class="tooltip tooltip--bottom" onmouseenter="showTooltip(this)" onmouseleave="hideTooltip(this)" onfocusin="showTooltip(this)" onfocusout="hideTooltip(this)">
-          <button class="button button--outline" type="button">Bottom</button>
-          <div class="tooltip__content" role="tooltip">Tooltip on bottom</div>
+        <div class="nano-tooltip nano-tooltip--bottom" onmouseenter="showTooltip(this)" onmouseleave="hideTooltip(this)" onfocusin="showTooltip(this)" onfocusout="hideTooltip(this)">
+          <button class="nano-btn nano-btn--outline" type="button">Bottom</button>
+          <div class="nano-tooltip__content" role="tooltip">Tooltip on bottom</div>
         </div>
 
-        <div class="tooltip tooltip--left" onmouseenter="showTooltip(this)" onmouseleave="hideTooltip(this)" onfocusin="showTooltip(this)" onfocusout="hideTooltip(this)">
-          <button class="button button--outline" type="button">Left</button>
-          <div class="tooltip__content" role="tooltip">Tooltip on left</div>
+        <div class="nano-tooltip nano-tooltip--left" onmouseenter="showTooltip(this)" onmouseleave="hideTooltip(this)" onfocusin="showTooltip(this)" onfocusout="hideTooltip(this)">
+          <button class="nano-btn nano-btn--outline" type="button">Left</button>
+          <div class="nano-tooltip__content" role="tooltip">Tooltip on left</div>
         </div>
 
-        <div class="tooltip tooltip--right" onmouseenter="showTooltip(this)" onmouseleave="hideTooltip(this)" onfocusin="showTooltip(this)" onfocusout="hideTooltip(this)">
-          <button class="button button--outline" type="button">Right</button>
-          <div class="tooltip__content" role="tooltip">Tooltip on right</div>
+        <div class="nano-tooltip nano-tooltip--right" onmouseenter="showTooltip(this)" onmouseleave="hideTooltip(this)" onfocusin="showTooltip(this)" onfocusout="hideTooltip(this)">
+          <button class="nano-btn nano-btn--outline" type="button">Right</button>
+          <div class="nano-tooltip__content" role="tooltip">Tooltip on right</div>
         </div>
       </div>
 
       <div class="row-label">Use cases</div>
       <div class="row" style="gap: var(--space-6); padding: var(--space-4) 0;">
-        <div class="tooltip" onmouseenter="showTooltip(this)" onmouseleave="hideTooltip(this)" onfocusin="showTooltip(this)" onfocusout="hideTooltip(this)">
-          <button class="button button--primary button--icon" type="button" aria-label="Add to favorites">
+        <div class="nano-tooltip" onmouseenter="showTooltip(this)" onmouseleave="hideTooltip(this)" onfocusin="showTooltip(this)" onfocusout="hideTooltip(this)">
+          <button class="nano-btn nano-btn--primary nano-btn--icon" type="button" aria-label="Add to favorites">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
           </button>
-          <div class="tooltip__content" role="tooltip">Add to favorites</div>
+          <div class="nano-tooltip__content" role="tooltip">Add to favorites</div>
         </div>
 
-        <div class="tooltip" onmouseenter="showTooltip(this)" onmouseleave="hideTooltip(this)" onfocusin="showTooltip(this)" onfocusout="hideTooltip(this)">
-          <span class="badge badge--success" tabindex="0" style="cursor: help;">
+        <div class="nano-tooltip" onmouseenter="showTooltip(this)" onmouseleave="hideTooltip(this)" onfocusin="showTooltip(this)" onfocusout="hideTooltip(this)">
+          <span class="nano-badge nano-badge--success" tabindex="0" style="cursor: help;">
             <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
             Deployed
           </span>
-          <div class="tooltip__content" role="tooltip">Deployed 2 minutes ago</div>
+          <div class="nano-tooltip__content" role="tooltip">Deployed 2 minutes ago</div>
         </div>
       </div>
     </div>
@@ -306,16 +306,16 @@
 
       <div class="row-label">Variants</div>
       <div class="row">
-        <button class="button button--outline" type="button" onclick="spawnToast('default')">Default Toast</button>
-        <button class="button button--outline" type="button" onclick="spawnToast('success')">Success Toast</button>
-        <button class="button button--outline" type="button" onclick="spawnToast('destructive')">Error Toast</button>
-        <button class="button button--outline" type="button" onclick="spawnToast('warning')">Warning Toast</button>
+        <button class="nano-btn nano-btn--outline" type="button" onclick="spawnToast('default')">Default Toast</button>
+        <button class="nano-btn nano-btn--outline" type="button" onclick="spawnToast('success')">Success Toast</button>
+        <button class="nano-btn nano-btn--outline" type="button" onclick="spawnToast('destructive')">Error Toast</button>
+        <button class="nano-btn nano-btn--outline" type="button" onclick="spawnToast('warning')">Warning Toast</button>
       </div>
     </div>
   </div>
 
   <!-- Toast container -->
-  <div class="toast-container" id="toast-container" aria-live="polite"></div>
+  <div class="nano-toast-container" id="toast-container" aria-live="polite"></div>
 
   <script>
     // Dialog helpers
@@ -335,7 +335,7 @@
     }
 
     // Handle native Escape on dialogs
-    document.querySelectorAll('dialog').forEach(function(dialog) {
+    document.querySelectorAll('nano-dialog').forEach(function(dialog) {
       dialog.addEventListener('cancel', function(e) {
         e.preventDefault();
         closeDialog(dialog);
@@ -347,8 +347,8 @@
 
     function toggleDropdown(id) {
       var el = document.getElementById(id);
-      var content = el.querySelector('.dropdown__content');
-      var trigger = el.querySelector('.dropdown__trigger');
+      var content = el.querySelector('.nano-dropdown__content');
+      var trigger = el.querySelector('.nano-dropdown__trigger');
 
       if (content.classList.contains('is-open')) {
         closeDropdownEl(el);
@@ -363,8 +363,8 @@
     }
 
     function closeDropdownEl(el) {
-      var content = el.querySelector('.dropdown__content');
-      var trigger = el.querySelector('.dropdown__trigger');
+      var content = el.querySelector('.nano-dropdown__content');
+      var trigger = el.querySelector('.nano-dropdown__trigger');
       content.classList.remove('is-open');
       trigger.setAttribute('aria-expanded', 'false');
       if (activeDropdown === el) activeDropdown = null;
@@ -378,13 +378,13 @@
 
     document.addEventListener('keydown', function(e) {
       if (e.key === 'Escape' && activeDropdown) {
-        var trigger = activeDropdown.querySelector('.dropdown__trigger');
+        var trigger = activeDropdown.querySelector('.nano-dropdown__trigger');
         closeDropdownEl(activeDropdown);
         trigger.focus();
       }
       if (activeDropdown && (e.key === 'ArrowDown' || e.key === 'ArrowUp')) {
         e.preventDefault();
-        var items = Array.from(activeDropdown.querySelectorAll('.dropdown__item:not([disabled])'));
+        var items = Array.from(activeDropdown.querySelectorAll('.nano-dropdown__item:not([disabled])'));
         if (!items.length) return;
         var idx = items.indexOf(document.activeElement);
         var next;
@@ -401,7 +401,7 @@
     var tooltipTimers = new WeakMap();
 
     function showTooltip(el) {
-      var content = el.querySelector('.tooltip__content');
+      var content = el.querySelector('.nano-tooltip__content');
       var timer = setTimeout(function() {
         content.classList.add('is-open');
       }, 200);
@@ -410,7 +410,7 @@
 
     function hideTooltip(el) {
       clearTimeout(tooltipTimers.get(el));
-      var content = el.querySelector('.tooltip__content');
+      var content = el.querySelector('.nano-tooltip__content');
       content.classList.remove('is-open');
     }
 
@@ -418,9 +418,9 @@
     var toastCounter = 0;
     var toastData = {
       default: { title: 'Notification', description: 'Something happened in your app.', variant: '' },
-      success: { title: 'Success', description: 'Your changes have been saved.', variant: 'toast--success' },
-      destructive: { title: 'Error', description: 'Something went wrong. Please try again.', variant: 'toast--destructive' },
-      warning: { title: 'Warning', description: 'Your session will expire soon.', variant: 'toast--warning' }
+      success: { title: 'Success', description: 'Your changes have been saved.', variant: 'nano-toast--success' },
+      destructive: { title: 'Error', description: 'Something went wrong. Please try again.', variant: 'nano-toast--destructive' },
+      warning: { title: 'Warning', description: 'Your session will expire soon.', variant: 'nano-toast--warning' }
     };
 
     function spawnToast(type) {
@@ -429,13 +429,13 @@
       var container = document.getElementById('toast-container');
       var toast = document.createElement('output');
       toast.setAttribute('role', 'status');
-      toast.className = 'toast ' + data.variant;
+      toast.className = 'nano-toast ' + data.variant;
       toast.innerHTML =
-        '<div class="toast__content">' +
-          '<p class="toast__title">' + data.title + '</p>' +
-          '<p class="toast__description">' + data.description + '</p>' +
+        '<div class="nano-toast__content">' +
+          '<p class="nano-toast__title">' + data.title + '</p>' +
+          '<p class="nano-toast__description">' + data.description + '</p>' +
         '</div>' +
-        '<button class="toast__close" type="button" aria-label="Dismiss notification" onclick="dismissToast(this.closest(\'.toast\'))">' +
+        '<button class="nano-toast__close" type="button" aria-label="Dismiss notification" onclick="dismissToast(this.closest(\'.nano-toast\'))">' +
           '<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>' +
         '</button>';
       container.appendChild(toast);

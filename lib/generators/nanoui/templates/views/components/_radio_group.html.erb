@@ -17,30 +17,30 @@
   error       = local_assigns.fetch(:error, false)
   classes     = local_assigns.fetch(:class, "")
 
-  css = "radio-group"
+  css = "nano-radio-group"
   css += " #{classes}" if classes.present?
 %>
 
 <fieldset class="<%= css.strip %>">
   <% if legend_text %>
-    <legend class="radio-group__legend"><%= legend_text %></legend>
+    <legend class="nano-radio-group__legend"><%= legend_text %></legend>
   <% end %>
 
   <% options.each_with_index do |opt, i| %>
     <%
       radio_id = "#{name}-#{i}"
-      radio_css = "radio"
-      radio_css += " radio--error" if error
+      radio_css = "nano-radio"
+      radio_css += " nano-radio--error" if error
     %>
     <div class="<%= radio_css %>">
       <input type="radio"
              id="<%= radio_id %>"
              name="<%= name %>"
              value="<%= opt[:value] %>"
-             class="radio__input"
+             class="nano-radio__input"
              <%= "checked" if opt[:checked] %>
              <%= "disabled" if opt[:disabled] %>>
-      <label for="<%= radio_id %>" class="radio__label"><%= opt[:label] %></label>
+      <label for="<%= radio_id %>" class="nano-radio__label"><%= opt[:label] %></label>
     </div>
   <% end %>
 </fieldset>

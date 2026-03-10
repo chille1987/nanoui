@@ -12,22 +12,22 @@
   icon    = local_assigns.fetch(:icon, nil)
   classes = local_assigns.fetch(:class, "")
 
-  css = ["alert"]
-  css << "alert--#{variant}" if variant
+  css = ["nano-alert"]
+  css << "nano-alert--#{variant}" if variant
   css << classes if classes.present?
 %>
 
 <div class="<%= css.join(" ").strip %>" role="alert">
   <% if icon %>
-    <div class="alert__icon">
+    <div class="nano-alert__icon">
       <%= icon %>
     </div>
   <% end %>
 
-  <div class="alert__content">
+  <div class="nano-alert__content">
     <% if title %>
-      <p class="alert__title"><%= title %></p>
+      <p class="nano-alert__title"><%= title %></p>
     <% end %>
-    <p class="alert__description"><%= yield %></p>
+    <p class="nano-alert__description"><%= yield %></p>
   </div>
 </div>

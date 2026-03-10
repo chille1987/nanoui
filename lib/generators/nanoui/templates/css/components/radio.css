@@ -1,4 +1,4 @@
-.radio-group {
+.nano-radio-group {
   border: none;
   padding: 0;
   margin: 0;
@@ -7,7 +7,7 @@
   gap: var(--space-2);
 }
 
-.radio-group__legend {
+.nano-radio-group__legend {
   font-size: var(--text-sm);
   font-weight: var(--font-medium);
   line-height: var(--leading-none);
@@ -15,12 +15,12 @@
   margin-bottom: var(--space-2);
 }
 
-.radio {
+.nano-radio {
   position: relative;
   display: inline-flex;
 }
 
-.radio__input {
+.nano-radio__input {
   position: absolute;
   width: 1px;
   height: 1px;
@@ -32,7 +32,7 @@
   border-width: 0;
 }
 
-.radio__label {
+.nano-radio__label {
   display: inline-flex;
   align-items: center;
   gap: var(--space-2);
@@ -43,7 +43,7 @@
   color: hsl(var(--color-foreground));
 }
 
-.radio__label::before {
+.nano-radio__label::before {
   content: "";
   display: block;
   width: 1.125rem;
@@ -55,7 +55,7 @@
   transition: border-color var(--duration-fast) var(--ease-default);
 }
 
-.radio__label::after {
+.nano-radio__label::after {
   content: "";
   position: absolute;
   left: 0.28125rem;
@@ -68,28 +68,28 @@
   transition: transform var(--duration-fast) var(--ease-default);
 }
 
-.radio__input:checked + .radio__label::before {
+.nano-radio__input:checked + .nano-radio__label::before {
   border-color: hsl(var(--color-primary));
 }
 
-.radio__input:checked + .radio__label::after {
+.nano-radio__input:checked + .nano-radio__label::after {
   transform: translateY(-50%) scale(1);
 }
 
-.radio__input:focus-visible + .radio__label::before {
+.nano-radio__input:focus-visible + .nano-radio__label::before {
   outline: 2px solid hsl(var(--color-ring));
   outline-offset: 2px;
 }
 
-.radio__input:disabled + .radio__label {
+.nano-radio__input:disabled + .nano-radio__label {
   opacity: 0.5;
   cursor: not-allowed;
 }
 
-.radio--error .radio__label::before {
+.nano-radio--error .nano-radio__label::before {
   border-color: hsl(var(--color-destructive));
 }
 
-.radio--error .radio__input:checked + .radio__label::after {
+.nano-radio--error .nano-radio__input:checked + .nano-radio__label::after {
   background-color: hsl(var(--color-destructive));
 }

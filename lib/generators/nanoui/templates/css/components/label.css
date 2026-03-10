@@ -1,11 +1,11 @@
-.label {
+.nano-label {
   font-size: var(--text-sm);
   font-weight: var(--font-medium);
   line-height: var(--leading-none);
   color: hsl(var(--color-foreground));
 }
 
-.label--required::after {
+.nano-label--required::after {
   content: " *";
   color: hsl(var(--color-destructive));
 }

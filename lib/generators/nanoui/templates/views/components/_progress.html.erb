@@ -13,17 +13,17 @@
   aria_label = local_assigns.fetch(:aria_label, "Progress")
   classes    = local_assigns.fetch(:class, "")
 
-  css = ["progress"]
-  css << "progress--#{variant}" if variant
+  css = ["nano-progress"]
+  css << "nano-progress--#{variant}" if variant
   css << classes if classes.present?
 %>
 
 <div class="<%= css.join(" ").strip %>">
-  <progress class="progress__bar"
+  <progress class="nano-progress__bar"
             <% if value %> value="<%= value %>"<% end %>
             max="<%= max %>"
             aria-label="<%= aria_label %>"><%= "#{value}%" if value %></progress>
   <% if label %>
-    <span class="progress__label" aria-hidden="true"><%= label %></span>
+    <span class="nano-progress__label" aria-hidden="true"><%= label %></span>
   <% end %>
 </div>

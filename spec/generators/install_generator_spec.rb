@@ -11,6 +11,8 @@ module Rails
         @source_root
       end
 
+      def self.argument(*args); end
+      def self.class_option(*args); end
       def self.desc(text = nil)
         @desc = text if text
         @desc
@@ -28,8 +30,8 @@ RSpec.describe Nanoui::Generators::InstallGenerator do
     expect(Dir.exist?(root)).to be true
   end
 
-  it "has copy_tokens method" do
-    expect(described_class.instance_methods(false)).to include(:copy_tokens)
+  it "does not define copy_tokens method" do
+    expect(described_class.instance_methods(false)).not_to include(:copy_tokens)
   end
 
   it "has copy_base method" do

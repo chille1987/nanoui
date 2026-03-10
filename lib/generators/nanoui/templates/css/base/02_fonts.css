@@ -1,0 +1,8 @@
+/* base/02_fonts.css */
+@font-face {
+  font-family: "Inter";
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+  src: url("../fonts/inter-variable.ttf") format("truetype");
+}

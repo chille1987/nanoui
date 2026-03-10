@@ -13,18 +13,18 @@
   hash       = local_assigns.fetch(:hash, false)
   classes    = local_assigns.fetch(:class, "")
 
-  css = "tabs"
+  css = "nano-tabs"
   css += " #{classes}" if classes.present?
 %>
 
 <div class="<%= css.strip %>"
      data-controller="nanoui-tabs"
      data-nanoui-tabs-hash-value="<%= hash %>">
-  <div role="tablist" class="tabs__list" aria-label="<%= aria_label %>">
+  <div role="tablist" class="nano-tabs__list" aria-label="<%= aria_label %>">
     <% tabs_data.each_with_index do |tab, i| %>
       <button role="tab"
               id="tab-<%= tab[:id] %>"
-              class="tabs__trigger"
+              class="nano-tabs__trigger"
               aria-selected="<%= tab[:active] ? "true" : "false" %>"
               aria-controls="panel-<%= tab[:id] %>"
               <%= "tabindex=\"-1\"" unless tab[:active] %>
@@ -36,7 +36,7 @@
   <% tabs_data.each do |tab| %>
     <div role="tabpanel"
          id="panel-<%= tab[:id] %>"
-         class="tabs__panel"
+         class="nano-tabs__panel"
          aria-labelledby="tab-<%= tab[:id] %>"
          data-nanoui-tabs-target="panel"
          <%= "hidden" unless tab[:active] %>>

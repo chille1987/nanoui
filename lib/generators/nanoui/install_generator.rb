@@ -6,11 +6,7 @@ module Nanoui
       APPLICATION_IMPORT = '@import "nanoui/nanoui.css";'.freeze
       LEADING_CSS_HEADER_PATTERN = /\A((?:\s|\/\*.*?\*\/\s*)*(?:@charset\s+[^;]+;\s*)?(?:@import\s+[^;]+;\s*)*)/m.freeze
 
-      desc "Install NanoUI foundation (tokens, base styles, fonts)"
-
-      def copy_tokens
-        directory "css/tokens", "app/assets/stylesheets/nanoui/tokens"
-      end
+      desc "Install NanoUI foundation (base styles, fonts)"
 
       def copy_base
         directory "css/base", "app/assets/stylesheets/nanoui/base"
@@ -45,7 +41,7 @@ module Nanoui
         say "     rails generate nanoui:component button input card"
         say ""
         say "  2. Customize your theme in:"
-        say "     app/assets/stylesheets/nanoui/tokens/_colors.css"
+        say "     app/assets/stylesheets/nanoui/base/03_colors.css"
         say ""
       end
     end

@@ -1,4 +1,4 @@
-<%# NanoUI Select (wrapped in .field with optional label and error)
+<%# NanoUI Select (wrapped in .nano-field with optional label and error)
   Options: label, required (false), error, options (array of strings or {label:, value:}),
            placeholder, id (auto), name, disabled, class, html
   Usage:
@@ -26,8 +26,8 @@
   disabled    = local_assigns.fetch(:disabled, false)
   classes     = local_assigns.fetch(:class, "")
 
-  css = ["select"]
-  css << "select--error" if error
+  css = ["nano-select"]
+  css << "nano-select--error" if error
   css << classes if classes.present?
   error_id = "#{select_id}-error" if error
   select_attributes = {
@@ -43,9 +43,9 @@
   end
 %>
 
-<div class="field">
+<div class="nano-field">
   <% if label_text %>
-    <label for="<%= select_id %>" class="label<%= " label--required" if required %>"><%= label_text %></label>
+    <label for="<%= select_id %>" class="nano-label<%= " nano-label--required" if required %>"><%= label_text %></label>
   <% end %>
 
   <%= content_tag(:select, select_attributes) do %>
@@ -62,6 +62,6 @@
   <% end %>
 
   <% if error %>
-    <p id="<%= error_id %>" class="field__error" role="alert"><%= error %></p>
+    <p id="<%= error_id %>" class="nano-field__error" role="alert"><%= error %></p>
   <% end %>
 </div>

@@ -80,7 +80,7 @@
 </head>
 <body>
   <!-- Dark mode toggle -->
-  <button class="button button--outline button--icon dark-toggle" type="button" onclick="document.documentElement.classList.toggle('dark')" aria-label="Toggle dark mode">
+  <button class="nano-btn nano-btn--outline nano-btn--icon dark-toggle" type="button" onclick="document.documentElement.classList.toggle('dark')" aria-label="Toggle dark mode">
     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
       <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/>
     </svg>
@@ -97,20 +97,20 @@
 
       <div class="row-label">Variants</div>
       <div class="row">
-        <button class="button button--primary" type="button">Primary</button>
-        <button class="button button--secondary" type="button">Secondary</button>
-        <button class="button button--destructive" type="button">Destructive</button>
-        <button class="button button--outline" type="button">Outline</button>
-        <button class="button button--ghost" type="button">Ghost</button>
-        <a class="button button--link" href="#">Link</a>
+        <button class="nano-btn nano-btn--primary" type="button">Primary</button>
+        <button class="nano-btn nano-btn--secondary" type="button">Secondary</button>
+        <button class="nano-btn nano-btn--destructive" type="button">Destructive</button>
+        <button class="nano-btn nano-btn--outline" type="button">Outline</button>
+        <button class="nano-btn nano-btn--ghost" type="button">Ghost</button>
+        <a class="nano-btn nano-btn--link" href="#">Link</a>
       </div>
 
       <div class="row-label">Sizes</div>
       <div class="row">
-        <button class="button button--primary button--sm" type="button">Small</button>
-        <button class="button button--primary" type="button">Default</button>
-        <button class="button button--primary button--lg" type="button">Large</button>
-        <button class="button button--primary button--icon" type="button" aria-label="Settings">
+        <button class="nano-btn nano-btn--primary nano-btn--sm" type="button">Small</button>
+        <button class="nano-btn nano-btn--primary" type="button">Default</button>
+        <button class="nano-btn nano-btn--primary nano-btn--lg" type="button">Large</button>
+        <button class="nano-btn nano-btn--primary nano-btn--icon" type="button" aria-label="Settings">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/>
             <circle cx="12" cy="12" r="3"/>
@@ -120,9 +120,9 @@
 
       <div class="row-label">States</div>
       <div class="row">
-        <button class="button button--primary" type="button" disabled>Disabled</button>
-        <button class="button button--primary" type="button" aria-busy="true" aria-disabled="true">
-          <span class="button__spinner" aria-hidden="true">
+        <button class="nano-btn nano-btn--primary" type="button" disabled>Disabled</button>
+        <button class="nano-btn nano-btn--primary" type="button" aria-busy="true" aria-disabled="true">
+          <span class="nano-btn__spinner" aria-hidden="true">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <path d="M21 12a9 9 0 1 1-6.219-8.56"/>
             </svg>
@@ -140,38 +140,38 @@
       <p>Inputs, labels, and error states.</p>
 
       <div class="form-grid">
-        <div class="field">
-          <label for="name" class="label">Name</label>
-          <input id="name" type="text" class="input" placeholder="Enter your name">
+        <div class="nano-field">
+          <label for="name" class="nano-label">Name</label>
+          <input id="name" type="text" class="nano-input" placeholder="Enter your name">
         </div>
 
-        <div class="field">
-          <label for="email" class="label label--required">Email</label>
-          <input id="email" type="email" class="input" placeholder="you@example.com">
+        <div class="nano-field">
+          <label for="email" class="nano-label nano-label--required">Email</label>
+          <input id="email" type="email" class="nano-input" placeholder="you@example.com">
         </div>
 
-        <div class="field">
-          <label for="email-error" class="label label--required">Email (error)</label>
-          <input id="email-error" type="email" class="input input--error" value="not-an-email" aria-invalid="true" aria-describedby="email-error-msg">
-          <p id="email-error-msg" class="field__error" role="alert">Please enter a valid email address.</p>
+        <div class="nano-field">
+          <label for="email-error" class="nano-label nano-label--required">Email (error)</label>
+          <input id="email-error" type="email" class="nano-input nano-input--error" value="not-an-email" aria-invalid="true" aria-describedby="email-error-msg">
+          <p id="email-error-msg" class="nano-field__error" role="alert">Please enter a valid email address.</p>
         </div>
 
-        <div class="field">
-          <label for="disabled" class="label">Disabled</label>
-          <input id="disabled" type="text" class="input" value="Cannot edit" disabled>
+        <div class="nano-field">
+          <label for="disabled" class="nano-label">Disabled</label>
+          <input id="disabled" type="text" class="nano-input" value="Cannot edit" disabled>
         </div>
       </div>
 
-      <div class="field" style="margin-top: var(--space-6);">
-        <label for="bio" class="label">Bio</label>
-        <textarea id="bio" class="input" placeholder="Tell us about yourself..."></textarea>
+      <div class="nano-field" style="margin-top: var(--space-6);">
+        <label for="bio" class="nano-label">Bio</label>
+        <textarea id="bio" class="nano-input" placeholder="Tell us about yourself..."></textarea>
       </div>
 
       <div style="margin-top: var(--space-6);">
         <div class="row-label">Input Group</div>
-        <div class="input-group" style="max-width: 24rem;">
-          <input type="text" class="input" placeholder="Search...">
-          <button class="button button--primary" type="button">Search</button>
+        <div class="nano-input-group" style="max-width: 24rem;">
+          <input type="text" class="nano-input" placeholder="Search...">
+          <button class="nano-btn nano-btn--primary" type="button">Search</button>
         </div>
       </div>
     </div>
@@ -184,51 +184,51 @@
       <p>Container component with three variants.</p>
 
       <div class="grid-cards">
-        <article class="card">
-          <div class="card__header">
-            <h3 class="card__title">Default Card</h3>
-            <p class="card__description">Standard card with subtle border and shadow.</p>
+        <article class="nano-card">
+          <div class="nano-card__header">
+            <h3 class="nano-card__title">Default Card</h3>
+            <p class="nano-card__description">Standard card with subtle border and shadow.</p>
           </div>
-          <div class="card__content">
+          <div class="nano-card__content">
             <p style="font-size: var(--text-sm); color: hsl(var(--color-muted-foreground));">
               This is the default card style with a 1px border and small shadow.
               It works well for most use cases.
             </p>
           </div>
-          <div class="card__footer">
-            <button class="button button--primary button--sm" type="button">Action</button>
+          <div class="nano-card__footer">
+            <button class="nano-btn nano-btn--primary nano-btn--sm" type="button">Action</button>
           </div>
         </article>
 
-        <article class="card card--elevated">
-          <div class="card__header">
-            <h3 class="card__title">Elevated Card</h3>
-            <p class="card__description">No border, medium shadow for depth.</p>
+        <article class="nano-card nano-card--elevated">
+          <div class="nano-card__header">
+            <h3 class="nano-card__title">Elevated Card</h3>
+            <p class="nano-card__description">No border, medium shadow for depth.</p>
           </div>
-          <div class="card__content">
+          <div class="nano-card__content">
             <p style="font-size: var(--text-sm); color: hsl(var(--color-muted-foreground));">
               The elevated variant removes the border and uses a medium shadow
               to create a floating effect.
             </p>
           </div>
-          <div class="card__footer">
-            <button class="button button--outline button--sm" type="button">Learn More</button>
+          <div class="nano-card__footer">
+            <button class="nano-btn nano-btn--outline nano-btn--sm" type="button">Learn More</button>
           </div>
         </article>
 
-        <article class="card card--bordered">
-          <div class="card__header">
-            <h3 class="card__title">Bordered Card</h3>
-            <p class="card__description">Thicker border, no shadow.</p>
+        <article class="nano-card nano-card--bordered">
+          <div class="nano-card__header">
+            <h3 class="nano-card__title">Bordered Card</h3>
+            <p class="nano-card__description">Thicker border, no shadow.</p>
           </div>
-          <div class="card__content">
+          <div class="nano-card__content">
             <p style="font-size: var(--text-sm); color: hsl(var(--color-muted-foreground));">
               The bordered variant uses a 2px border with no shadow for a
               flat, structured look.
             </p>
           </div>
-          <div class="card__footer">
-            <button class="button button--ghost button--sm" type="button">Dismiss</button>
+          <div class="nano-card__footer">
+            <button class="nano-btn nano-btn--ghost nano-btn--sm" type="button">Dismiss</button>
           </div>
         </article>
       </div>

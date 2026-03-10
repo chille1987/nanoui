@@ -18,25 +18,25 @@
   classes = local_assigns.fetch(:class, "")
   html    = local_assigns.fetch(:html, {}).symbolize_keys
 
-  css = ["card"]
-  css << "card--#{variant}" if variant
+  css = ["nano-card"]
+  css << "nano-card--#{variant}" if variant
   css << classes if classes.present?
 %>
 
 <%= content_tag(tag, class: css.join(" ").strip, **html) do %>
   <% if title || desc %>
-    <div class="card__header">
-      <% if title %><h3 class="card__title"><%= title %></h3><% end %>
-      <% if desc %><p class="card__description"><%= desc %></p><% end %>
+    <div class="nano-card__header">
+      <% if title %><h3 class="nano-card__title"><%= title %></h3><% end %>
+      <% if desc %><p class="nano-card__description"><%= desc %></p><% end %>
     </div>
   <% end %>
 
-  <div class="card__content">
+  <div class="nano-card__content">
     <%= yield %>
   </div>
 
   <% if footer %>
-    <div class="card__footer">
+    <div class="nano-card__footer">
       <%= footer %>
     </div>
   <% end %>

@@ -2,28 +2,28 @@
   Options: trigger, class
   Usage:
     render "components/dropdown",
-      trigger: render("components/button", variant: "outline") { "Options ▾" } do
-      '<button class="dropdown__item">Profile</button>
-       <button class="dropdown__item">Settings</button>
-       <div class="dropdown__separator"></div>
-       <button class="dropdown__item">Log out</button>'.html_safe
+      trigger: render("components/button", variant: "outline") { "Options" } do
+      '<button class="nano-dropdown__item">Profile</button>
+       <button class="nano-dropdown__item">Settings</button>
+       <div class="nano-dropdown__separator"></div>
+       <button class="nano-dropdown__item">Log out</button>'.html_safe
     end
 %>
 <%
   classes = local_assigns.fetch(:class, "")
   trigger = local_assigns.fetch(:trigger, nil)
-  css = "dropdown"
+  css = "nano-dropdown"
   css += " #{classes}" if classes.present?
 %>
 
 <div class="<%= css.strip %>" data-controller="nanoui-dropdown">
   <div data-action="click->nanoui-dropdown#toggle keydown->nanoui-dropdown#activateTrigger"
        data-nanoui-dropdown-target="trigger"
-       class="dropdown__trigger">
-    <%= trigger || content_tag(:button, "Options", type: "button", class: "button button--outline") %>
+       class="nano-dropdown__trigger">
+    <%= trigger || content_tag(:button, "Options", type: "button", class: "nano-btn nano-btn--outline") %>
   </div>
 
-  <div class="dropdown__content" data-nanoui-dropdown-target="content">
+  <div class="nano-dropdown__content" data-nanoui-dropdown-target="content">
     <%= yield %>
   </div>
 </div>

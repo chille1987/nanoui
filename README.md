@@ -15,7 +15,7 @@ gem "nanoui", group: :development
 
 ```bash
 bundle install
-rails generate nanoui:install          # Tokens, base, fonts
+rails generate nanoui:install          # Base styles and fonts
 rails generate nanoui:component --all  # All components
 ```
 
@@ -24,8 +24,12 @@ rails generate nanoui:component --all  # All components
 Copy files directly into your Rails 8 app:
 
 ```bash
-# 1. CSS (tokens, base, components, Inter Variable font)
-cp -r lib/generators/nanoui/templates/css/ app/assets/stylesheets/nanoui/
+# 1. CSS (base, components, entrypoint, Inter Variable font)
+mkdir -p app/assets/stylesheets/nanoui
+cp -r lib/generators/nanoui/templates/css/base app/assets/stylesheets/nanoui/
+cp -r lib/generators/nanoui/templates/css/components app/assets/stylesheets/nanoui/
+cp -r lib/generators/nanoui/templates/css/fonts app/assets/stylesheets/nanoui/
+cp lib/generators/nanoui/templates/css/nanoui.css app/assets/stylesheets/nanoui/
 
 # 2. Stimulus controllers
 cp lib/generators/nanoui/templates/js/controllers/*_controller.js \
@@ -58,7 +62,7 @@ Or if using Propshaft, add the import to your layout:
 If NanoUI falls back to system fonts instead of Inter:
 
 - Confirm the font file exists at `app/assets/stylesheets/nanoui/fonts/inter-variable.ttf`
-- Confirm `app/assets/stylesheets/nanoui/base/_globals.css` still points to `url("../fonts/inter-variable.ttf")`
+- Confirm `app/assets/stylesheets/nanoui/base/02_fonts.css` still points to `url("../fonts/inter-variable.ttf")`
 - If you installed NanoUI before this change, rerun `rails generate nanoui:install` or copy `lib/generators/nanoui/templates/css/fonts/inter-variable.ttf` into `app/assets/stylesheets/nanoui/fonts/`
 - In the browser devtools Network tab, verify `inter-variable.ttf` loads successfully instead of returning `404`
 
@@ -132,16 +136,16 @@ document.documentElement.classList.toggle("dark")
 Or use classes directly:
 
 ```html
-<button class="button button--primary" type="button">Save</button>
-<button class="button button--outline button--sm" type="button">Cancel</button>
-<button class="button button--primary" disabled>Disabled</button>
+<button class="nano-btn nano-btn--primary" type="button">Save</button>
+<button class="nano-btn nano-btn--outline nano-btn--sm" type="button">Cancel</button>
+<button class="nano-btn nano-btn--primary" disabled>Disabled</button>
 ```
 
 **Options:** `variant` (primary, secondary, destructive, outline, ghost, link), `size` (sm, lg, icon), `tag` (:button), `href`, `class`, `html`
 
 #### Input
 
-Text fields wrapped in `.field` with label and error support.
+Text fields wrapped in `.nano-field` with label and error support.
 
 ```erb
 <%= render "components/input", label: "Email", type: "email", required: true,
@@ -151,9 +155,9 @@ Text fields wrapped in `.field` with label and error support.
 ```
 
 ```html
-<div class="field">
-  <label for="email" class="label label--required">Email</label>
-  <input id="email" type="email" class="input" placeholder="you@example.com" required>
+<div class="nano-field">
+  <label for="email" class="nano-label nano-label--required">Email</label>
+  <input id="email" type="email" class="nano-input" placeholder="you@example.com" required>
 </div>
 ```
 
@@ -166,7 +170,7 @@ Text fields wrapped in `.field` with label and error support.
 ```
 
 ```html
-<label for="name" class="label label--required">Name</label>
+<label for="name" class="nano-label nano-label--required">Name</label>
 ```
 
 #### Card
@@ -183,13 +187,13 @@ Container with header, content, and footer sections.
 ```
 
 ```html
-<article class="card">
-  <div class="card__header">
-    <h3 class="card__title">Settings</h3>
-    <p class="card__description">Manage your account.</p>
+<article class="nano-card">
+  <div class="nano-card__header">
+    <h3 class="nano-card__title">Settings</h3>
+    <p class="nano-card__description">Manage your account.</p>
   </div>
-  <div class="card__content">...</div>
-  <div class="card__footer">...</div>
+  <div class="nano-card__content">...</div>
+  <div class="nano-card__footer">...</div>
 </article>
 ```
 
@@ -205,8 +209,8 @@ Inline status indicators.
 ```
 
 ```html
-<span class="badge badge--success">Active</span>
-<span class="badge badge--destructive">Failed</span>
+<span class="nano-badge nano-badge--success">Active</span>
+<span class="nano-badge nano-badge--destructive">Failed</span>
 ```
 
 **Variants:** primary, secondary, destructive, outline, success, warning
@@ -222,11 +226,11 @@ Contextual feedback with icon, title, and description.
 ```
 
 ```html
-<div class="alert alert--success" role="alert">
-  <div class="alert__icon"><!-- SVG --></div>
-  <div class="alert__content">
-    <p class="alert__title">Saved!</p>
-    <p class="alert__description">Your changes have been saved.</p>
+<div class="nano-alert nano-alert--success" role="alert">
+  <div class="nano-alert__icon"><!-- SVG --></div>
+  <div class="nano-alert__content">
+    <p class="nano-alert__title">Saved!</p>
+    <p class="nano-alert__description">Your changes have been saved.</p>
   </div>
 </div>
 ```
@@ -245,9 +249,9 @@ Contextual feedback with icon, title, and description.
 ```
 
 ```html
-<div class="checkbox">
-  <input type="checkbox" id="tos" class="checkbox__input" name="tos">
-  <label for="tos" class="checkbox__label">Accept terms</label>
+<div class="nano-checkbox">
+  <input type="checkbox" id="tos" class="nano-checkbox__input" name="tos">
+  <label for="tos" class="nano-checkbox__label">Accept terms</label>
 </div>
 ```
 
@@ -267,11 +271,11 @@ Contextual feedback with icon, title, and description.
 ```
 
 ```html
-<fieldset class="radio-group">
-  <legend class="radio-group__legend">Plan</legend>
-  <div class="radio">
-    <input type="radio" id="plan-0" name="plan" value="free" class="radio__input" checked>
-    <label for="plan-0" class="radio__label">Free</label>
+<fieldset class="nano-radio-group">
+  <legend class="nano-radio-group__legend">Plan</legend>
+  <div class="nano-radio">
+    <input type="radio" id="plan-0" name="plan" value="free" class="nano-radio__input" checked>
+    <label for="plan-0" class="nano-radio__label">Free</label>
   </div>
   <!-- ... -->
 </fieldset>
@@ -286,10 +290,10 @@ Toggle switch with Stimulus controller.
 ```
 
 ```html
-<button type="button" role="switch" aria-checked="true" class="switch"
+<button type="button" role="switch" aria-checked="true" class="nano-switch"
         data-controller="nanoui-switch" data-action="nanoui-switch#toggle">
-  <span class="switch__thumb"></span>
-  <span class="sr-only">Enable notifications</span>
+  <span class="nano-switch__thumb"></span>
+  <span class="nano-sr-only">Enable notifications</span>
 </button>
 ```
 
@@ -339,15 +343,15 @@ Native `<dialog>` with `showModal()` — free focus trap, Escape close, and `::b
 <div data-controller="nanoui-dialog">
   <button data-action="nanoui-dialog#open">Open</button>
 
-  <dialog data-nanoui-dialog-target="modal" class="dialog"
+  <dialog data-nanoui-dialog-target="modal" class="nano-dialog"
           aria-labelledby="dialog-title">
-    <div class="dialog__content">
-      <header class="dialog__header">
-        <h2 id="dialog-title" class="dialog__title">Title</h2>
+    <div class="nano-dialog__content">
+      <header class="nano-dialog__header">
+        <h2 id="dialog-title" class="nano-dialog__title">Title</h2>
       </header>
-      <div class="dialog__body">...</div>
-      <footer class="dialog__footer">...</footer>
-      <button class="dialog__close" data-action="nanoui-dialog#close"
+      <div class="nano-dialog__body">...</div>
+      <footer class="nano-dialog__footer">...</footer>
+      <button class="nano-dialog__close" data-action="nanoui-dialog#close"
               aria-label="Close dialog">...</button>
     </div>
   </dialog>
@@ -363,10 +367,10 @@ Click-activated menu with keyboard navigation.
 ```erb
 <%= render "components/dropdown",
     trigger: render("components/button", variant: "outline") { "Options" } do %>
-  <button class="dropdown__item">Profile</button>
-  <button class="dropdown__item">Settings</button>
-  <div class="dropdown__separator"></div>
-  <button class="dropdown__item">Log out</button>
+  <button class="nano-dropdown__item">Profile</button>
+  <button class="nano-dropdown__item">Settings</button>
+  <div class="nano-dropdown__separator"></div>
+  <button class="nano-dropdown__item">Log out</button>
 <% end %>
 ```
 
@@ -418,10 +422,10 @@ Semantic table with responsive scroll wrapper.
 <%= render "components/table",
     headers: ["Name", "Email", "Status"],
     striped: true, hoverable: true do %>
-  <tr class="table__row">
-    <td class="table__cell">Jane Doe</td>
-    <td class="table__cell">jane@example.com</td>
-    <td class="table__cell">
+  <tr class="nano-table__row">
+    <td class="nano-table__cell">Jane Doe</td>
+    <td class="nano-table__cell">jane@example.com</td>
+    <td class="nano-table__cell">
       <%= render "components/badge", variant: "success" do %>Active<% end %>
     </td>
   </tr>
@@ -477,17 +481,17 @@ Customize your theme by editing the CSS custom properties:
 
 | Token File | What it controls |
 |---|---|
-| `tokens/_colors.css` | All colors (HSL), dark mode overrides |
-| `tokens/_typography.css` | Font families, sizes, weights, line heights |
-| `tokens/_spacing.css` | Spacing scale (0 to 16) |
-| `tokens/_radius.css` | Border radii (sm to full) |
-| `tokens/_shadows.css` | Box shadows (sm to xl) |
-| `tokens/_transitions.css` | Durations and easings |
-| `tokens/_z-index.css` | Z-index scale (dropdown to toast) |
+| `base/03_colors.css` | All colors (HSL), dark mode overrides |
+| `base/04_typography.css` | Font families, sizes, weights, line heights |
+| `base/05_spacing.css` | Spacing scale (0 to 16) |
+| `base/06_radius.css` | Border radii (sm to full) |
+| `base/07_shadows.css` | Box shadows (sm to xl) |
+| `base/08_transitions.css` | Durations and easings |
+| `base/09_z-index.css` | Z-index scale (dropdown to toast) |
 
 ### Changing your brand color
 
-Edit one line in `tokens/_colors.css`:
+Edit one line in `base/03_colors.css`:
 
 ```css
 --color-primary: 220 70% 50%;  /* Change this HSL value */
@@ -522,7 +526,7 @@ rails generate nanoui:component --all
 - **Accessibility is not optional** — ARIA attributes, keyboard navigation, focus management, screen reader support
 - **No build step** — No Tailwind, no PostCSS, no webpack. Vanilla CSS with native nesting
 - **You own the code** — Generator copies files into your app. Edit freely, no runtime dependency
-- **BEM naming** — `.block`, `.block--modifier`, `.block__element`
+- **BEM naming** — `.nano-block`, `.nano-block--modifier`, `.nano-block__element`
 - **CSS custom properties** — One file to theme everything. Dark mode with a single class swap
 
 ## Browser Support

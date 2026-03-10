@@ -11,7 +11,7 @@
   classes  = local_assigns.fetch(:class, "")
   html     = local_assigns.fetch(:html, {}).symbolize_keys
 
-  css = "switch"
+  css = "nano-switch"
   css += " #{classes}" if classes.present?
   switch_attributes = {
     type: "button",
@@ -27,6 +27,6 @@
 %>
 
 <%= content_tag(:button, switch_attributes) do %>
-  <span class="switch__thumb"></span>
-  <span class="sr-only"><%= label %></span>
+  <span class="nano-switch__thumb"></span>
+  <span class="nano-sr-only"><%= label %></span>
 <% end %>

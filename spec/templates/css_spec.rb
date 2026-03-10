@@ -8,14 +8,14 @@ RSpec.describe "CSS templates" do
 
   components.each do |name|
     it "#{name}.css exists and is non-empty" do
-      path = File.join(TEMPLATE_ROOT, "css/components/_#{name}.css")
+      path = File.join(TEMPLATE_ROOT, "css/components/#{name}.css")
       expect(File.exist?(path)).to be(true), "Missing CSS: #{path}"
       expect(File.size(path)).to be > 0, "Empty CSS: #{path}"
     end
   end
 
   it "has exactly 18 component CSS files" do
-    files = Dir.glob(File.join(TEMPLATE_ROOT, "css/components/_*.css"))
+    files = Dir.glob(File.join(TEMPLATE_ROOT, "css/components/*.css"))
     expect(files.size).to eq(18)
   end
 end

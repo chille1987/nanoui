@@ -1,4 +1,4 @@
-<%# NanoUI Input (wrapped in .field with optional label and error)
+<%# NanoUI Input (wrapped in .nano-field with optional label and error)
   Options: label, required (false), error, type ("text"), id (auto), class, html
   Usage:
     render "components/input", label: "Email", type: "email", required: true
@@ -13,8 +13,8 @@
   classes    = local_assigns.fetch(:class, "")
   html       = local_assigns.fetch(:html, {}).symbolize_keys
 
-  css = ["input"]
-  css << "input--error" if error
+  css = ["nano-input"]
+  css << "nano-input--error" if error
   css << classes if classes.present?
   error_id = "#{input_id}-error" if error
   input_attributes = {
@@ -29,14 +29,14 @@
   end
 %>
 
-<div class="field">
+<div class="nano-field">
   <% if label_text %>
-    <label for="<%= input_id %>" class="label<%= " label--required" if required %>"><%= label_text %></label>
+    <label for="<%= input_id %>" class="nano-label<%= " nano-label--required" if required %>"><%= label_text %></label>
   <% end %>
 
   <%= tag.input(**input_attributes) %>
 
   <% if error %>
-    <p id="<%= error_id %>" class="field__error" role="alert"><%= error %></p>
+    <p id="<%= error_id %>" class="nano-field__error" role="alert"><%= error %></p>
   <% end %>
 </div>

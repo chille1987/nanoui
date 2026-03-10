@@ -15,8 +15,8 @@
   classes = local_assigns.fetch(:class, "")
   html    = local_assigns.fetch(:html, {}).symbolize_keys
 
-  css = ["button", "button--#{variant}"]
-  css << "button--#{size}" if size
+  css = ["nano-btn", "nano-btn--#{variant}"]
+  css << "nano-btn--#{size}" if size
   css << classes if classes.present?
   tag = :a if href
   html[:type] = "button" if tag == :button && !html.key?(:type)

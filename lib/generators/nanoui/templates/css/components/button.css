@@ -1,4 +1,4 @@
-.button {
+.nano-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -15,64 +15,64 @@
   padding: var(--space-2-5) var(--space-4);
 }
 
-.button:focus-visible {
+.nano-btn:focus-visible {
   outline: 2px solid hsl(var(--color-ring));
   outline-offset: 2px;
 }
 
-.button:disabled,
-.button[aria-disabled="true"] {
+.nano-btn:disabled,
+.nano-btn[aria-disabled="true"] {
   pointer-events: none;
   opacity: 0.5;
 }
 
-.button--primary {
+.nano-btn--primary {
   background-color: hsl(var(--color-primary));
   color: hsl(var(--color-primary-foreground));
 }
 
-.button--primary:hover {
+.nano-btn--primary:hover {
   background-color: hsl(var(--color-primary) / 0.9);
 }
 
-.button--secondary {
+.nano-btn--secondary {
   background-color: hsl(var(--color-secondary));
   color: hsl(var(--color-secondary-foreground));
 }
 
-.button--secondary:hover {
+.nano-btn--secondary:hover {
   background-color: hsl(var(--color-secondary) / 0.8);
 }
 
-.button--destructive {
+.nano-btn--destructive {
   background-color: hsl(var(--color-destructive));
   color: hsl(var(--color-destructive-foreground));
 }
 
-.button--destructive:hover {
+.nano-btn--destructive:hover {
   background-color: hsl(var(--color-destructive) / 0.9);
 }
 
-.button--outline {
+.nano-btn--outline {
   border: 1px solid hsl(var(--color-border));
   background-color: transparent;
   color: hsl(var(--color-foreground));
 }
 
-.button--outline:hover {
+.nano-btn--outline:hover {
   background-color: hsl(var(--color-muted));
 }
 
-.button--ghost {
+.nano-btn--ghost {
   background-color: transparent;
   color: hsl(var(--color-foreground));
 }
 
-.button--ghost:hover {
+.nano-btn--ghost:hover {
   background-color: hsl(var(--color-muted));
 }
 
-.button--link {
+.nano-btn--link {
   background-color: transparent;
   color: hsl(var(--color-primary));
   text-decoration: underline;
@@ -80,36 +80,36 @@
   padding: 0;
 }
 
-.button--link:hover {
+.nano-btn--link:hover {
   text-decoration-thickness: 2px;
 }
 
-.button--sm {
+.nano-btn--sm {
   font-size: var(--text-xs);
   padding: var(--space-2) var(--space-3);
   border-radius: var(--radius-sm);
 }
 
-.button--lg {
+.nano-btn--lg {
   font-size: var(--text-base);
   padding: var(--space-3) var(--space-6);
   border-radius: var(--radius-md);
 }
 
-.button--icon {
+.nano-btn--icon {
   padding: var(--space-2-5);
   aspect-ratio: 1;
 }
 
-.button__spinner {
-  animation: spin 1s linear infinite;
+.nano-btn__spinner {
+  animation: nano-spin 1s linear infinite;
 }
 
-@keyframes spin {
+@keyframes nano-spin {
 to { transform: rotate(360deg); }
 }
 
-.button svg {
+.nano-btn svg {
   width: 1em;
   height: 1em;
   flex-shrink: 0;

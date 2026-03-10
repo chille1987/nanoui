@@ -8,8 +8,8 @@
   required  = local_assigns.fetch(:required, false)
   classes   = local_assigns.fetch(:class, "")
 
-  css = "label"
-  css += " label--required" if required
+  css = "nano-label"
+  css += " nano-label--required" if required
   css += " #{classes}" if classes.present?
   label_attributes = { class: css.strip }
   label_attributes[:for] = label_for if label_for

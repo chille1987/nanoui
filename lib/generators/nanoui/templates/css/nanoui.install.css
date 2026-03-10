@@ -1,16 +1,15 @@
 /* NanoUI — Vanilla CSS + Stimulus Component Library */
 
-/* Tokens */
-@import "tokens/_colors.css";
-@import "tokens/_typography.css";
-@import "tokens/_spacing.css";
-@import "tokens/_radius.css";
-@import "tokens/_shadows.css";
-@import "tokens/_transitions.css";
-@import "tokens/_z-index.css";
-
 /* Base */
-@import "base/_reset.css";
-@import "base/_globals.css";
+@import "base/01_reset.css";
+@import "base/02_fonts.css";
+@import "base/03_colors.css";
+@import "base/04_typography.css";
+@import "base/05_spacing.css";
+@import "base/06_radius.css";
+@import "base/07_shadows.css";
+@import "base/08_transitions.css";
+@import "base/09_z-index.css";
+@import "base/10_globals.css";
 
 /* Components */

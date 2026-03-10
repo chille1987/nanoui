@@ -1,4 +1,4 @@
-.alert {
+.nano-alert {
   display: flex;
   gap: var(--space-3);
   padding: var(--space-4);
@@ -7,72 +7,72 @@
   background-color: hsl(var(--color-background));
 }
 
-.alert__icon {
+.nano-alert__icon {
   width: 1rem;
   height: 1rem;
   flex-shrink: 0;
   margin-top: var(--space-0-5);
 }
 
-.alert__icon svg {
+.nano-alert__icon svg {
   width: 1rem;
   height: 1rem;
 }
 
-.alert__content {
+.nano-alert__content {
   display: flex;
   flex-direction: column;
   gap: var(--space-1);
 }
 
-.alert__title {
+.nano-alert__title {
   font-size: var(--text-sm);
   font-weight: var(--font-semibold);
   line-height: var(--leading-normal);
   color: hsl(var(--color-foreground));
 }
 
-.alert__description {
+.nano-alert__description {
   font-size: var(--text-sm);
   line-height: var(--leading-normal);
   color: hsl(var(--color-muted-foreground));
 }
 
-.alert--destructive {
+.nano-alert--destructive {
   border-color: hsl(var(--color-destructive) / 0.5);
   background-color: hsl(var(--color-destructive) / 0.08);
 }
 
-.alert--destructive .alert__icon {
+.nano-alert--destructive .nano-alert__icon {
   color: hsl(var(--color-destructive));
 }
 
-.alert--destructive .alert__title {
+.nano-alert--destructive .nano-alert__title {
   color: hsl(var(--color-destructive));
 }
 
-.alert--success {
+.nano-alert--success {
   border-color: hsl(var(--color-success) / 0.5);
   background-color: hsl(var(--color-success) / 0.08);
 }
 
-.alert--success .alert__icon {
+.nano-alert--success .nano-alert__icon {
   color: hsl(var(--color-success));
 }
 
-.alert--success .alert__title {
+.nano-alert--success .nano-alert__title {
   color: hsl(var(--color-success));
 }
 
-.alert--warning {
+.nano-alert--warning {
   border-color: hsl(var(--color-warning) / 0.5);
   background-color: hsl(var(--color-warning) / 0.08);
 }
 
-.alert--warning .alert__icon {
+.nano-alert--warning .nano-alert__icon {
   color: hsl(var(--color-warning));
 }
 
-.alert--warning .alert__title {
+.nano-alert--warning .nano-alert__title {
   color: hsl(var(--color-warning));
 }

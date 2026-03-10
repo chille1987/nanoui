@@ -23,7 +23,7 @@ module Nanoui
         accordion
         progress
       ].freeze
-      COMPONENT_IMPORT_PATTERN = /^\s*@import "components\/_([^\"]+)\.css";\s*\n?/
+      COMPONENT_IMPORT_PATTERN = /^\s*@import "components\/_?([^\"]+)\.css";\s*\n?/
 
       argument :components, type: :array, default: [], banner: "component [component] ..."
 
@@ -59,8 +59,8 @@ module Nanoui
 
       def copy_component_css
         @resolved.each do |name|
-          copy_file "css/components/_#{name}.css",
-                    "app/assets/stylesheets/nanoui/components/_#{name}.css"
+          copy_file "css/components/#{name}.css",
+                    "app/assets/stylesheets/nanoui/components/#{name}.css"
         end
       end
 
@@ -114,12 +114,12 @@ module Nanoui
       private
 
       def component_imports
-        installed_components.map { |name| "@import \"components/_#{name}.css\";" }.join("\n")
+        installed_components.map { |name| "@import \"components/#{name}.css\";" }.join("\n")
       end
 
       def installed_components
         component_dir = "app/assets/stylesheets/nanoui/components"
-        names = Dir.glob(File.join(component_dir, "_*.css")).map do |path|
+        names = Dir.glob(File.join(component_dir, "*.css")).map do |path|
           File.basename(path, ".css").delete_prefix("_")
         end
 

@@ -1,4 +1,4 @@
-.switch {
+.nano-switch {
   display: inline-flex;
   align-items: center;
   width: 2.75rem;
@@ -11,15 +11,15 @@
   transition: background-color var(--duration-fast) var(--ease-default);
 }
 
-.switch[aria-checked="true"] {
+.nano-switch[aria-checked="true"] {
   background-color: hsl(var(--color-primary));
 }
 
-.switch[aria-checked="true"] .switch__thumb {
+.nano-switch[aria-checked="true"] .nano-switch__thumb {
   transform: translateX(1.25rem);
 }
 
-.switch__thumb {
+.nano-switch__thumb {
   display: block;
   width: 1rem;
   height: 1rem;
@@ -30,13 +30,13 @@
   pointer-events: none;
 }
 
-.switch:focus-visible {
+.nano-switch:focus-visible {
   outline: 2px solid hsl(var(--color-ring));
   outline-offset: 2px;
 }
 
-.switch:disabled,
-.switch[aria-disabled="true"] {
+.nano-switch:disabled,
+.nano-switch[aria-disabled="true"] {
   opacity: 0.5;
   pointer-events: none;
 }

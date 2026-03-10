@@ -1,4 +1,4 @@
-.dialog {
+.nano-dialog {
   border: none;
   padding: 0;
   margin: auto;
@@ -15,31 +15,29 @@
               transform var(--duration-normal) var(--ease-default);
 }
 
-.dialog[open] {
+.nano-dialog[open] {
   position: fixed;
-  margin: auto;
-  inset: 0;
 }
 
-.dialog.is-open {
+.nano-dialog.is-open {
   opacity: 1;
   transform: scale(1);
 }
 
-.dialog::backdrop {
+.nano-dialog::backdrop {
   background-color: rgb(0 0 0 / 0.5);
   backdrop-filter: blur(4px);
 }
 
-.dialog--sm {
+.nano-dialog--sm {
   max-width: 24rem;
 }
 
-.dialog--lg {
+.nano-dialog--lg {
   max-width: 42rem;
 }
 
-.dialog--full {
+.nano-dialog--full {
   max-width: 100vw;
   max-height: 100vh;
   width: 100vw;
@@ -48,13 +46,13 @@
   border-radius: 0;
 }
 
-.dialog__content {
+.nano-dialog__content {
   position: relative;
   display: flex;
   flex-direction: column;
 }
 
-.dialog__header {
+.nano-dialog__header {
   display: flex;
   flex-direction: column;
   gap: var(--space-1-5);
@@ -62,23 +60,23 @@
   padding-bottom: 0;
 }
 
-.dialog__title {
+.nano-dialog__title {
   font-size: var(--text-lg);
   font-weight: var(--font-semibold);
   line-height: var(--leading-tight);
   letter-spacing: var(--tracking-tight);
 }
 
-.dialog__description {
+.nano-dialog__description {
   font-size: var(--text-sm);
   color: hsl(var(--color-muted-foreground));
 }
 
-.dialog__body {
+.nano-dialog__body {
   padding: var(--space-6);
 }
 
-.dialog__footer {
+.nano-dialog__footer {
   display: flex;
   align-items: center;
   justify-content: flex-end;
@@ -87,7 +85,7 @@
   padding-top: 0;
 }
 
-.dialog__close {
+.nano-dialog__close {
   position: absolute;
   top: var(--space-4);
   right: var(--space-4);
@@ -106,17 +104,17 @@
                 background-color var(--duration-fast) var(--ease-default);
 }
 
-.dialog__close:hover {
+.nano-dialog__close:hover {
   color: hsl(var(--color-foreground));
   background-color: hsl(var(--color-muted));
 }
 
-.dialog__close:focus-visible {
+.nano-dialog__close:focus-visible {
   outline: 2px solid hsl(var(--color-ring));
   outline-offset: 2px;
 }
 
-.dialog__close svg {
+.nano-dialog__close svg {
   width: 1rem;
   height: 1rem;
 }
