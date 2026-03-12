@@ -86,45 +86,7 @@ RSpec.describe Nanoui::Generators::ComponentGenerator do
     end
   end
 
-  describe "legacy component CSS compatibility" do
-    around do |example|
-      Dir.mktmpdir do |dir|
-        Dir.chdir(dir) { example.run }
-      end
-    end
-
-    it "normalizes legacy underscored filenames when listing installed components" do
-      component_dir = "app/assets/stylesheets/nanoui/components"
-      FileUtils.mkdir_p(component_dir)
-      File.write(File.join(component_dir, "_button.css"), "/* legacy */")
-      File.write(File.join(component_dir, "input.css"), "/* current */")
-
-      generator = described_class.allocate
-
-      expect(generator.send(:installed_components)).to eq(%w[button input])
-    end
-
-    it "rewrites legacy imports to a single canonical component import" do
-      component_dir = "app/assets/stylesheets/nanoui/components"
-      FileUtils.mkdir_p(component_dir)
-      File.write(File.join(component_dir, "_button.css"), "/* legacy */")
-      File.write(File.join(component_dir, "button.css"), "/* current */")
-
-      nanoui_css = "app/assets/stylesheets/nanoui/nanoui.css"
-      FileUtils.mkdir_p(File.dirname(nanoui_css))
-      File.write(nanoui_css, <<~CSS)
-        /* NanoUI */
-
-        /* Components */
-        @import "components/_button.css";
-        @import "components/button.css";
-      CSS
-
-      described_class.allocate.update_nanoui_css
-      content = File.read(nanoui_css)
-
-      expect(content.scan('@import "components/button.css";').size).to eq(1)
-      expect(content).not_to include('@import "components/_button.css";')
-    end
+  it "does not define update_nanoui_css method" do
+    expect(described_class.instance_methods(false)).not_to include(:update_nanoui_css)
   end
 end

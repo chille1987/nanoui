@@ -42,7 +42,11 @@ RSpec.describe Nanoui::Generators::InstallGenerator do
     expect(described_class.instance_methods(false)).to include(:copy_fonts)
   end
 
-  it "has copy_entry_point method" do
-    expect(described_class.instance_methods(false)).to include(:copy_entry_point)
+  it "does not define copy_entry_point method" do
+    expect(described_class.instance_methods(false)).not_to include(:copy_entry_point)
+  end
+
+  it "does not define add_import_to_application_css method" do
+    expect(described_class.instance_methods(false)).not_to include(:add_import_to_application_css)
   end
 end

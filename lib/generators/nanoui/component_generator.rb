@@ -23,7 +23,6 @@ module Nanoui
         accordion
         progress
       ].freeze
-      COMPONENT_IMPORT_PATTERN = /^\s*@import "components\/_?([^\"]+)\.css";\s*\n?/
 
       argument :components, type: :array, default: [], banner: "component [component] ..."
 
@@ -83,23 +82,6 @@ module Nanoui
         end
       end
 
-      def update_nanoui_css
-        nanoui_css = "app/assets/stylesheets/nanoui/nanoui.css"
-        return unless File.exist?(nanoui_css)
-
-        content = File.read(nanoui_css)
-        content_without_component_imports = content.gsub(COMPONENT_IMPORT_PATTERN, "")
-        component_section = ["/* Components */", component_imports].reject(&:empty?).join("\n")
-
-        updated_content = if content_without_component_imports.include?("/* Components */")
-          content_without_component_imports.sub("/* Components */", component_section)
-        else
-          "#{content_without_component_imports.rstrip}\n\n#{component_section}\n"
-        end
-
-        File.write(nanoui_css, updated_content)
-      end
-
       def print_summary
         say ""
         say "NanoUI components installed:", :green
@@ -109,23 +91,6 @@ module Nanoui
           say "  ✓ #{name} (#{parts.join(", ")})"
         end
         say ""
-      end
-
-      private
-
-      def component_imports
-        installed_components.map { |name| "@import \"components/#{name}.css\";" }.join("\n")
-      end
-
-      def installed_components
-        component_dir = "app/assets/stylesheets/nanoui/components"
-        names = Dir.glob(File.join(component_dir, "*.css")).map do |path|
-          File.basename(path, ".css").delete_prefix("_")
-        end
-
-        names.uniq.sort_by do |name|
-          [COMPONENT_ORDER.index(name) || COMPONENT_ORDER.length, name]
-        end
       end
     end
   end

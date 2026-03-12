@@ -1,4 +1,8 @@
-.nano-btn {
+.nano-btn,
+button,
+input[type="submit"],
+input[type="button"],
+input[type="reset"] {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -13,15 +17,34 @@
   transition: background-color var(--duration-fast) var(--ease-default),
               color var(--duration-fast) var(--ease-default);
   padding: var(--space-2-5) var(--space-4);
+  background-color: hsl(var(--color-primary));
+  color: hsl(var(--color-primary-foreground));
 }
 
-.nano-btn:focus-visible {
+.nano-btn:hover,
+button:hover,
+input[type="submit"]:hover,
+input[type="button"]:hover,
+input[type="reset"]:hover {
+  background-color: hsl(var(--color-primary) / 0.9);
+}
+
+.nano-btn:focus-visible,
+button:focus-visible,
+input[type="submit"]:focus-visible,
+input[type="button"]:focus-visible,
+input[type="reset"]:focus-visible {
   outline: 2px solid hsl(var(--color-ring));
   outline-offset: 2px;
 }
 
 .nano-btn:disabled,
-.nano-btn[aria-disabled="true"] {
+.nano-btn[aria-disabled="true"],
+button:disabled,
+button[aria-disabled="true"],
+input[type="submit"]:disabled,
+input[type="button"]:disabled,
+input[type="reset"]:disabled {
   pointer-events: none;
   opacity: 0.5;
 }
@@ -109,7 +132,11 @@
 to { transform: rotate(360deg); }
 }
 
-.nano-btn svg {
+.nano-btn svg,
+button svg,
+input[type="submit"] svg,
+input[type="button"] svg,
+input[type="reset"] svg {
   width: 1em;
   height: 1em;
   flex-shrink: 0;

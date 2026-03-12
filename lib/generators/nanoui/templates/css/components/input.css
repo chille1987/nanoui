@@ -1,4 +1,17 @@
-.nano-input {
+.nano-input,
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="search"],
+input[type="tel"],
+input[type="url"],
+input[type="number"],
+input[type="date"],
+input[type="datetime-local"],
+input[type="month"],
+input[type="week"],
+input[type="time"],
+textarea {
   display: block;
   width: 100%;
   padding: var(--space-2) var(--space-3);
@@ -13,17 +26,56 @@
               box-shadow var(--duration-fast) var(--ease-default);
 }
 
-.nano-input::placeholder {
+.nano-input::placeholder,
+input[type="text"]::placeholder,
+input[type="email"]::placeholder,
+input[type="password"]::placeholder,
+input[type="search"]::placeholder,
+input[type="tel"]::placeholder,
+input[type="url"]::placeholder,
+input[type="number"]::placeholder,
+input[type="date"]::placeholder,
+input[type="datetime-local"]::placeholder,
+input[type="month"]::placeholder,
+input[type="week"]::placeholder,
+input[type="time"]::placeholder,
+textarea::placeholder {
   color: hsl(var(--color-muted-foreground));
 }
 
-.nano-input:focus {
+.nano-input:focus,
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+input[type="search"]:focus,
+input[type="tel"]:focus,
+input[type="url"]:focus,
+input[type="number"]:focus,
+input[type="date"]:focus,
+input[type="datetime-local"]:focus,
+input[type="month"]:focus,
+input[type="week"]:focus,
+input[type="time"]:focus,
+textarea:focus {
   outline: none;
   border-color: hsl(var(--color-input-focus));
   box-shadow: 0 0 0 2px hsl(var(--color-ring) / 0.2);
 }
 
-.nano-input:disabled {
+.nano-input:disabled,
+input[type="text"]:disabled,
+input[type="email"]:disabled,
+input[type="password"]:disabled,
+input[type="search"]:disabled,
+input[type="tel"]:disabled,
+input[type="url"]:disabled,
+input[type="number"]:disabled,
+input[type="date"]:disabled,
+input[type="datetime-local"]:disabled,
+input[type="month"]:disabled,
+input[type="week"]:disabled,
+input[type="time"]:disabled,
+textarea:disabled {
   opacity: 0.5;
   cursor: not-allowed;
 }
@@ -39,7 +91,8 @@
   box-shadow: 0 0 0 2px hsl(var(--color-destructive) / 0.2);
 }
 
-textarea.nano-input {
+textarea.nano-input,
+textarea {
   min-height: 5rem;
   resize: vertical;
 }
