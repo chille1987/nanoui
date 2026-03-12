@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Card — NanoUI</title>
+  <link rel="stylesheet" href="/nanoui/assets/css/nanoui.css">
+  <link rel="stylesheet" href="/nanoui/assets/css/docs.css">
+</head>
+<body>
+  <div class="docs-layout">
+    <aside class="docs-sidebar">
+      <a href="/nanoui/" class="docs-logo">NanoUI</a>
+      <nav class="docs-nav">
+        
+          
+            <a href="/nanoui/"
+               class="docs-nav__link ">
+              Getting Started
+            </a>
+          
+        
+          
+            <p class="docs-nav__heading">Components</p>
+            
+              <a href="/nanoui/components/button"
+                 class="docs-nav__link ">
+                Button
+              </a>
+            
+              <a href="/nanoui/components/input"
+                 class="docs-nav__link ">
+                Input
+              </a>
+            
+              <a href="/nanoui/components/label"
+                 class="docs-nav__link ">
+                Label
+              </a>
+            
+              <a href="/nanoui/components/select"
+                 class="docs-nav__link ">
+                Select
+              </a>
+            
+              <a href="/nanoui/components/checkbox"
+                 class="docs-nav__link ">
+                Checkbox
+              </a>
+            
+              <a href="/nanoui/components/radio"
+                 class="docs-nav__link ">
+                Radio
+              </a>
+            
+              <a href="/nanoui/components/switch"
+                 class="docs-nav__link ">
+                Switch
+              </a>
+            
+              <a href="/nanoui/components/card"
+                 class="docs-nav__link is-active">
+                Card
+              </a>
+            
+              <a href="/nanoui/components/badge"
+                 class="docs-nav__link ">
+                Badge
+              </a>
+            
+              <a href="/nanoui/components/alert"
+                 class="docs-nav__link ">
+                Alert
+              </a>
+            
+              <a href="/nanoui/components/dialog"
+                 class="docs-nav__link ">
+                Dialog
+              </a>
+            
+              <a href="/nanoui/components/dropdown"
+                 class="docs-nav__link ">
+                Dropdown
+              </a>
+            
+              <a href="/nanoui/components/tooltip"
+                 class="docs-nav__link ">
+                Tooltip
+              </a>
+            
+              <a href="/nanoui/components/toast"
+                 class="docs-nav__link ">
+                Toast
+              </a>
+            
+              <a href="/nanoui/components/table"
+                 class="docs-nav__link ">
+                Table
+              </a>
+            
+              <a href="/nanoui/components/tabs"
+                 class="docs-nav__link ">
+                Tabs
+              </a>
+            
+              <a href="/nanoui/components/accordion"
+                 class="docs-nav__link ">
+                Accordion
+              </a>
+            
+              <a href="/nanoui/components/progress"
+                 class="docs-nav__link ">
+                Progress
+              </a>
+            
+          
+        
+      </nav>
+    </aside>
+
+    <main class="docs-main">
+      <article class="docs-content">
+        <h1 id="card">Card</h1>
+
+<p>A container with header, content, and footer sections. Uses BEM classes.</p>
+
+<h2 id="basic-card">Basic card</h2>
+
+<div class="docs-example">
+  <div class="docs-example__header">
+    <span>Preview</span>
+    <button class="docs-example__copy">Copy</button>
+  </div>
+  <div class="docs-preview">
+    <article class="nano-card">
+      <div class="nano-card__header">
+        <h3 class="nano-card__title">Card title</h3>
+        <p class="nano-card__description">A short description of this card.</p>
+      </div>
+      <div class="nano-card__content">
+        <p>Card content goes here. You can put forms, text, images, or any other content inside.</p>
+      </div>
+      <div class="nano-card__footer">
+        <button class="nano-btn nano-btn--primary">Save</button>
+        <button class="nano-btn nano-btn--outline">Cancel</button>
+      </div>
+    </article>
+  </div>
+  <div class="docs-example__code">
+
+<pre><code>&lt;article class="nano-card"&gt;
+  &lt;div class="nano-card__header"&gt;
+    &lt;h3 class="nano-card__title"&gt;Card title&lt;/h3&gt;
+    &lt;p class="nano-card__description"&gt;A short description of this card.&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div class="nano-card__content"&gt;
+    &lt;p&gt;Card content goes here.&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div class="nano-card__footer"&gt;
+    &lt;button class="nano-btn nano-btn--primary"&gt;Save&lt;/button&gt;
+    &lt;button class="nano-btn nano-btn--outline"&gt;Cancel&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/article&gt;</code></pre>
+
+  </div>
+</div>
+
+<h2 id="elevated">Elevated</h2>
+
+<div class="docs-example">
+  <div class="docs-example__header">
+    <span>Preview</span>
+    <button class="docs-example__copy">Copy</button>
+  </div>
+  <div class="docs-preview">
+    <article class="nano-card nano-card--elevated">
+      <div class="nano-card__content">
+        <p>Elevated card with shadow, no border.</p>
+      </div>
+    </article>
+  </div>
+  <div class="docs-example__code">
+
+<pre><code>&lt;article class="nano-card nano-card--elevated"&gt;
+  &lt;div class="nano-card__content"&gt;
+    &lt;p&gt;Elevated card with shadow, no border.&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/article&gt;</code></pre>
+
+  </div>
+</div>
+
+<h2 id="bordered">Bordered</h2>
+
+<div class="docs-example">
+  <div class="docs-example__header">
+    <span>Preview</span>
+    <button class="docs-example__copy">Copy</button>
+  </div>
+  <div class="docs-preview">
+    <article class="nano-card nano-card--bordered">
+      <div class="nano-card__content">
+        <p>Bordered card with thicker border, no shadow.</p>
+      </div>
+    </article>
+  </div>
+  <div class="docs-example__code">
+
+<pre><code>&lt;article class="nano-card nano-card--bordered"&gt;
+  &lt;div class="nano-card__content"&gt;
+    &lt;p&gt;Bordered card with thicker border, no shadow.&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/article&gt;</code></pre>
+
+  </div>
+</div>
+
+      </article>
+    </main>
+  </div>
+
+  <script>
+    // Copy button for code examples
+    document.querySelectorAll('.docs-example__copy').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const code = btn.closest('.docs-example').querySelector('code').textContent;
+        navigator.clipboard.writeText(code).then(() => {
+          btn.textContent = 'Copied!';
+          setTimeout(() => { btn.textContent = 'Copy'; }, 2000);
+        });
+      });
+    });
+  </script>
+</body>
+</html>

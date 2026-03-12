@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ page.title }} — {{ site.title }}</title>
+  <link rel="stylesheet" href="{{ '/assets/css/nanoui.css' | relative_url }}">
+  <link rel="stylesheet" href="{{ '/assets/css/docs.css' | relative_url }}">
+</head>
+<body>
+  <div class="docs-layout">
+    <aside class="docs-sidebar">
+      <a href="{{ '/' | relative_url }}" class="docs-logo">NanoUI</a>
+      <nav class="docs-nav">
+        {% for item in site.data.nav %}
+          {% if item.children %}
+            <p class="docs-nav__heading">{{ item.title }}</p>
+            {% for child in item.children %}
+              <a href="{{ child.url | relative_url }}"
+                 class="docs-nav__link {% if page.title == child.title %}is-active{% endif %}">
+                {{ child.title }}
+              </a>
+            {% endfor %}
+          {% else %}
+            <a href="{{ item.url | relative_url }}"
+               class="docs-nav__link {% if page.title == item.title %}is-active{% endif %}">
+              {{ item.title }}
+            </a>
+          {% endif %}
+        {% endfor %}
+      </nav>
+    </aside>
+
+    <main class="docs-main">
+      <article class="docs-content">
+        {{ content }}
+      </article>
+    </main>
+  </div>
+
+  <script>
+    // Copy button for code examples
+    document.querySelectorAll('.docs-example__copy').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const code = btn.closest('.docs-example').querySelector('code').textContent;
+        navigator.clipboard.writeText(code).then(() => {
+          btn.textContent = 'Copied!';
+          setTimeout(() => { btn.textContent = 'Copy'; }, 2000);
+        });
+      });
+    });
+  </script>
+</body>
+</html>

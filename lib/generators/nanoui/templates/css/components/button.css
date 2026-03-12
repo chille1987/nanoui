@@ -61,10 +61,11 @@ input[type="reset"]:disabled {
 .nano-btn--secondary {
   background-color: hsl(var(--color-secondary));
   color: hsl(var(--color-secondary-foreground));
+  border: 1px solid hsl(var(--color-border));
 }
 
 .nano-btn--secondary:hover {
-  background-color: hsl(var(--color-secondary) / 0.8);
+  background-color: hsl(var(--color-muted-foreground) / 0.15);
 }
 
 .nano-btn--destructive {
@@ -98,13 +99,14 @@ input[type="reset"]:disabled {
 .nano-btn--link {
   background-color: transparent;
   color: hsl(var(--color-primary));
-  text-decoration: underline;
+  text-decoration: underline dashed;
   text-underline-offset: 4px;
   padding: 0;
 }
 
 .nano-btn--link:hover {
-  text-decoration-thickness: 2px;
+  background-color: transparent;
+  text-decoration-style: solid;
 }
 
 .nano-btn--sm {

@@ -57,9 +57,9 @@ input[type="month"]:focus,
 input[type="week"]:focus,
 input[type="time"]:focus,
 textarea:focus {
-  outline: none;
   border-color: hsl(var(--color-input-focus));
-  box-shadow: 0 0 0 2px hsl(var(--color-ring) / 0.2);
+  outline: 2px solid hsl(var(--color-input-focus));
+  outline-offset: -1px;
 }
 
 .nano-input:disabled,
@@ -88,7 +88,8 @@ textarea:disabled {
 .nano-input--error:focus,
 .nano-input[aria-invalid="true"]:focus {
   border-color: hsl(var(--color-destructive));
-  box-shadow: 0 0 0 2px hsl(var(--color-destructive) / 0.2);
+  outline: 2px solid hsl(var(--color-destructive));
+  outline-offset: -1px;
 }
 
 textarea.nano-input,

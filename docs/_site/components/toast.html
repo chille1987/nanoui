@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Toast — NanoUI</title>
+  <link rel="stylesheet" href="/nanoui/assets/css/nanoui.css">
+  <link rel="stylesheet" href="/nanoui/assets/css/docs.css">
+</head>
+<body>
+  <div class="docs-layout">
+    <aside class="docs-sidebar">
+      <a href="/nanoui/" class="docs-logo">NanoUI</a>
+      <nav class="docs-nav">
+        
+          
+            <a href="/nanoui/"
+               class="docs-nav__link ">
+              Getting Started
+            </a>
+          
+        
+          
+            <p class="docs-nav__heading">Components</p>
+            
+              <a href="/nanoui/components/button"
+                 class="docs-nav__link ">
+                Button
+              </a>
+            
+              <a href="/nanoui/components/input"
+                 class="docs-nav__link ">
+                Input
+              </a>
+            
+              <a href="/nanoui/components/label"
+                 class="docs-nav__link ">
+                Label
+              </a>
+            
+              <a href="/nanoui/components/select"
+                 class="docs-nav__link ">
+                Select
+              </a>
+            
+              <a href="/nanoui/components/checkbox"
+                 class="docs-nav__link ">
+                Checkbox
+              </a>
+            
+              <a href="/nanoui/components/radio"
+                 class="docs-nav__link ">
+                Radio
+              </a>
+            
+              <a href="/nanoui/components/switch"
+                 class="docs-nav__link ">
+                Switch
+              </a>
+            
+              <a href="/nanoui/components/card"
+                 class="docs-nav__link ">
+                Card
+              </a>
+            
+              <a href="/nanoui/components/badge"
+                 class="docs-nav__link ">
+                Badge
+              </a>
+            
+              <a href="/nanoui/components/alert"
+                 class="docs-nav__link ">
+                Alert
+              </a>
+            
+              <a href="/nanoui/components/dialog"
+                 class="docs-nav__link ">
+                Dialog
+              </a>
+            
+              <a href="/nanoui/components/dropdown"
+                 class="docs-nav__link ">
+                Dropdown
+              </a>
+            
+              <a href="/nanoui/components/tooltip"
+                 class="docs-nav__link ">
+                Tooltip
+              </a>
+            
+              <a href="/nanoui/components/toast"
+                 class="docs-nav__link is-active">
+                Toast
+              </a>
+            
+              <a href="/nanoui/components/table"
+                 class="docs-nav__link ">
+                Table
+              </a>
+            
+              <a href="/nanoui/components/tabs"
+                 class="docs-nav__link ">
+                Tabs
+              </a>
+            
+              <a href="/nanoui/components/accordion"
+                 class="docs-nav__link ">
+                Accordion
+              </a>
+            
+              <a href="/nanoui/components/progress"
+                 class="docs-nav__link ">
+                Progress
+              </a>
+            
+          
+        
+      </nav>
+    </aside>
+
+    <main class="docs-main">
+      <article class="docs-content">
+        <h1 id="toast">Toast</h1>
+
+<p>Notification messages that appear temporarily. Requires the <code class="language-plaintext highlighter-rouge">nanoui-toast</code> Stimulus controller.</p>
+
+<h2 id="variants">Variants</h2>
+
+<div class="docs-example">
+  <div class="docs-example__header">
+    <span>Preview</span>
+    <button class="docs-example__copy">Copy</button>
+  </div>
+  <div class="docs-preview">
+    <div class="nano-toast-container" style="position:static;pointer-events:auto;max-width:100%">
+      <output class="nano-toast" role="status">
+        <div class="nano-toast__content">
+          <p class="nano-toast__title">Notification</p>
+          <p class="nano-toast__description">Something happened.</p>
+        </div>
+        <button class="nano-toast__close" aria-label="Dismiss">&times;</button>
+      </output>
+      <output class="nano-toast nano-toast--success" role="status">
+        <div class="nano-toast__content">
+          <p class="nano-toast__title">Success!</p>
+          <p class="nano-toast__description">Changes saved successfully.</p>
+        </div>
+        <button class="nano-toast__close" aria-label="Dismiss">&times;</button>
+      </output>
+      <output class="nano-toast nano-toast--destructive" role="status">
+        <div class="nano-toast__content">
+          <p class="nano-toast__title">Error</p>
+          <p class="nano-toast__description">Something went wrong.</p>
+        </div>
+        <button class="nano-toast__close" aria-label="Dismiss">&times;</button>
+      </output>
+      <output class="nano-toast nano-toast--warning" role="status">
+        <div class="nano-toast__content">
+          <p class="nano-toast__title">Warning</p>
+          <p class="nano-toast__description">Your session is about to expire.</p>
+        </div>
+        <button class="nano-toast__close" aria-label="Dismiss">&times;</button>
+      </output>
+    </div>
+  </div>
+  <div class="docs-example__code">
+
+<pre><code>&lt;!-- Add once to your layout --&gt;
+&lt;div class="nano-toast-container"
+     data-controller="nanoui-toast"
+     data-nanoui-toast-duration-value="5000"
+     aria-live="polite"&gt;
+
+  &lt;output class="nano-toast nano-toast--success"
+          role="status"
+          data-nanoui-toast-target="item"&gt;
+    &lt;div class="nano-toast__content"&gt;
+      &lt;p class="nano-toast__title"&gt;Success!&lt;/p&gt;
+      &lt;p class="nano-toast__description"&gt;Changes saved.&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;button class="nano-toast__close"
+            data-action="nanoui-toast#dismiss"
+            aria-label="Dismiss"&gt;&amp;times;&lt;/button&gt;
+  &lt;/output&gt;
+
+&lt;/div&gt;</code></pre>
+
+  </div>
+</div>
+
+<h2 id="interactive-demo">Interactive demo</h2>
+
+<div class="docs-example">
+  <div class="docs-example__header">
+    <span>Preview</span>
+    <button class="docs-example__copy">Copy</button>
+  </div>
+  <div class="docs-preview" style="display:flex;gap:0.5rem;flex-wrap:wrap">
+    <button class="nano-btn nano-btn--primary" onclick="showDemoToast('default')">Default</button>
+    <button class="nano-btn nano-btn--outline" style="border-color:hsl(142 76% 36%);color:hsl(142 76% 36%)" onclick="showDemoToast('success')">Success</button>
+    <button class="nano-btn nano-btn--outline" style="border-color:hsl(0 84.2% 60.2%);color:hsl(0 84.2% 60.2%)" onclick="showDemoToast('destructive')">Error</button>
+    <button class="nano-btn nano-btn--outline" style="border-color:hsl(38 92% 50%);color:hsl(38 92% 50%)" onclick="showDemoToast('warning')">Warning</button>
+  </div>
+  <div class="docs-example__code">
+
+<pre><code>&lt;!-- Variants: nano-toast--success, nano-toast--destructive, nano-toast--warning --&gt;
+&lt;output class="nano-toast nano-toast--success" ...&gt;
+  &lt;div class="nano-toast__content"&gt;
+    &lt;p class="nano-toast__title"&gt;Saved&lt;/p&gt;
+    &lt;p class="nano-toast__description"&gt;Your changes have been saved.&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;button class="nano-toast__close" data-action="nanoui-toast#dismiss"&gt;&amp;times;&lt;/button&gt;
+&lt;/output&gt;</code></pre>
+
+  </div>
+</div>
+
+<div class="nano-toast-container" id="demo-toast-container"></div>
+
+<script>
+  function showDemoToast(variant) {
+    var container = document.getElementById('demo-toast-container');
+    var titles = { default: 'Notification', success: 'Success!', destructive: 'Error', warning: 'Warning' };
+    var descs = { default: 'Something happened.', success: 'Changes saved successfully.', destructive: 'Something went wrong.', warning: 'Your session is about to expire.' };
+    var cls = variant === 'default' ? 'nano-toast' : 'nano-toast nano-toast--' + variant;
+    var toast = document.createElement('output');
+    toast.className = cls;
+    toast.setAttribute('role', 'status');
+    toast.innerHTML = '<div class="nano-toast__content"><p class="nano-toast__title">' + titles[variant] + '</p><p class="nano-toast__description">' + descs[variant] + '</p></div><button class="nano-toast__close" aria-label="Dismiss" onclick="dismissDemoToast(this.parentElement)">&times;</button>';
+    container.appendChild(toast);
+    setTimeout(function() { dismissDemoToast(toast); }, 5000);
+  }
+  function dismissDemoToast(toast) {
+    if (!toast || !toast.parentElement) return;
+    toast.classList.add('is-dismissing');
+    toast.addEventListener('animationend', function() { toast.remove(); });
+  }
+</script>
+
+<h3 id="stimulus-controller">Stimulus controller</h3>
+
+<ul>
+  <li><strong>Targets:</strong> <code class="language-plaintext highlighter-rouge">item</code> (individual toast elements)</li>
+  <li><strong>Values:</strong> <code class="language-plaintext highlighter-rouge">duration</code> (Number, default 5000ms, 0 = no auto-dismiss)</li>
+  <li><strong>Actions:</strong> <code class="language-plaintext highlighter-rouge">dismiss(event)</code> – manually dismiss a toast</li>
+  <li>Toasts auto-dismiss after duration and are removed from DOM</li>
+</ul>
+
+      </article>
+    </main>
+  </div>
+
+  <script>
+    // Copy button for code examples
+    document.querySelectorAll('.docs-example__copy').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const code = btn.closest('.docs-example').querySelector('code').textContent;
+        navigator.clipboard.writeText(code).then(() => {
+          btn.textContent = 'Copied!';
+          setTimeout(() => { btn.textContent = 'Copy'; }, 2000);
+        });
+      });
+    });
+  </script>
+</body>
+</html>

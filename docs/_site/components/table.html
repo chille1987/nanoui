@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Table — NanoUI</title>
+  <link rel="stylesheet" href="/nanoui/assets/css/nanoui.css">
+  <link rel="stylesheet" href="/nanoui/assets/css/docs.css">
+</head>
+<body>
+  <div class="docs-layout">
+    <aside class="docs-sidebar">
+      <a href="/nanoui/" class="docs-logo">NanoUI</a>
+      <nav class="docs-nav">
+        
+          
+            <a href="/nanoui/"
+               class="docs-nav__link ">
+              Getting Started
+            </a>
+          
+        
+          
+            <p class="docs-nav__heading">Components</p>
+            
+              <a href="/nanoui/components/button"
+                 class="docs-nav__link ">
+                Button
+              </a>
+            
+              <a href="/nanoui/components/input"
+                 class="docs-nav__link ">
+                Input
+              </a>
+            
+              <a href="/nanoui/components/label"
+                 class="docs-nav__link ">
+                Label
+              </a>
+            
+              <a href="/nanoui/components/select"
+                 class="docs-nav__link ">
+                Select
+              </a>
+            
+              <a href="/nanoui/components/checkbox"
+                 class="docs-nav__link ">
+                Checkbox
+              </a>
+            
+              <a href="/nanoui/components/radio"
+                 class="docs-nav__link ">
+                Radio
+              </a>
+            
+              <a href="/nanoui/components/switch"
+                 class="docs-nav__link ">
+                Switch
+              </a>
+            
+              <a href="/nanoui/components/card"
+                 class="docs-nav__link ">
+                Card
+              </a>
+            
+              <a href="/nanoui/components/badge"
+                 class="docs-nav__link ">
+                Badge
+              </a>
+            
+              <a href="/nanoui/components/alert"
+                 class="docs-nav__link ">
+                Alert
+              </a>
+            
+              <a href="/nanoui/components/dialog"
+                 class="docs-nav__link ">
+                Dialog
+              </a>
+            
+              <a href="/nanoui/components/dropdown"
+                 class="docs-nav__link ">
+                Dropdown
+              </a>
+            
+              <a href="/nanoui/components/tooltip"
+                 class="docs-nav__link ">
+                Tooltip
+              </a>
+            
+              <a href="/nanoui/components/toast"
+                 class="docs-nav__link ">
+                Toast
+              </a>
+            
+              <a href="/nanoui/components/table"
+                 class="docs-nav__link is-active">
+                Table
+              </a>
+            
+              <a href="/nanoui/components/tabs"
+                 class="docs-nav__link ">
+                Tabs
+              </a>
+            
+              <a href="/nanoui/components/accordion"
+                 class="docs-nav__link ">
+                Accordion
+              </a>
+            
+              <a href="/nanoui/components/progress"
+                 class="docs-nav__link ">
+                Progress
+              </a>
+            
+          
+        
+      </nav>
+    </aside>
+
+    <main class="docs-main">
+      <article class="docs-content">
+        <h1 id="table">Table</h1>
+
+<p>Styled data tables with optional striping and hover effects.</p>
+
+<h2 id="default">Default</h2>
+
+<div class="docs-example">
+  <div class="docs-example__header">
+    <span>Preview</span>
+    <button class="docs-example__copy">Copy</button>
+  </div>
+  <div class="docs-preview">
+    <div class="nano-table-wrapper">
+      <table class="nano-table nano-table--striped nano-table--hoverable">
+        <thead class="nano-table__head">
+          <tr>
+            <th scope="col" class="nano-table__header">Name</th>
+            <th scope="col" class="nano-table__header">Email</th>
+            <th scope="col" class="nano-table__header">Status</th>
+          </tr>
+        </thead>
+        <tbody class="nano-table__body">
+          <tr class="nano-table__row">
+            <td class="nano-table__cell">Jane Doe</td>
+            <td class="nano-table__cell">jane@example.com</td>
+            <td class="nano-table__cell"><span class="nano-badge nano-badge--success">Active</span></td>
+          </tr>
+          <tr class="nano-table__row">
+            <td class="nano-table__cell">John Smith</td>
+            <td class="nano-table__cell">john@example.com</td>
+            <td class="nano-table__cell"><span class="nano-badge nano-badge--warning">Pending</span></td>
+          </tr>
+          <tr class="nano-table__row">
+            <td class="nano-table__cell">Bob Wilson</td>
+            <td class="nano-table__cell">bob@example.com</td>
+            <td class="nano-table__cell"><span class="nano-badge nano-badge--secondary">Inactive</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="docs-example__code">
+
+<pre><code>&lt;div class="nano-table-wrapper"&gt;
+  &lt;table class="nano-table nano-table--striped nano-table--hoverable"&gt;
+    &lt;thead class="nano-table__head"&gt;
+      &lt;tr&gt;
+        &lt;th scope="col" class="nano-table__header"&gt;Name&lt;/th&gt;
+        &lt;th scope="col" class="nano-table__header"&gt;Email&lt;/th&gt;
+        &lt;th scope="col" class="nano-table__header"&gt;Status&lt;/th&gt;
+      &lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody class="nano-table__body"&gt;
+      &lt;tr class="nano-table__row"&gt;
+        &lt;td class="nano-table__cell"&gt;Jane Doe&lt;/td&gt;
+        &lt;td class="nano-table__cell"&gt;jane@example.com&lt;/td&gt;
+        &lt;td class="nano-table__cell"&gt;
+          &lt;span class="nano-badge nano-badge--success"&gt;Active&lt;/span&gt;
+        &lt;/td&gt;
+      &lt;/tr&gt;
+    &lt;/tbody&gt;
+  &lt;/table&gt;
+&lt;/div&gt;</code></pre>
+
+  </div>
+</div>
+
+<h3 id="variants">Variants</h3>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">nano-table--striped</code> – alternating row backgrounds</li>
+  <li><code class="language-plaintext highlighter-rouge">nano-table--hoverable</code> – highlight rows on hover</li>
+</ul>
+
+      </article>
+    </main>
+  </div>
+
+  <script>
+    // Copy button for code examples
+    document.querySelectorAll('.docs-example__copy').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const code = btn.closest('.docs-example').querySelector('code').textContent;
+        navigator.clipboard.writeText(code).then(() => {
+          btn.textContent = 'Copied!';
+          setTimeout(() => { btn.textContent = 'Copy'; }, 2000);
+        });
+      });
+    });
+  </script>
+</body>
+</html>

@@ -35,7 +35,7 @@
 .nano-alert__description {
   font-size: var(--text-sm);
   line-height: var(--leading-normal);
-  color: hsl(var(--color-muted-foreground));
+  color: hsl(var(--color-foreground));
 }
 
 .nano-alert--destructive {

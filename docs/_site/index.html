@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Getting Started — NanoUI</title>
+  <link rel="stylesheet" href="/nanoui/assets/css/nanoui.css">
+  <link rel="stylesheet" href="/nanoui/assets/css/docs.css">
+</head>
+<body>
+  <div class="docs-layout">
+    <aside class="docs-sidebar">
+      <a href="/nanoui/" class="docs-logo">NanoUI</a>
+      <nav class="docs-nav">
+        
+          
+            <a href="/nanoui/"
+               class="docs-nav__link is-active">
+              Getting Started
+            </a>
+          
+        
+          
+            <p class="docs-nav__heading">Components</p>
+            
+              <a href="/nanoui/components/button"
+                 class="docs-nav__link ">
+                Button
+              </a>
+            
+              <a href="/nanoui/components/input"
+                 class="docs-nav__link ">
+                Input
+              </a>
+            
+              <a href="/nanoui/components/label"
+                 class="docs-nav__link ">
+                Label
+              </a>
+            
+              <a href="/nanoui/components/select"
+                 class="docs-nav__link ">
+                Select
+              </a>
+            
+              <a href="/nanoui/components/checkbox"
+                 class="docs-nav__link ">
+                Checkbox
+              </a>
+            
+              <a href="/nanoui/components/radio"
+                 class="docs-nav__link ">
+                Radio
+              </a>
+            
+              <a href="/nanoui/components/switch"
+                 class="docs-nav__link ">
+                Switch
+              </a>
+            
+              <a href="/nanoui/components/card"
+                 class="docs-nav__link ">
+                Card
+              </a>
+            
+              <a href="/nanoui/components/badge"
+                 class="docs-nav__link ">
+                Badge
+              </a>
+            
+              <a href="/nanoui/components/alert"
+                 class="docs-nav__link ">
+                Alert
+              </a>
+            
+              <a href="/nanoui/components/dialog"
+                 class="docs-nav__link ">
+                Dialog
+              </a>
+            
+              <a href="/nanoui/components/dropdown"
+                 class="docs-nav__link ">
+                Dropdown
+              </a>
+            
+              <a href="/nanoui/components/tooltip"
+                 class="docs-nav__link ">
+                Tooltip
+              </a>
+            
+              <a href="/nanoui/components/toast"
+                 class="docs-nav__link ">
+                Toast
+              </a>
+            
+              <a href="/nanoui/components/table"
+                 class="docs-nav__link ">
+                Table
+              </a>
+            
+              <a href="/nanoui/components/tabs"
+                 class="docs-nav__link ">
+                Tabs
+              </a>
+            
+              <a href="/nanoui/components/accordion"
+                 class="docs-nav__link ">
+                Accordion
+              </a>
+            
+              <a href="/nanoui/components/progress"
+                 class="docs-nav__link ">
+                Progress
+              </a>
+            
+          
+        
+      </nav>
+    </aside>
+
+    <main class="docs-main">
+      <article class="docs-content">
+        <h1 id="nanoui">NanoUI</h1>
+
+<p>Vanilla CSS + Stimulus component library for Rails. No build step, no JavaScript framework — just CSS custom properties and optional Stimulus controllers.</p>
+
+<h2 id="installation">Installation</h2>
+
+<p>Add to your Gemfile:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">gem</span> <span class="s2">"nanoui"</span>
+</code></pre></div></div>
+
+<p>Then run the generators:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Install base styles and fonts</span>
+rails generate nanoui:install
+
+<span class="c"># Install all components</span>
+rails generate nanoui:component <span class="nt">--all</span>
+
+<span class="c"># Or pick specific ones</span>
+rails generate nanoui:component button input card
+</code></pre></div></div>
+
+<h2 id="how-it-works">How it works</h2>
+
+<p>NanoUI uses <strong>Propshaft</strong> to serve CSS files. Each component is a standalone CSS file — no <code class="language-plaintext highlighter-rouge">@import</code>, no entry point, no concatenation. Just drop the files in <code class="language-plaintext highlighter-rouge">app/assets/stylesheets/nanoui/</code> and they’re loaded automatically.</p>
+
+<h3 id="native-element-styling">Native element styling</h3>
+
+<p>Buttons, inputs, selects, and labels are styled out of the box. Write plain HTML and it looks good:</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;button&gt;</span>Save<span class="nt">&lt;/button&gt;</span>
+<span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"email"</span> <span class="na">placeholder=</span><span class="s">"you@example.com"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;select&gt;</span>
+  <span class="nt">&lt;option&gt;</span>Choose...<span class="nt">&lt;/option&gt;</span>
+<span class="nt">&lt;/select&gt;</span>
+<span class="nt">&lt;label&gt;</span>Email<span class="nt">&lt;/label&gt;</span>
+</code></pre></div></div>
+
+<p>Use <code class="language-plaintext highlighter-rouge">.nano-*</code> classes for variants:</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"nano-btn nano-btn--destructive nano-btn--sm"</span><span class="nt">&gt;</span>Delete<span class="nt">&lt;/button&gt;</span>
+</code></pre></div></div>
+
+<h3 id="component-groups">Component groups</h3>
+
+<p>Install components by group:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rails generate nanoui:component <span class="nt">--group</span> essentials  <span class="c"># button input label card badge alert</span>
+rails generate nanoui:component <span class="nt">--group</span> forms        <span class="c"># + checkbox radio switch select</span>
+rails generate nanoui:component <span class="nt">--group</span> overlays     <span class="c"># dialog dropdown tooltip toast</span>
+rails generate nanoui:component <span class="nt">--group</span> data         <span class="c"># table tabs accordion progress</span>
+</code></pre></div></div>
+
+<h3 id="stimulus-controllers">Stimulus controllers</h3>
+
+<p>Some components ship with optional Stimulus controllers: dialog, dropdown, tooltip, toast, tabs, accordion, and switch. They’re copied to <code class="language-plaintext highlighter-rouge">app/javascript/controllers/</code> during generation.</p>
+
+<h2 id="customization">Customization</h2>
+
+<p>Edit <code class="language-plaintext highlighter-rouge">app/assets/stylesheets/nanoui/base/03_colors.css</code> to change the color palette. All components reference CSS custom properties, so changes propagate everywhere.</p>
+
+<p>Add <code class="language-plaintext highlighter-rouge">.dark</code> to <code class="language-plaintext highlighter-rouge">&lt;html&gt;</code> or <code class="language-plaintext highlighter-rouge">&lt;body&gt;</code> for dark mode — all color tokens have dark variants built in.</p>
+
+      </article>
+    </main>
+  </div>
+
+  <script>
+    // Copy button for code examples
+    document.querySelectorAll('.docs-example__copy').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const code = btn.closest('.docs-example').querySelector('code').textContent;
+        navigator.clipboard.writeText(code).then(() => {
+          btn.textContent = 'Copied!';
+          setTimeout(() => { btn.textContent = 'Copy'; }, 2000);
+        });
+      });
+    });
+  </script>
+</body>
+</html>

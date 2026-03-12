@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tabs — NanoUI</title>
+  <link rel="stylesheet" href="/nanoui/assets/css/nanoui.css">
+  <link rel="stylesheet" href="/nanoui/assets/css/docs.css">
+</head>
+<body>
+  <div class="docs-layout">
+    <aside class="docs-sidebar">
+      <a href="/nanoui/" class="docs-logo">NanoUI</a>
+      <nav class="docs-nav">
+        
+          
+            <a href="/nanoui/"
+               class="docs-nav__link ">
+              Getting Started
+            </a>
+          
+        
+          
+            <p class="docs-nav__heading">Components</p>
+            
+              <a href="/nanoui/components/button"
+                 class="docs-nav__link ">
+                Button
+              </a>
+            
+              <a href="/nanoui/components/input"
+                 class="docs-nav__link ">
+                Input
+              </a>
+            
+              <a href="/nanoui/components/label"
+                 class="docs-nav__link ">
+                Label
+              </a>
+            
+              <a href="/nanoui/components/select"
+                 class="docs-nav__link ">
+                Select
+              </a>
+            
+              <a href="/nanoui/components/checkbox"
+                 class="docs-nav__link ">
+                Checkbox
+              </a>
+            
+              <a href="/nanoui/components/radio"
+                 class="docs-nav__link ">
+                Radio
+              </a>
+            
+              <a href="/nanoui/components/switch"
+                 class="docs-nav__link ">
+                Switch
+              </a>
+            
+              <a href="/nanoui/components/card"
+                 class="docs-nav__link ">
+                Card
+              </a>
+            
+              <a href="/nanoui/components/badge"
+                 class="docs-nav__link ">
+                Badge
+              </a>
+            
+              <a href="/nanoui/components/alert"
+                 class="docs-nav__link ">
+                Alert
+              </a>
+            
+              <a href="/nanoui/components/dialog"
+                 class="docs-nav__link ">
+                Dialog
+              </a>
+            
+              <a href="/nanoui/components/dropdown"
+                 class="docs-nav__link ">
+                Dropdown
+              </a>
+            
+              <a href="/nanoui/components/tooltip"
+                 class="docs-nav__link ">
+                Tooltip
+              </a>
+            
+              <a href="/nanoui/components/toast"
+                 class="docs-nav__link ">
+                Toast
+              </a>
+            
+              <a href="/nanoui/components/table"
+                 class="docs-nav__link ">
+                Table
+              </a>
+            
+              <a href="/nanoui/components/tabs"
+                 class="docs-nav__link is-active">
+                Tabs
+              </a>
+            
+              <a href="/nanoui/components/accordion"
+                 class="docs-nav__link ">
+                Accordion
+              </a>
+            
+              <a href="/nanoui/components/progress"
+                 class="docs-nav__link ">
+                Progress
+              </a>
+            
+          
+        
+      </nav>
+    </aside>
+
+    <main class="docs-main">
+      <article class="docs-content">
+        <h1 id="tabs">Tabs</h1>
+
+<p>Tabbed content navigation using ARIA tab pattern. Requires the <code class="language-plaintext highlighter-rouge">nanoui-tabs</code> Stimulus controller.</p>
+
+<h2 id="example">Example</h2>
+
+<div class="docs-example">
+  <div class="docs-example__header">
+    <span>Preview</span>
+    <button class="docs-example__copy">Copy</button>
+  </div>
+  <div class="docs-preview">
+    <div class="nano-tabs">
+      <div role="tablist" class="nano-tabs__list">
+        <button role="tab" class="nano-tabs__trigger" aria-selected="true" onclick="selectTab(this, 'panel-general')">General</button>
+        <button role="tab" class="nano-tabs__trigger" aria-selected="false" tabindex="-1" onclick="selectTab(this, 'panel-security')">Security</button>
+        <button role="tab" class="nano-tabs__trigger" aria-selected="false" tabindex="-1" onclick="selectTab(this, 'panel-notifications')">Notifications</button>
+      </div>
+      <div role="tabpanel" id="panel-general" class="nano-tabs__panel">
+        <p>General settings content goes here.</p>
+      </div>
+      <div role="tabpanel" id="panel-security" class="nano-tabs__panel" hidden="">
+        <p>Security settings content goes here.</p>
+      </div>
+      <div role="tabpanel" id="panel-notifications" class="nano-tabs__panel" hidden="">
+        <p>Notification preferences and alerts.</p>
+      </div>
+    </div>
+  </div>
+  <div class="docs-example__code">
+
+<pre><code>&lt;div class="nano-tabs" data-controller="nanoui-tabs"&gt;
+  &lt;div role="tablist" class="nano-tabs__list"&gt;
+    &lt;button role="tab" id="tab-general"
+            class="nano-tabs__trigger"
+            aria-selected="true"
+            aria-controls="panel-general"
+            data-action="nanoui-tabs#select keydown-&gt;nanoui-tabs#navigate"
+            data-nanoui-tabs-target="tab"&gt;
+      General
+    &lt;/button&gt;
+    &lt;button role="tab" id="tab-security"
+            class="nano-tabs__trigger"
+            aria-selected="false"
+            aria-controls="panel-security"
+            tabindex="-1"
+            data-action="nanoui-tabs#select keydown-&gt;nanoui-tabs#navigate"
+            data-nanoui-tabs-target="tab"&gt;
+      Security
+    &lt;/button&gt;
+  &lt;/div&gt;
+
+  &lt;div role="tabpanel" id="panel-general"
+       class="nano-tabs__panel"
+       aria-labelledby="tab-general"
+       data-nanoui-tabs-target="panel"&gt;
+    &lt;p&gt;General settings content.&lt;/p&gt;
+  &lt;/div&gt;
+
+  &lt;div role="tabpanel" id="panel-security"
+       class="nano-tabs__panel"
+       aria-labelledby="tab-security"
+       hidden
+       data-nanoui-tabs-target="panel"&gt;
+    &lt;p&gt;Security settings content.&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+
+  </div>
+</div>
+
+<script>
+  function selectTab(trigger, panelId) {
+    var tabs = trigger.closest('.nano-tabs');
+    tabs.querySelectorAll('.nano-tabs__trigger').forEach(function(t) {
+      t.setAttribute('aria-selected', 'false');
+      t.setAttribute('tabindex', '-1');
+    });
+    tabs.querySelectorAll('.nano-tabs__panel').forEach(function(p) {
+      p.hidden = true;
+    });
+    trigger.setAttribute('aria-selected', 'true');
+    trigger.removeAttribute('tabindex');
+    document.getElementById(panelId).hidden = false;
+  }
+</script>
+
+<h3 id="stimulus-controller">Stimulus controller</h3>
+
+<ul>
+  <li><strong>Targets:</strong> <code class="language-plaintext highlighter-rouge">tab</code> (buttons), <code class="language-plaintext highlighter-rouge">panel</code> (content divs)</li>
+  <li><strong>Values:</strong> <code class="language-plaintext highlighter-rouge">hash</code> (Boolean, default false — sync active tab with URL hash)</li>
+  <li><strong>Actions:</strong> <code class="language-plaintext highlighter-rouge">select(event)</code>, <code class="language-plaintext highlighter-rouge">navigate(event)</code></li>
+  <li>Arrow key navigation (Left/Right/Home/End)</li>
+  <li>Full WAI-ARIA Tabs pattern</li>
+</ul>
+
+      </article>
+    </main>
+  </div>
+
+  <script>
+    // Copy button for code examples
+    document.querySelectorAll('.docs-example__copy').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const code = btn.closest('.docs-example').querySelector('code').textContent;
+        navigator.clipboard.writeText(code).then(() => {
+          btn.textContent = 'Copied!';
+          setTimeout(() => { btn.textContent = 'Copy'; }, 2000);
+        });
+      });
+    });
+  </script>
+</body>
+</html>

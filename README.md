@@ -4,6 +4,14 @@ Vanilla CSS + Stimulus component library for Rails. Zero runtime dependencies.
 
 18 components. Semantic HTML. Accessible by default. No build step.
 
+**[Documentation & Live Previews](https://chille1987.github.io/nanoui/)** — Browse all 18 components with interactive examples.
+
+## What's New in v0.3.0
+
+- **Native element styling** — Bare `<button>`, `<input>`, `<select>`, and `<label>` elements are styled out of the box. No `.nano-*` classes needed for default styling. Classes still work for variants.
+- **No @import needed** — Propshaft auto-loads all CSS files. Just run the generators and go.
+- **HTML-only components** — No ERB partials. Use plain HTML with CSS classes directly.
+
 ## Installation
 
 ### Option A: Rubygem with Generators (recommended)
@@ -19,45 +27,27 @@ rails generate nanoui:install          # Base styles and fonts
 rails generate nanoui:component --all  # All components
 ```
 
+Propshaft auto-loads the CSS files — no imports or entry points to manage.
+
 ### Option B: Manual Installation
 
 Copy files directly into your Rails 8 app:
 
 ```bash
-# 1. CSS (base, components, entrypoint, Inter Variable font)
+# 1. CSS (base, components, Inter Variable font)
 mkdir -p app/assets/stylesheets/nanoui
 cp -r lib/generators/nanoui/templates/css/base app/assets/stylesheets/nanoui/
 cp -r lib/generators/nanoui/templates/css/components app/assets/stylesheets/nanoui/
 cp -r lib/generators/nanoui/templates/css/fonts app/assets/stylesheets/nanoui/
-cp lib/generators/nanoui/templates/css/nanoui.css app/assets/stylesheets/nanoui/
 
 # 2. Stimulus controllers
 cp lib/generators/nanoui/templates/js/controllers/*_controller.js \
    app/javascript/controllers/
-
-# 3. ERB partials (optional — you can use CSS classes directly)
-cp lib/generators/nanoui/templates/views/components/ app/views/components/
-```
-
-### Import CSS
-
-Add to `app/assets/stylesheets/application.css`:
-
-```css
-@import "nanoui/nanoui.css";
-```
-
-`rails generate nanoui:install` now creates a foundation-only `nanoui.css`, and each `nanoui:component` run rewrites the component imports so the file only references CSS that actually exists.
-
-NanoUI ships with Inter Variable and expects it at `app/assets/stylesheets/nanoui/fonts/inter-variable.ttf`, which `rails generate nanoui:install` now copies automatically.
-
-Or if using Propshaft, add the import to your layout:
-
-```erb
-<%= stylesheet_link_tag "nanoui/nanoui.css" %>
 ```
 
 ### Troubleshooting Fonts
+
+NanoUI ships with Inter Variable and expects it at `app/assets/stylesheets/nanoui/fonts/inter-variable.ttf`, which `rails generate nanoui:install` copies automatically.
 
 If NanoUI falls back to system fonts instead of Inter:
 
@@ -93,9 +83,8 @@ application.register("nanoui-dialog", DialogController)
 
 Add the `.dark` class to `<html>` to toggle dark mode. All color tokens swap automatically.
 
-```erb
-<!-- In your layout -->
-<html class="<%= "dark" if user_prefers_dark? %>">
+```html
+<html class="dark">
 ```
 
 Or toggle via JavaScript:
@@ -106,85 +95,85 @@ document.documentElement.classList.toggle("dark")
 
 ---
 
+## Native Element Styling
+
+NanoUI styles bare HTML elements automatically. No classes required for the defaults:
+
+```html
+<!-- Renders as a styled primary button -->
+<button>Save Changes</button>
+
+<!-- Renders with input styling -->
+<input type="text" placeholder="Enter your name">
+
+<!-- Renders with select styling -->
+<select>
+  <option>Option 1</option>
+  <option>Option 2</option>
+</select>
+
+<!-- Renders with label styling -->
+<label for="name">Name</label>
+```
+
+Use `.nano-*` classes when you need variants:
+
+```html
+<button class="nano-btn--outline">Cancel</button>
+<button class="nano-btn--destructive">Delete</button>
+<button class="nano-btn--sm">Small</button>
+```
+
+---
+
 ## Component Reference
 
 ### Essentials
 
 #### Button
 
-6 variants, 3 sizes, icon-only, loading state.
-
-```erb
-<%= render "components/button", variant: "primary" do %>
-  Save Changes
-<% end %>
-
-<%= render "components/button", variant: "outline", size: "sm" do %>
-  Cancel
-<% end %>
-
-<%= render "components/button", variant: "destructive" do %>
-  Delete
-<% end %>
-
-<%# Link styled as button %>
-<%= render "components/button", href: "/about", variant: "ghost" do %>
-  Learn More
-<% end %>
-```
-
-Or use classes directly:
+6 variants, 3 sizes, icon-only, loading state. Bare `<button>` renders as a primary button.
 
 ```html
-<button class="nano-btn nano-btn--primary" type="button">Save</button>
-<button class="nano-btn nano-btn--outline nano-btn--sm" type="button">Cancel</button>
-<button class="nano-btn nano-btn--primary" disabled>Disabled</button>
+<button>Save Changes</button>
+<button class="nano-btn--outline nano-btn--sm">Cancel</button>
+<button class="nano-btn--destructive">Delete</button>
+<a href="/about" class="nano-btn nano-btn--ghost">Learn More</a>
+<button disabled>Disabled</button>
 ```
 
-**Options:** `variant` (primary, secondary, destructive, outline, ghost, link), `size` (sm, lg, icon), `tag` (:button), `href`, `class`, `html`
+**Variants:** primary (default), secondary, destructive, outline, ghost, link
+**Sizes:** sm, lg, icon
 
 #### Input
 
-Text fields wrapped in `.nano-field` with label and error support.
-
-```erb
-<%= render "components/input", label: "Email", type: "email", required: true,
-    html: { placeholder: "you@example.com" } %>
-
-<%= render "components/input", label: "Name", error: "Name is required" %>
-```
+Text fields wrapped in `.nano-field` with label and error support. Bare `<input>` gets input styling automatically.
 
 ```html
 <div class="nano-field">
-  <label for="email" class="nano-label nano-label--required">Email</label>
-  <input id="email" type="email" class="nano-input" placeholder="you@example.com" required>
+  <label for="email">Email</label>
+  <input id="email" type="email" placeholder="you@example.com" required>
+</div>
+
+<div class="nano-field nano-field--error">
+  <label for="name">Name</label>
+  <input id="name" type="text">
+  <p class="nano-field__error">Name is required</p>
 </div>
 ```
 
-**Options:** `label`, `type` ("text"), `required`, `error`, `id`, `class`, `html`
-
 #### Label
 
-```erb
-<%= render "components/label", for: "name", required: true do %>Name<% end %>
-```
+Bare `<label>` gets label styling. Add `nano-label--required` for the required indicator.
 
 ```html
-<label for="name" class="nano-label nano-label--required">Name</label>
+<label for="name">Name</label>
+<label for="email" class="nano-label--required">Email</label>
 ```
 
 #### Card
 
 Container with header, content, and footer sections.
-
-```erb
-<%= render "components/card",
-    title: "Settings",
-    description: "Manage your account.",
-    footer: render("components/button", variant: "primary") { "Save" } do %>
-  <p>Card body content here.</p>
-<% end %>
-```
 
 ```html
 <article class="nano-card">
@@ -192,8 +181,12 @@ Container with header, content, and footer sections.
     <h3 class="nano-card__title">Settings</h3>
     <p class="nano-card__description">Manage your account.</p>
   </div>
-  <div class="nano-card__content">...</div>
-  <div class="nano-card__footer">...</div>
+  <div class="nano-card__content">
+    <p>Card body content here.</p>
+  </div>
+  <div class="nano-card__footer">
+    <button>Save</button>
+  </div>
 </article>
 ```
 
@@ -203,13 +196,9 @@ Container with header, content, and footer sections.
 
 Inline status indicators.
 
-```erb
-<%= render "components/badge", variant: "success" do %>Active<% end %>
-<%= render "components/badge", variant: "warning" do %>Pending<% end %>
-```
-
 ```html
 <span class="nano-badge nano-badge--success">Active</span>
+<span class="nano-badge nano-badge--warning">Pending</span>
 <span class="nano-badge nano-badge--destructive">Failed</span>
 ```
 
@@ -218,12 +207,6 @@ Inline status indicators.
 #### Alert
 
 Contextual feedback with icon, title, and description.
-
-```erb
-<%= render "components/alert", variant: "success", title: "Saved!" do %>
-  Your changes have been saved successfully.
-<% end %>
-```
 
 ```html
 <div class="nano-alert nano-alert--success" role="alert">
@@ -243,11 +226,6 @@ Contextual feedback with icon, title, and description.
 
 #### Checkbox
 
-```erb
-<%= render "components/checkbox", label: "Accept terms", name: "tos", error: true %>
-<%= render "components/checkbox", label: "Remember me", checked: true %>
-```
-
 ```html
 <div class="nano-checkbox">
   <input type="checkbox" id="tos" class="nano-checkbox__input" name="tos">
@@ -255,39 +233,29 @@ Contextual feedback with icon, title, and description.
 </div>
 ```
 
-**Options:** `label`, `name`, `value`, `checked`, `disabled`, `error`, `id`
-
 #### Radio Group
-
-```erb
-<%= render "components/radio_group",
-    legend: "Plan",
-    name: "plan",
-    options: [
-      { label: "Free", value: "free", checked: true },
-      { label: "Pro", value: "pro" },
-      { label: "Enterprise", value: "enterprise" }
-    ] %>
-```
 
 ```html
 <fieldset class="nano-radio-group">
   <legend class="nano-radio-group__legend">Plan</legend>
   <div class="nano-radio">
-    <input type="radio" id="plan-0" name="plan" value="free" class="nano-radio__input" checked>
-    <label for="plan-0" class="nano-radio__label">Free</label>
+    <input type="radio" id="plan-free" name="plan" value="free" class="nano-radio__input" checked>
+    <label for="plan-free" class="nano-radio__label">Free</label>
   </div>
-  <!-- ... -->
+  <div class="nano-radio">
+    <input type="radio" id="plan-pro" name="plan" value="pro" class="nano-radio__input">
+    <label for="plan-pro" class="nano-radio__label">Pro</label>
+  </div>
+  <div class="nano-radio">
+    <input type="radio" id="plan-ent" name="plan" value="enterprise" class="nano-radio__input">
+    <label for="plan-ent" class="nano-radio__label">Enterprise</label>
+  </div>
 </fieldset>
 ```
 
 #### Switch
 
 Toggle switch with Stimulus controller.
-
-```erb
-<%= render "components/switch", label: "Enable notifications", checked: true %>
-```
 
 ```html
 <button type="button" role="switch" aria-checked="true" class="nano-switch"
@@ -299,24 +267,19 @@ Toggle switch with Stimulus controller.
 
 #### Select
 
-Native `<select>` with custom styling.
+Native `<select>` with custom styling. Bare `<select>` gets styled automatically.
 
-```erb
-<%= render "components/select",
-    label: "Country",
-    placeholder: "Select a country",
-    options: ["United States", "Canada", "United Kingdom"] %>
-
-<%= render "components/select",
-    label: "Role",
-    required: true,
-    options: [
-      { label: "Admin", value: "admin" },
-      { label: "Editor", value: "editor" }
-    ] %>
+```html
+<div class="nano-field">
+  <label for="country">Country</label>
+  <select id="country">
+    <option value="">Select a country</option>
+    <option>United States</option>
+    <option>Canada</option>
+    <option>United Kingdom</option>
+  </select>
+</div>
 ```
-
-**Options:** `label`, `placeholder`, `options`, `required`, `error`, `disabled`, `name`, `id`
 
 ---
 
@@ -326,19 +289,6 @@ Native `<select>` with custom styling.
 
 Native `<dialog>` with `showModal()` — free focus trap, Escape close, and `::backdrop`.
 
-```erb
-<%= render "components/dialog",
-    title: "Edit Profile",
-    description: "Update your info.",
-    trigger: render("components/button") { "Open" },
-    footer: safe_join([
-      render("components/button", variant: "outline", html: { data: { action: "nanoui-dialog#close" } }) { "Cancel" },
-      render("components/button", variant: "primary") { "Save" }
-    ]) do %>
-  <p>Dialog body content.</p>
-<% end %>
-```
-
 ```html
 <div data-controller="nanoui-dialog">
   <button data-action="nanoui-dialog#open">Open</button>
@@ -347,12 +297,18 @@ Native `<dialog>` with `showModal()` — free focus trap, Escape close, and `::b
           aria-labelledby="dialog-title">
     <div class="nano-dialog__content">
       <header class="nano-dialog__header">
-        <h2 id="dialog-title" class="nano-dialog__title">Title</h2>
+        <h2 id="dialog-title" class="nano-dialog__title">Edit Profile</h2>
+        <p class="nano-dialog__description">Update your info.</p>
       </header>
-      <div class="nano-dialog__body">...</div>
-      <footer class="nano-dialog__footer">...</footer>
+      <div class="nano-dialog__body">
+        <p>Dialog body content.</p>
+      </div>
+      <footer class="nano-dialog__footer">
+        <button class="nano-btn--outline" data-action="nanoui-dialog#close">Cancel</button>
+        <button>Save</button>
+      </footer>
       <button class="nano-dialog__close" data-action="nanoui-dialog#close"
-              aria-label="Close dialog">...</button>
+              aria-label="Close dialog">&times;</button>
     </div>
   </dialog>
 </div>
@@ -364,14 +320,16 @@ Native `<dialog>` with `showModal()` — free focus trap, Escape close, and `::b
 
 Click-activated menu with keyboard navigation.
 
-```erb
-<%= render "components/dropdown",
-    trigger: render("components/button", variant: "outline") { "Options" } do %>
-  <button class="nano-dropdown__item">Profile</button>
-  <button class="nano-dropdown__item">Settings</button>
-  <div class="nano-dropdown__separator"></div>
-  <button class="nano-dropdown__item">Log out</button>
-<% end %>
+```html
+<div data-controller="nanoui-dropdown">
+  <button class="nano-btn--outline" data-action="nanoui-dropdown#toggle">Options</button>
+  <div class="nano-dropdown__menu" data-nanoui-dropdown-target="menu">
+    <button class="nano-dropdown__item">Profile</button>
+    <button class="nano-dropdown__item">Settings</button>
+    <div class="nano-dropdown__separator"></div>
+    <button class="nano-dropdown__item">Log out</button>
+  </div>
+</div>
 ```
 
 Keyboard: Arrow Up/Down navigates items, Escape closes, click outside closes.
@@ -380,12 +338,12 @@ Keyboard: Arrow Up/Down navigates items, Escape closes, click outside closes.
 
 Hover/focus tooltip with configurable delay.
 
-```erb
-<%= render "components/tooltip", text: "Add to favorites", position: "top" do %>
-  <%= render "components/button", variant: "primary", size: "icon" do %>
+```html
+<div data-controller="nanoui-tooltip" data-nanoui-tooltip-text-value="Add to favorites">
+  <button class="nano-btn--primary nano-btn--icon">
     <!-- heart icon SVG -->
-  <% end %>
-<% end %>
+  </button>
+</div>
 ```
 
 **Positions:** top (default), bottom, left, right. **Delay:** 200ms default.
@@ -396,16 +354,19 @@ Auto-dismissing notifications stacked bottom-right.
 
 Place the container once in your layout:
 
-```erb
-<%# app/views/layouts/application.html.erb %>
-<%= render "components/toast_container" %>
+```html
+<div class="nano-toast-container" data-controller="nanoui-toast"></div>
 ```
 
-Add toasts dynamically (via Turbo Stream or JS):
+Add toasts dynamically:
 
-```erb
-<%= render "components/toast", variant: "success",
-    title: "Saved!", description: "Changes applied." %>
+```html
+<div class="nano-toast nano-toast--success" role="alert">
+  <div class="nano-toast__content">
+    <p class="nano-toast__title">Saved!</p>
+    <p class="nano-toast__description">Changes applied.</p>
+  </div>
+</div>
 ```
 
 **Variants:** default, success, destructive, warning. **Auto-dismiss:** 5000ms default.
@@ -418,57 +379,85 @@ Add toasts dynamically (via Turbo Stream or JS):
 
 Semantic table with responsive scroll wrapper.
 
-```erb
-<%= render "components/table",
-    headers: ["Name", "Email", "Status"],
-    striped: true, hoverable: true do %>
-  <tr class="nano-table__row">
-    <td class="nano-table__cell">Jane Doe</td>
-    <td class="nano-table__cell">jane@example.com</td>
-    <td class="nano-table__cell">
-      <%= render "components/badge", variant: "success" do %>Active<% end %>
-    </td>
-  </tr>
-<% end %>
+```html
+<div class="nano-table-wrapper">
+  <table class="nano-table nano-table--striped nano-table--hoverable">
+    <thead>
+      <tr>
+        <th class="nano-table__head">Name</th>
+        <th class="nano-table__head">Email</th>
+        <th class="nano-table__head">Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="nano-table__row">
+        <td class="nano-table__cell">Jane Doe</td>
+        <td class="nano-table__cell">jane@example.com</td>
+        <td class="nano-table__cell">
+          <span class="nano-badge nano-badge--success">Active</span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 ```
-
-**Options:** `headers`, `striped`, `hoverable`, `class`
 
 #### Tabs
 
 WAI-ARIA tabs pattern with arrow key navigation.
 
-```erb
-<%= render "components/tabs", label: "Settings", tabs: [
-  { id: "general", label: "General", content: tag.p("General settings..."), active: true },
-  { id: "security", label: "Security", content: tag.p("Security settings...") },
-  { id: "billing", label: "Billing", content: tag.p("Billing info...") }
-] %>
+```html
+<div data-controller="nanoui-tabs" class="nano-tabs">
+  <div role="tablist" aria-label="Settings" class="nano-tabs__list">
+    <button role="tab" aria-selected="true" aria-controls="general"
+            class="nano-tabs__trigger" data-action="nanoui-tabs#select">General</button>
+    <button role="tab" aria-selected="false" aria-controls="security"
+            class="nano-tabs__trigger" data-action="nanoui-tabs#select">Security</button>
+    <button role="tab" aria-selected="false" aria-controls="billing"
+            class="nano-tabs__trigger" data-action="nanoui-tabs#select">Billing</button>
+  </div>
+  <div role="tabpanel" id="general" class="nano-tabs__content">General settings...</div>
+  <div role="tabpanel" id="security" class="nano-tabs__content" hidden>Security settings...</div>
+  <div role="tabpanel" id="billing" class="nano-tabs__content" hidden>Billing info...</div>
+</div>
 ```
-
-**Options:** `tabs` (array), `label` (aria-label), `hash` (URL hash sync)
 
 #### Accordion
 
 Native `<details>`/`<summary>` with optional single-open mode.
 
-```erb
-<%= render "components/accordion", single: true, items: [
-  { title: "Is it free?", content: "Yes, MIT licensed.", open: true },
-  { title: "Build step?", content: "No, vanilla CSS." },
-  { title: "Dark mode?", content: "Add .dark class to <html>." }
-] %>
+```html
+<div class="nano-accordion" data-controller="nanoui-accordion"
+     data-nanoui-accordion-single-value="true">
+  <details class="nano-accordion__item" open>
+    <summary class="nano-accordion__trigger">Is it free?</summary>
+    <div class="nano-accordion__content">Yes, MIT licensed.</div>
+  </details>
+  <details class="nano-accordion__item">
+    <summary class="nano-accordion__trigger">Build step?</summary>
+    <div class="nano-accordion__content">No, vanilla CSS.</div>
+  </details>
+  <details class="nano-accordion__item">
+    <summary class="nano-accordion__trigger">Dark mode?</summary>
+    <div class="nano-accordion__content">Add .dark class to &lt;html&gt;.</div>
+  </details>
+</div>
 ```
-
-**Options:** `items` (array), `single` (single-open mode), `class`
 
 #### Progress
 
 Native `<progress>` element with custom styling.
 
-```erb
-<%= render "components/progress", value: 65, label: "65%", aria_label: "Upload progress" %>
-<%= render "components/progress", value: 100, variant: "success", label: "Complete" %>
+```html
+<div class="nano-progress">
+  <progress class="nano-progress__bar" value="65" max="100"></progress>
+  <span class="nano-progress__label">65%</span>
+</div>
+
+<div class="nano-progress nano-progress--success">
+  <progress class="nano-progress__bar" value="100" max="100"></progress>
+  <span class="nano-progress__label">Complete</span>
+</div>
 ```
 
 **Variants:** default (primary), success, warning, destructive
@@ -523,6 +512,7 @@ rails generate nanoui:component --all
 ## Philosophy
 
 - **Semantic HTML first** — `<dialog>`, `<details>`, `<progress>`, `<fieldset>`, `<output>`
+- **Native element styling** — Bare HTML elements look good without classes
 - **Accessibility is not optional** — ARIA attributes, keyboard navigation, focus management, screen reader support
 - **No build step** — No Tailwind, no PostCSS, no webpack. Vanilla CSS with native nesting
 - **You own the code** — Generator copies files into your app. Edit freely, no runtime dependency

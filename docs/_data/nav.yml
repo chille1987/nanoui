@@ -1,0 +1,40 @@
+- title: Getting Started
+  url: /
+- title: Components
+  children:
+    - title: Button
+      url: /components/button
+    - title: Input
+      url: /components/input
+    - title: Label
+      url: /components/label
+    - title: Select
+      url: /components/select
+    - title: Checkbox
+      url: /components/checkbox
+    - title: Radio
+      url: /components/radio
+    - title: Switch
+      url: /components/switch
+    - title: Card
+      url: /components/card
+    - title: Badge
+      url: /components/badge
+    - title: Alert
+      url: /components/alert
+    - title: Dialog
+      url: /components/dialog
+    - title: Dropdown
+      url: /components/dropdown
+    - title: Tooltip
+      url: /components/tooltip
+    - title: Toast
+      url: /components/toast
+    - title: Table
+      url: /components/table
+    - title: Tabs
+      url: /components/tabs
+    - title: Accordion
+      url: /components/accordion
+    - title: Progress
+      url: /components/progress

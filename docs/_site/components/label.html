@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Label — NanoUI</title>
+  <link rel="stylesheet" href="/nanoui/assets/css/nanoui.css">
+  <link rel="stylesheet" href="/nanoui/assets/css/docs.css">
+</head>
+<body>
+  <div class="docs-layout">
+    <aside class="docs-sidebar">
+      <a href="/nanoui/" class="docs-logo">NanoUI</a>
+      <nav class="docs-nav">
+        
+          
+            <a href="/nanoui/"
+               class="docs-nav__link ">
+              Getting Started
+            </a>
+          
+        
+          
+            <p class="docs-nav__heading">Components</p>
+            
+              <a href="/nanoui/components/button"
+                 class="docs-nav__link ">
+                Button
+              </a>
+            
+              <a href="/nanoui/components/input"
+                 class="docs-nav__link ">
+                Input
+              </a>
+            
+              <a href="/nanoui/components/label"
+                 class="docs-nav__link is-active">
+                Label
+              </a>
+            
+              <a href="/nanoui/components/select"
+                 class="docs-nav__link ">
+                Select
+              </a>
+            
+              <a href="/nanoui/components/checkbox"
+                 class="docs-nav__link ">
+                Checkbox
+              </a>
+            
+              <a href="/nanoui/components/radio"
+                 class="docs-nav__link ">
+                Radio
+              </a>
+            
+              <a href="/nanoui/components/switch"
+                 class="docs-nav__link ">
+                Switch
+              </a>
+            
+              <a href="/nanoui/components/card"
+                 class="docs-nav__link ">
+                Card
+              </a>
+            
+              <a href="/nanoui/components/badge"
+                 class="docs-nav__link ">
+                Badge
+              </a>
+            
+              <a href="/nanoui/components/alert"
+                 class="docs-nav__link ">
+                Alert
+              </a>
+            
+              <a href="/nanoui/components/dialog"
+                 class="docs-nav__link ">
+                Dialog
+              </a>
+            
+              <a href="/nanoui/components/dropdown"
+                 class="docs-nav__link ">
+                Dropdown
+              </a>
+            
+              <a href="/nanoui/components/tooltip"
+                 class="docs-nav__link ">
+                Tooltip
+              </a>
+            
+              <a href="/nanoui/components/toast"
+                 class="docs-nav__link ">
+                Toast
+              </a>
+            
+              <a href="/nanoui/components/table"
+                 class="docs-nav__link ">
+                Table
+              </a>
+            
+              <a href="/nanoui/components/tabs"
+                 class="docs-nav__link ">
+                Tabs
+              </a>
+            
+              <a href="/nanoui/components/accordion"
+                 class="docs-nav__link ">
+                Accordion
+              </a>
+            
+              <a href="/nanoui/components/progress"
+                 class="docs-nav__link ">
+                Progress
+              </a>
+            
+          
+        
+      </nav>
+    </aside>
+
+    <main class="docs-main">
+      <article class="docs-content">
+        <h1 id="label">Label</h1>
+
+<p>Labels are styled automatically on <code class="language-plaintext highlighter-rouge">&lt;label&gt;</code> elements. Use <code class="language-plaintext highlighter-rouge">.nano-label--required</code> to show a red asterisk.</p>
+
+<h2 id="default-native-element">Default (native element)</h2>
+
+<div class="docs-example">
+  <div class="docs-example__header">
+    <span>Preview</span>
+    <button class="docs-example__copy">Copy</button>
+  </div>
+  <div class="docs-preview">
+    <label for="name-demo">Name</label>
+  </div>
+  <div class="docs-example__code">
+
+<pre><code>&lt;label for="name"&gt;Name&lt;/label&gt;</code></pre>
+
+  </div>
+</div>
+
+<h2 id="required">Required</h2>
+
+<div class="docs-example">
+  <div class="docs-example__header">
+    <span>Preview</span>
+    <button class="docs-example__copy">Copy</button>
+  </div>
+  <div class="docs-preview">
+    <label class="nano-label nano-label--required">Email</label>
+  </div>
+  <div class="docs-example__code">
+
+<pre><code>&lt;label class="nano-label nano-label--required"&gt;Email&lt;/label&gt;</code></pre>
+
+  </div>
+</div>
+
+<h2 id="with-input">With input</h2>
+
+<div class="docs-example">
+  <div class="docs-example__header">
+    <span>Preview</span>
+    <button class="docs-example__copy">Copy</button>
+  </div>
+  <div class="docs-preview">
+    <div class="nano-field">
+      <label for="username-demo">Username</label>
+      <input id="username-demo" type="text" placeholder="Enter username" />
+    </div>
+  </div>
+  <div class="docs-example__code">
+
+<pre><code>&lt;div class="nano-field"&gt;
+  &lt;label for="username"&gt;Username&lt;/label&gt;
+  &lt;input id="username" type="text" placeholder="Enter username"&gt;
+&lt;/div&gt;</code></pre>
+
+  </div>
+</div>
+
+      </article>
+    </main>
+  </div>
+
+  <script>
+    // Copy button for code examples
+    document.querySelectorAll('.docs-example__copy').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const code = btn.closest('.docs-example').querySelector('code').textContent;
+        navigator.clipboard.writeText(code).then(() => {
+          btn.textContent = 'Copied!';
+          setTimeout(() => { btn.textContent = 'Copy'; }, 2000);
+        });
+      });
+    });
+  </script>
+</body>
+</html>

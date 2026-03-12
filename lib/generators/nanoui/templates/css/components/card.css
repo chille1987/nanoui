@@ -33,7 +33,7 @@
 
 .nano-card__description {
   font-size: var(--text-sm);
-  color: hsl(var(--color-muted-foreground));
+  color: hsl(var(--color-foreground));
 }
 
 .nano-card__content {
@@ -43,6 +43,7 @@
 .nano-card__footer {
   display: flex;
   align-items: center;
+  gap: var(--space-2);
   padding: var(--space-6);
   padding-top: 0;
 }

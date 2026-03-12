@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tooltip — NanoUI</title>
+  <link rel="stylesheet" href="/nanoui/assets/css/nanoui.css">
+  <link rel="stylesheet" href="/nanoui/assets/css/docs.css">
+</head>
+<body>
+  <div class="docs-layout">
+    <aside class="docs-sidebar">
+      <a href="/nanoui/" class="docs-logo">NanoUI</a>
+      <nav class="docs-nav">
+        
+          
+            <a href="/nanoui/"
+               class="docs-nav__link ">
+              Getting Started
+            </a>
+          
+        
+          
+            <p class="docs-nav__heading">Components</p>
+            
+              <a href="/nanoui/components/button"
+                 class="docs-nav__link ">
+                Button
+              </a>
+            
+              <a href="/nanoui/components/input"
+                 class="docs-nav__link ">
+                Input
+              </a>
+            
+              <a href="/nanoui/components/label"
+                 class="docs-nav__link ">
+                Label
+              </a>
+            
+              <a href="/nanoui/components/select"
+                 class="docs-nav__link ">
+                Select
+              </a>
+            
+              <a href="/nanoui/components/checkbox"
+                 class="docs-nav__link ">
+                Checkbox
+              </a>
+            
+              <a href="/nanoui/components/radio"
+                 class="docs-nav__link ">
+                Radio
+              </a>
+            
+              <a href="/nanoui/components/switch"
+                 class="docs-nav__link ">
+                Switch
+              </a>
+            
+              <a href="/nanoui/components/card"
+                 class="docs-nav__link ">
+                Card
+              </a>
+            
+              <a href="/nanoui/components/badge"
+                 class="docs-nav__link ">
+                Badge
+              </a>
+            
+              <a href="/nanoui/components/alert"
+                 class="docs-nav__link ">
+                Alert
+              </a>
+            
+              <a href="/nanoui/components/dialog"
+                 class="docs-nav__link ">
+                Dialog
+              </a>
+            
+              <a href="/nanoui/components/dropdown"
+                 class="docs-nav__link ">
+                Dropdown
+              </a>
+            
+              <a href="/nanoui/components/tooltip"
+                 class="docs-nav__link is-active">
+                Tooltip
+              </a>
+            
+              <a href="/nanoui/components/toast"
+                 class="docs-nav__link ">
+                Toast
+              </a>
+            
+              <a href="/nanoui/components/table"
+                 class="docs-nav__link ">
+                Table
+              </a>
+            
+              <a href="/nanoui/components/tabs"
+                 class="docs-nav__link ">
+                Tabs
+              </a>
+            
+              <a href="/nanoui/components/accordion"
+                 class="docs-nav__link ">
+                Accordion
+              </a>
+            
+              <a href="/nanoui/components/progress"
+                 class="docs-nav__link ">
+                Progress
+              </a>
+            
+          
+        
+      </nav>
+    </aside>
+
+    <main class="docs-main">
+      <article class="docs-content">
+        <h1 id="tooltip">Tooltip</h1>
+
+<p>A small popup that appears on hover/focus. Requires the <code class="language-plaintext highlighter-rouge">nanoui-tooltip</code> Stimulus controller.</p>
+
+<h2 id="positions">Positions</h2>
+
+<div class="docs-example">
+  <div class="docs-example__header">
+    <span>Preview</span>
+    <button class="docs-example__copy">Copy</button>
+  </div>
+  <div class="docs-preview" style="display:flex;gap:2rem;padding:3rem 1rem;justify-content:center;flex-wrap:wrap">
+    <div class="nano-tooltip nano-tooltip--top" onmouseenter="this.classList.add('is-open')" onmouseleave="this.classList.remove('is-open')">
+      <button class="nano-btn nano-btn--outline nano-btn--sm" type="button">Top</button>
+      <div class="nano-tooltip__content" role="tooltip">Tooltip on top</div>
+    </div>
+    <div class="nano-tooltip nano-tooltip--bottom" onmouseenter="this.classList.add('is-open')" onmouseleave="this.classList.remove('is-open')">
+      <button class="nano-btn nano-btn--outline nano-btn--sm" type="button">Bottom</button>
+      <div class="nano-tooltip__content" role="tooltip">Tooltip on bottom</div>
+    </div>
+    <div class="nano-tooltip nano-tooltip--left" onmouseenter="this.classList.add('is-open')" onmouseleave="this.classList.remove('is-open')">
+      <button class="nano-btn nano-btn--outline nano-btn--sm" type="button">Left</button>
+      <div class="nano-tooltip__content" role="tooltip">Tooltip on left</div>
+    </div>
+    <div class="nano-tooltip nano-tooltip--right" onmouseenter="this.classList.add('is-open')" onmouseleave="this.classList.remove('is-open')">
+      <button class="nano-btn nano-btn--outline nano-btn--sm" type="button">Right</button>
+      <div class="nano-tooltip__content" role="tooltip">Tooltip on right</div>
+    </div>
+  </div>
+  <div class="docs-example__code">
+
+<pre><code>&lt;div class="nano-tooltip nano-tooltip--top"
+     data-controller="nanoui-tooltip"
+     data-nanoui-tooltip-delay-value="200"
+     data-action="mouseenter-&gt;nanoui-tooltip#show mouseleave-&gt;nanoui-tooltip#hide
+                  focusin-&gt;nanoui-tooltip#show focusout-&gt;nanoui-tooltip#hide"&gt;
+
+  &lt;button class="nano-btn nano-btn--outline nano-btn--sm"&gt;Hover me&lt;/button&gt;
+
+  &lt;div class="nano-tooltip__content" role="tooltip"&gt;
+    Save your progress
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+
+  </div>
+</div>
+
+<h3 id="positions-1">Positions</h3>
+
+<p>Add <code class="language-plaintext highlighter-rouge">nano-tooltip--top</code> (default), <code class="language-plaintext highlighter-rouge">nano-tooltip--bottom</code>, <code class="language-plaintext highlighter-rouge">nano-tooltip--left</code>, or <code class="language-plaintext highlighter-rouge">nano-tooltip--right</code>.</p>
+
+<h3 id="stimulus-controller">Stimulus controller</h3>
+
+<ul>
+  <li><strong>Values:</strong> <code class="language-plaintext highlighter-rouge">delay</code> (Number, default 200ms)</li>
+  <li><strong>Actions:</strong> <code class="language-plaintext highlighter-rouge">show()</code>, <code class="language-plaintext highlighter-rouge">hide()</code></li>
+  <li>Shows on hover and focus, hides on mouseleave and blur</li>
+</ul>
+
+      </article>
+    </main>
+  </div>
+
+  <script>
+    // Copy button for code examples
+    document.querySelectorAll('.docs-example__copy').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const code = btn.closest('.docs-example').querySelector('code').textContent;
+        navigator.clipboard.writeText(code).then(() => {
+          btn.textContent = 'Copied!';
+          setTimeout(() => { btn.textContent = 'Copy'; }, 2000);
+        });
+      });
+    });
+  </script>
+</body>
+</html>

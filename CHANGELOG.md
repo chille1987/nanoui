@@ -1,5 +1,23 @@
 # Changelog
 
+## 0.3.0 (2026-03-12)
+
+### Breaking changes
+
+- Removed `@import`-based CSS entry point (incompatible with Propshaft)
+- Removed ERB view partials
+
+### Added
+
+- Native HTML element styling (button, input, select, label styled without classes)
+- GitHub Pages documentation site with live component previews
+
+### Changed
+
+- Simplified generators (no more import management)
+
+---
+
 ## 0.1.0 (2026-03-09)
 
 ### Initial release

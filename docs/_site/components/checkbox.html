@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Checkbox — NanoUI</title>
+  <link rel="stylesheet" href="/nanoui/assets/css/nanoui.css">
+  <link rel="stylesheet" href="/nanoui/assets/css/docs.css">
+</head>
+<body>
+  <div class="docs-layout">
+    <aside class="docs-sidebar">
+      <a href="/nanoui/" class="docs-logo">NanoUI</a>
+      <nav class="docs-nav">
+        
+          
+            <a href="/nanoui/"
+               class="docs-nav__link ">
+              Getting Started
+            </a>
+          
+        
+          
+            <p class="docs-nav__heading">Components</p>
+            
+              <a href="/nanoui/components/button"
+                 class="docs-nav__link ">
+                Button
+              </a>
+            
+              <a href="/nanoui/components/input"
+                 class="docs-nav__link ">
+                Input
+              </a>
+            
+              <a href="/nanoui/components/label"
+                 class="docs-nav__link ">
+                Label
+              </a>
+            
+              <a href="/nanoui/components/select"
+                 class="docs-nav__link ">
+                Select
+              </a>
+            
+              <a href="/nanoui/components/checkbox"
+                 class="docs-nav__link is-active">
+                Checkbox
+              </a>
+            
+              <a href="/nanoui/components/radio"
+                 class="docs-nav__link ">
+                Radio
+              </a>
+            
+              <a href="/nanoui/components/switch"
+                 class="docs-nav__link ">
+                Switch
+              </a>
+            
+              <a href="/nanoui/components/card"
+                 class="docs-nav__link ">
+                Card
+              </a>
+            
+              <a href="/nanoui/components/badge"
+                 class="docs-nav__link ">
+                Badge
+              </a>
+            
+              <a href="/nanoui/components/alert"
+                 class="docs-nav__link ">
+                Alert
+              </a>
+            
+              <a href="/nanoui/components/dialog"
+                 class="docs-nav__link ">
+                Dialog
+              </a>
+            
+              <a href="/nanoui/components/dropdown"
+                 class="docs-nav__link ">
+                Dropdown
+              </a>
+            
+              <a href="/nanoui/components/tooltip"
+                 class="docs-nav__link ">
+                Tooltip
+              </a>
+            
+              <a href="/nanoui/components/toast"
+                 class="docs-nav__link ">
+                Toast
+              </a>
+            
+              <a href="/nanoui/components/table"
+                 class="docs-nav__link ">
+                Table
+              </a>
+            
+              <a href="/nanoui/components/tabs"
+                 class="docs-nav__link ">
+                Tabs
+              </a>
+            
+              <a href="/nanoui/components/accordion"
+                 class="docs-nav__link ">
+                Accordion
+              </a>
+            
+              <a href="/nanoui/components/progress"
+                 class="docs-nav__link ">
+                Progress
+              </a>
+            
+          
+        
+      </nav>
+    </aside>
+
+    <main class="docs-main">
+      <article class="docs-content">
+        <h1 id="checkbox">Checkbox</h1>
+
+<p>Custom-styled checkbox using BEM markup. Requires specific HTML structure with hidden input + label.</p>
+
+<h2 id="default">Default</h2>
+
+<div class="docs-example">
+  <div class="docs-example__header">
+    <span>Preview</span>
+    <button class="docs-example__copy">Copy</button>
+  </div>
+  <div class="docs-preview">
+    <div class="nano-checkbox">
+      <input type="checkbox" id="terms-demo" class="nano-checkbox__input" name="terms" />
+      <label for="terms-demo" class="nano-checkbox__label">I accept the terms of service</label>
+    </div>
+  </div>
+  <div class="docs-example__code">
+
+<pre><code>&lt;div class="nano-checkbox"&gt;
+  &lt;input type="checkbox" id="terms" class="nano-checkbox__input" name="terms"&gt;
+  &lt;label for="terms" class="nano-checkbox__label"&gt;I accept the terms of service&lt;/label&gt;
+&lt;/div&gt;</code></pre>
+
+  </div>
+</div>
+
+<h2 id="checked">Checked</h2>
+
+<div class="docs-example">
+  <div class="docs-example__header">
+    <span>Preview</span>
+    <button class="docs-example__copy">Copy</button>
+  </div>
+  <div class="docs-preview">
+    <div class="nano-checkbox">
+      <input type="checkbox" id="newsletter-demo" class="nano-checkbox__input" name="newsletter" checked="" />
+      <label for="newsletter-demo" class="nano-checkbox__label">Subscribe to newsletter</label>
+    </div>
+  </div>
+  <div class="docs-example__code">
+
+<pre><code>&lt;div class="nano-checkbox"&gt;
+  &lt;input type="checkbox" id="newsletter" class="nano-checkbox__input" name="newsletter" checked&gt;
+  &lt;label for="newsletter" class="nano-checkbox__label"&gt;Subscribe to newsletter&lt;/label&gt;
+&lt;/div&gt;</code></pre>
+
+  </div>
+</div>
+
+<h2 id="disabled">Disabled</h2>
+
+<div class="docs-example">
+  <div class="docs-example__header">
+    <span>Preview</span>
+    <button class="docs-example__copy">Copy</button>
+  </div>
+  <div class="docs-preview">
+    <div class="nano-checkbox">
+      <input type="checkbox" id="disabled-demo" class="nano-checkbox__input" disabled="" />
+      <label for="disabled-demo" class="nano-checkbox__label">Disabled checkbox</label>
+    </div>
+  </div>
+  <div class="docs-example__code">
+
+<pre><code>&lt;div class="nano-checkbox"&gt;
+  &lt;input type="checkbox" id="disabled" class="nano-checkbox__input" disabled&gt;
+  &lt;label for="disabled" class="nano-checkbox__label"&gt;Disabled checkbox&lt;/label&gt;
+&lt;/div&gt;</code></pre>
+
+  </div>
+</div>
+
+      </article>
+    </main>
+  </div>
+
+  <script>
+    // Copy button for code examples
+    document.querySelectorAll('.docs-example__copy').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const code = btn.closest('.docs-example').querySelector('code').textContent;
+        navigator.clipboard.writeText(code).then(() => {
+          btn.textContent = 'Copied!';
+          setTimeout(() => { btn.textContent = 'Copy'; }, 2000);
+        });
+      });
+    });
+  </script>
+</body>
+</html>

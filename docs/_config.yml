@@ -1,0 +1,8 @@
+title: NanoUI
+description: Vanilla CSS + Stimulus component library for Rails
+baseurl: /nanoui
+url: ""
+markdown: kramdown
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
