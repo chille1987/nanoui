@@ -22,7 +22,10 @@ module Nanoui
         tabs
         accordion
         progress
+        container
       ].freeze
+
+      LAYOUT_COMPONENTS = %w[container].freeze
 
       argument :components, type: :array, default: [], banner: "component [component] ..."
 
@@ -34,6 +37,7 @@ module Nanoui
         "forms"      => %w[button input label checkbox radio switch select badge alert],
         "overlays"   => %w[dialog dropdown tooltip toast],
         "data"       => %w[table tabs accordion progress],
+        "layout"     => %w[container],
       }.freeze
 
       STIMULUS_COMPONENTS = %w[dialog dropdown tooltip toast tabs accordion switch].freeze
@@ -52,8 +56,9 @@ module Nanoui
 
       def copy_component_css
         @resolved.each do |name|
-          copy_file "css/components/#{name}.css",
-                    "app/assets/stylesheets/nanoui/components/#{name}.css"
+          subfolder = LAYOUT_COMPONENTS.include?(name) ? "layout" : "components"
+          copy_file "css/#{subfolder}/#{name}.css",
+                    "app/assets/stylesheets/nanoui/#{subfolder}/#{name}.css"
         end
       end
 

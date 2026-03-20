@@ -22,13 +22,14 @@ require_relative "../../lib/generators/nanoui/component_generator"
 
 RSpec.describe Nanoui::Generators::ComponentGenerator do
   describe "COMPONENT_ORDER" do
-    it "lists all 18 components" do
-      expect(described_class::COMPONENT_ORDER.size).to eq(18)
+    it "lists all 19 components" do
+      expect(described_class::COMPONENT_ORDER.size).to eq(19)
     end
 
     it "includes expected components" do
       %w[button input label card checkbox radio switch select
-         badge alert dialog dropdown tooltip toast table tabs accordion progress].each do |name|
+         badge alert dialog dropdown tooltip toast table tabs accordion progress
+         container].each do |name|
         expect(described_class::COMPONENT_ORDER).to include(name)
       end
     end
@@ -53,8 +54,8 @@ RSpec.describe Nanoui::Generators::ComponentGenerator do
   end
 
   describe "GROUPS" do
-    it "defines essentials, forms, overlays, and data groups" do
-      expect(described_class::GROUPS.keys).to contain_exactly("essentials", "forms", "overlays", "data")
+    it "defines essentials, forms, overlays, data, and layout groups" do
+      expect(described_class::GROUPS.keys).to contain_exactly("essentials", "forms", "overlays", "data", "layout")
     end
 
     it "only references valid components" do
@@ -76,7 +77,7 @@ RSpec.describe Nanoui::Generators::ComponentGenerator do
     it "COMPONENT_ORDER matches the canonical order" do
       order = described_class::COMPONENT_ORDER
       expect(order.first).to eq("button")
-      expect(order.last).to eq("progress")
+      expect(order.last).to eq("container")
     end
   end
 
