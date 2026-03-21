@@ -3,12 +3,12 @@
   max-width: 1280px;
   margin-inline: auto;
   padding-inline: var(--space-6);
-}
 
-.nano-container--md {
-  max-width: 1024px;
-}
+  &--md {
+    max-width: 1024px;
+  }
 
-.nano-container--sm {
-  max-width: 640px;
+  &--sm {
+    max-width: 640px;
+  }
 }

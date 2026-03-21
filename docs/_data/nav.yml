@@ -42,3 +42,13 @@
       url: /components/accordion
     - title: Progress
       url: /components/progress
+    - title: Navbar
+      url: /components/navbar
+    - title: Sidebar
+      url: /components/sidebar
+    - title: Breadcrumb
+      url: /components/breadcrumb
+    - title: Avatar
+      url: /components/avatar
+    - title: Skeleton
+      url: /components/skeleton

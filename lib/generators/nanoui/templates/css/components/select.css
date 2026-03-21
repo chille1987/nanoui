@@ -1,4 +1,45 @@
-.nano-select,
+.nano-select {
+  display: block;
+  width: 100%;
+  padding: var(--space-2) var(--space-8) var(--space-2) var(--space-3);
+  font-size: var(--text-sm);
+  font-family: var(--font-sans);
+  line-height: var(--leading-normal);
+  color: hsl(var(--color-foreground));
+  background-color: hsl(var(--color-background));
+  border: 1px solid hsl(var(--color-input));
+  border-radius: var(--radius-md);
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%236b7280' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right var(--space-2) center;
+  background-size: 1rem;
+  transition: border-color var(--duration-fast) var(--ease-default),
+              box-shadow var(--duration-fast) var(--ease-default);
+
+  &:focus {
+    border-color: hsl(var(--color-input-focus));
+    outline: 2px solid hsl(var(--color-input-focus));
+    outline-offset: -1px;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  &--error,
+  &[aria-invalid="true"] {
+    border-color: hsl(var(--color-destructive));
+
+    &:focus {
+      border-color: hsl(var(--color-destructive));
+      outline: 2px solid hsl(var(--color-destructive));
+      outline-offset: -1px;
+    }
+  }
+}
+
 select {
   display: block;
   width: 100%;
@@ -17,31 +58,17 @@ select {
   background-size: 1rem;
   transition: border-color var(--duration-fast) var(--ease-default),
               box-shadow var(--duration-fast) var(--ease-default);
-}
 
-.nano-select:focus,
-select:focus {
-  border-color: hsl(var(--color-input-focus));
-  outline: 2px solid hsl(var(--color-input-focus));
-  outline-offset: -1px;
-}
+  &:focus {
+    border-color: hsl(var(--color-input-focus));
+    outline: 2px solid hsl(var(--color-input-focus));
+    outline-offset: -1px;
+  }
 
-.nano-select:disabled,
-select:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-}
-
-.nano-select--error,
-.nano-select[aria-invalid="true"] {
-  border-color: hsl(var(--color-destructive));
-}
-
-.nano-select--error:focus,
-.nano-select[aria-invalid="true"]:focus {
-  border-color: hsl(var(--color-destructive));
-  outline: 2px solid hsl(var(--color-destructive));
-  outline-offset: -1px;
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
 }
 
 .dark .nano-select,

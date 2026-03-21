@@ -22,22 +22,22 @@ require_relative "../../lib/generators/nanoui/component_generator"
 
 RSpec.describe Nanoui::Generators::ComponentGenerator do
   describe "COMPONENT_ORDER" do
-    it "lists all 19 components" do
-      expect(described_class::COMPONENT_ORDER.size).to eq(19)
+    it "lists all 24 components" do
+      expect(described_class::COMPONENT_ORDER.size).to eq(24)
     end
 
     it "includes expected components" do
       %w[button input label card checkbox radio switch select
          badge alert dialog dropdown tooltip toast table tabs accordion progress
-         container].each do |name|
+         navbar sidebar breadcrumb avatar skeleton container].each do |name|
         expect(described_class::COMPONENT_ORDER).to include(name)
       end
     end
   end
 
   describe "STIMULUS_COMPONENTS" do
-    it "lists 7 components with Stimulus controllers" do
-      expect(described_class::STIMULUS_COMPONENTS.size).to eq(7)
+    it "lists 9 components with Stimulus controllers" do
+      expect(described_class::STIMULUS_COMPONENTS.size).to eq(9)
     end
 
     it "does not include select" do
@@ -54,8 +54,8 @@ RSpec.describe Nanoui::Generators::ComponentGenerator do
   end
 
   describe "GROUPS" do
-    it "defines essentials, forms, overlays, data, and layout groups" do
-      expect(described_class::GROUPS.keys).to contain_exactly("essentials", "forms", "overlays", "data", "layout")
+    it "defines all component groups" do
+      expect(described_class::GROUPS.keys).to contain_exactly("essentials", "forms", "overlays", "data", "navigation", "feedback", "layout")
     end
 
     it "only references valid components" do

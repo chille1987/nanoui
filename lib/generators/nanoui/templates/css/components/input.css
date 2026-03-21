@@ -1,4 +1,44 @@
-.nano-input,
+.nano-input {
+  display: block;
+  width: 100%;
+  padding: var(--space-2) var(--space-3);
+  font-size: var(--text-sm);
+  font-family: var(--font-sans);
+  line-height: var(--leading-normal);
+  color: hsl(var(--color-foreground));
+  background-color: hsl(var(--color-background));
+  border: 1px solid hsl(var(--color-input));
+  border-radius: var(--radius-md);
+  transition: border-color var(--duration-fast) var(--ease-default),
+              box-shadow var(--duration-fast) var(--ease-default);
+
+  &::placeholder {
+    color: hsl(var(--color-muted-foreground));
+  }
+
+  &:focus {
+    border-color: hsl(var(--color-input-focus));
+    outline: 2px solid hsl(var(--color-input-focus));
+    outline-offset: -1px;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  &--error,
+  &[aria-invalid="true"] {
+    border-color: hsl(var(--color-destructive));
+
+    &:focus {
+      border-color: hsl(var(--color-destructive));
+      outline: 2px solid hsl(var(--color-destructive));
+      outline-offset: -1px;
+    }
+  }
+}
+
 input[type="text"],
 input[type="email"],
 input[type="password"],
@@ -24,72 +64,21 @@ textarea {
   border-radius: var(--radius-md);
   transition: border-color var(--duration-fast) var(--ease-default),
               box-shadow var(--duration-fast) var(--ease-default);
-}
 
-.nano-input::placeholder,
-input[type="text"]::placeholder,
-input[type="email"]::placeholder,
-input[type="password"]::placeholder,
-input[type="search"]::placeholder,
-input[type="tel"]::placeholder,
-input[type="url"]::placeholder,
-input[type="number"]::placeholder,
-input[type="date"]::placeholder,
-input[type="datetime-local"]::placeholder,
-input[type="month"]::placeholder,
-input[type="week"]::placeholder,
-input[type="time"]::placeholder,
-textarea::placeholder {
-  color: hsl(var(--color-muted-foreground));
-}
+  &::placeholder {
+    color: hsl(var(--color-muted-foreground));
+  }
 
-.nano-input:focus,
-input[type="text"]:focus,
-input[type="email"]:focus,
-input[type="password"]:focus,
-input[type="search"]:focus,
-input[type="tel"]:focus,
-input[type="url"]:focus,
-input[type="number"]:focus,
-input[type="date"]:focus,
-input[type="datetime-local"]:focus,
-input[type="month"]:focus,
-input[type="week"]:focus,
-input[type="time"]:focus,
-textarea:focus {
-  border-color: hsl(var(--color-input-focus));
-  outline: 2px solid hsl(var(--color-input-focus));
-  outline-offset: -1px;
-}
+  &:focus {
+    border-color: hsl(var(--color-input-focus));
+    outline: 2px solid hsl(var(--color-input-focus));
+    outline-offset: -1px;
+  }
 
-.nano-input:disabled,
-input[type="text"]:disabled,
-input[type="email"]:disabled,
-input[type="password"]:disabled,
-input[type="search"]:disabled,
-input[type="tel"]:disabled,
-input[type="url"]:disabled,
-input[type="number"]:disabled,
-input[type="date"]:disabled,
-input[type="datetime-local"]:disabled,
-input[type="month"]:disabled,
-input[type="week"]:disabled,
-input[type="time"]:disabled,
-textarea:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-}
-
-.nano-input--error,
-.nano-input[aria-invalid="true"] {
-  border-color: hsl(var(--color-destructive));
-}
-
-.nano-input--error:focus,
-.nano-input[aria-invalid="true"]:focus {
-  border-color: hsl(var(--color-destructive));
-  outline: 2px solid hsl(var(--color-destructive));
-  outline-offset: -1px;
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
 }
 
 textarea.nano-input,
@@ -102,32 +91,32 @@ textarea {
   display: flex;
   flex-direction: column;
   gap: var(--space-1-5);
-}
 
-.nano-field__error {
-  font-size: var(--text-sm);
-  color: hsl(var(--color-destructive));
+  .nano-field__error {
+    font-size: var(--text-sm);
+    color: hsl(var(--color-destructive));
+  }
 }
 
 .nano-input-group {
   display: flex;
   align-items: stretch;
-}
 
-.nano-input-group .nano-input,
-.nano-input-group .nano-btn {
-  min-height: 2.5rem;
-}
+  .nano-input,
+  .nano-btn {
+    min-height: 2.5rem;
+  }
 
-.nano-input-group .nano-input {
-  flex: 1 1 auto;
-  min-width: 0;
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
-}
+  .nano-input {
+    flex: 1 1 auto;
+    min-width: 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
 
-.nano-input-group .nano-btn {
-  flex: 0 0 auto;
-  border-top-left-radius: 0;
-  border-bottom-left-radius: 0;
+  .nano-btn {
+    flex: 0 0 auto;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
 }

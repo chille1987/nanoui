@@ -22,6 +22,11 @@ module Nanoui
         tabs
         accordion
         progress
+        navbar
+        sidebar
+        breadcrumb
+        avatar
+        skeleton
         container
       ].freeze
 
@@ -33,14 +38,16 @@ module Nanoui
       class_option :all, type: :boolean, default: false, desc: "Install all components"
 
       GROUPS = {
-        "essentials" => %w[button input label card badge alert],
-        "forms"      => %w[button input label checkbox radio switch select badge alert],
-        "overlays"   => %w[dialog dropdown tooltip toast],
-        "data"       => %w[table tabs accordion progress],
-        "layout"     => %w[container],
+        "essentials"  => %w[button input label card badge alert],
+        "forms"       => %w[button input label checkbox radio switch select badge alert],
+        "overlays"    => %w[dialog dropdown tooltip toast],
+        "data"        => %w[table tabs accordion progress],
+        "navigation"  => %w[navbar sidebar breadcrumb],
+        "feedback"    => %w[avatar skeleton],
+        "layout"      => %w[container],
       }.freeze
 
-      STIMULUS_COMPONENTS = %w[dialog dropdown tooltip toast tabs accordion switch].freeze
+      STIMULUS_COMPONENTS = %w[dialog dropdown tooltip toast tabs accordion switch navbar sidebar].freeze
 
       def resolve_components
         @resolved = if options[:all]

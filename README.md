@@ -2,15 +2,15 @@
 
 Vanilla CSS + Stimulus component library for Rails. Zero runtime dependencies.
 
-18 components. Semantic HTML. Accessible by default. No build step.
+23 components. Semantic HTML. Accessible by default. No build step.
 
-**[Documentation & Live Previews](https://chille1987.github.io/nanoui/)** — Browse all 18 components with interactive examples.
+**[Documentation & Live Previews](https://chille1987.github.io/nanoui/)** — Browse all 23 components with interactive examples.
 
-## What's New in v0.3.0
+## What's New in v0.5.0
 
-- **Native element styling** — Bare `<button>`, `<input>`, `<select>`, and `<label>` elements are styled out of the box. No `.nano-*` classes needed for default styling. Classes still work for variants.
-- **No @import needed** — Propshaft auto-loads all CSS files. Just run the generators and go.
-- **HTML-only components** — No ERB partials. Use plain HTML with CSS classes directly.
+- **5 new components** — Navbar, Sidebar, Breadcrumb, Avatar, and Skeleton
+- **Native CSS nesting** — All component CSS refactored to use native nesting for better readability
+- **New component groups** — `navigation` (navbar, sidebar, breadcrumb) and `feedback` (avatar, skeleton)
 
 ## Installation
 
@@ -68,6 +68,8 @@ nanoui_toast_controller.js     → data-controller="nanoui-toast"
 nanoui_tabs_controller.js      → data-controller="nanoui-tabs"
 nanoui_accordion_controller.js → data-controller="nanoui-accordion"
 nanoui_switch_controller.js    → data-controller="nanoui-switch"
+nanoui_navbar_controller.js    → data-controller="nanoui-navbar"
+nanoui_sidebar_controller.js   → data-controller="nanoui-sidebar"
 ```
 
 Or register manually:
@@ -464,6 +466,123 @@ Native `<progress>` element with custom styling.
 
 ---
 
+### Navigation
+
+#### Navbar
+
+Responsive top navigation bar with mobile hamburger menu.
+
+```html
+<nav class="nano-navbar nano-navbar--sticky" data-controller="nanoui-navbar">
+  <a href="/" class="nano-navbar__brand">MyApp</a>
+  <ul class="nano-navbar__links" data-nanoui-navbar-target="links">
+    <li><a href="/dashboard" class="nano-navbar__link nano-navbar__link--active">Dashboard</a></li>
+    <li><a href="/projects" class="nano-navbar__link">Projects</a></li>
+    <li><a href="/settings" class="nano-navbar__link">Settings</a></li>
+  </ul>
+  <div class="nano-navbar__actions">
+    <button class="nano-btn--outline nano-btn--sm">Log out</button>
+  </div>
+  <button class="nano-navbar__toggle" data-action="nanoui-navbar#toggle"
+          data-nanoui-navbar-target="toggle" aria-label="Toggle menu">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M3 12h18M3 6h18M3 18h18"/>
+    </svg>
+  </button>
+</nav>
+```
+
+**Modifiers:** `--sticky`
+
+#### Sidebar
+
+Collapsible sidebar navigation panel with groups and icons.
+
+```html
+<aside class="nano-sidebar" data-controller="nanoui-sidebar">
+  <div class="nano-sidebar__header">
+    <span>MyApp</span>
+    <button class="nano-sidebar__toggle" data-action="nanoui-sidebar#toggle"
+            data-nanoui-sidebar-target="toggle">⟨</button>
+  </div>
+  <nav class="nano-sidebar__nav">
+    <div class="nano-sidebar__group">
+      <span class="nano-sidebar__group-label">Main</span>
+      <a href="/dashboard" class="nano-sidebar__item nano-sidebar__item--active">
+        <svg><!-- icon --></svg> <span>Dashboard</span>
+      </a>
+      <a href="/projects" class="nano-sidebar__item">
+        <svg><!-- icon --></svg> <span>Projects</span>
+      </a>
+    </div>
+  </nav>
+  <div class="nano-sidebar__footer">
+    <a href="/settings" class="nano-sidebar__item">
+      <svg><!-- icon --></svg> <span>Settings</span>
+    </a>
+  </div>
+</aside>
+```
+
+#### Breadcrumb
+
+Navigation trail with separators.
+
+```html
+<nav class="nano-breadcrumb" aria-label="Breadcrumb">
+  <ol class="nano-breadcrumb__list">
+    <li class="nano-breadcrumb__item">
+      <a href="/" class="nano-breadcrumb__link">Home</a>
+      <span class="nano-breadcrumb__separator" aria-hidden="true"></span>
+    </li>
+    <li class="nano-breadcrumb__item">
+      <a href="/projects" class="nano-breadcrumb__link">Projects</a>
+      <span class="nano-breadcrumb__separator" aria-hidden="true"></span>
+    </li>
+    <li class="nano-breadcrumb__item">
+      <span class="nano-breadcrumb__link" aria-current="page">Settings</span>
+    </li>
+  </ol>
+</nav>
+```
+
+---
+
+### Feedback
+
+#### Avatar
+
+Circular avatar with image or initials fallback and optional status indicator.
+
+```html
+<div class="nano-avatar">
+  <img src="/avatar.jpg" alt="Jane Doe" class="nano-avatar__image">
+  <span class="nano-avatar__status nano-avatar__status--online"></span>
+</div>
+
+<div class="nano-avatar nano-avatar--lg">
+  <span class="nano-avatar__fallback">JD</span>
+</div>
+```
+
+**Sizes:** sm (32px), default (40px), lg (48px), xl (64px)
+**Status:** `--online`, `--offline`, `--busy`
+
+#### Skeleton
+
+Loading placeholder with shimmer animation.
+
+```html
+<div class="nano-skeleton" style="width: 200px;"></div>
+<div class="nano-skeleton nano-skeleton--text" style="width: 80%;"></div>
+<div class="nano-skeleton nano-skeleton--circle"></div>
+<div class="nano-skeleton nano-skeleton--card"></div>
+```
+
+**Variants:** default (1rem line), `--text` (0.75rem), `--circle` (40px), `--card` (200px)
+
+---
+
 ## Design Tokens
 
 Customize your theme by editing the CSS custom properties:
@@ -498,12 +617,17 @@ All components update automatically, including dark mode.
 | **Forms** | Checkbox, Radio, Switch, Select |
 | **Overlays** | Dialog, Dropdown, Tooltip, Toast |
 | **Data** | Table, Tabs, Accordion, Progress |
+| **Navigation** | Navbar, Sidebar, Breadcrumb |
+| **Feedback** | Avatar, Skeleton |
+| **Layout** | Container |
 
 ```bash
 rails generate nanoui:component --group essentials
 rails generate nanoui:component --group forms
 rails generate nanoui:component --group overlays
 rails generate nanoui:component --group data
+rails generate nanoui:component --group navigation
+rails generate nanoui:component --group feedback
 rails generate nanoui:component --all
 ```
 

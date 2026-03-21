@@ -1,5 +1,32 @@
 # Changelog
 
+## 0.5.0 (2026-03-21)
+
+### Added
+
+- **Navbar** component — Responsive top navigation bar with mobile hamburger menu (CSS + Stimulus)
+- **Sidebar** component — Collapsible sidebar navigation panel with groups and icons (CSS + Stimulus)
+- **Breadcrumb** component — Navigation trail with separators (CSS only)
+- **Avatar** component — Circular avatar with image/initials fallback and status indicator (CSS only)
+- **Skeleton** component — Loading placeholder with shimmer animation (CSS only)
+- New component groups: `navigation` (navbar, sidebar, breadcrumb) and `feedback` (avatar, skeleton)
+
+### Changed
+
+- Refactored all CSS to use native CSS nesting for improved readability and maintainability
+- Component count: 18 → 23
+- Stimulus controllers: 7 → 9
+
+---
+
+## 0.4.0 (2026-03-15)
+
+### Added
+
+- **Container** layout component with sm, md, lg sizes
+
+---
+
 ## 0.3.0 (2026-03-12)
 
 ### Breaking changes

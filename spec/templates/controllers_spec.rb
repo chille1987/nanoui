@@ -1,7 +1,7 @@
 require "spec_helper"
 
 RSpec.describe "Stimulus controller templates" do
-  controllers = %w[accordion dialog dropdown switch tabs toast tooltip]
+  controllers = %w[accordion dialog dropdown navbar sidebar switch tabs toast tooltip]
 
   controllers.each do |name|
     describe "#{name}_controller.js" do
@@ -22,9 +22,9 @@ RSpec.describe "Stimulus controller templates" do
     end
   end
 
-  it "has exactly 7 controller files" do
+  it "has exactly 9 controller files" do
     files = Dir.glob(File.join(TEMPLATE_ROOT, "js/controllers/*_controller.js"))
-    expect(files.size).to eq(7)
+    expect(files.size).to eq(9)
   end
 
   it "uses the toggled details element directly for accordion single mode" do

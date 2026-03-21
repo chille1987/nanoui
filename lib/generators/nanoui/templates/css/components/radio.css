@@ -5,91 +5,93 @@
   display: flex;
   flex-direction: column;
   gap: var(--space-2);
-}
 
-.nano-radio-group__legend {
-  font-size: var(--text-sm);
-  font-weight: var(--font-medium);
-  line-height: var(--leading-none);
-  color: hsl(var(--color-foreground));
-  margin-bottom: var(--space-2);
+  .nano-radio-group__legend {
+    font-size: var(--text-sm);
+    font-weight: var(--font-medium);
+    line-height: var(--leading-none);
+    color: hsl(var(--color-foreground));
+    margin-bottom: var(--space-2);
+  }
 }
 
 .nano-radio {
   position: relative;
   display: inline-flex;
-}
 
-.nano-radio__input {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border-width: 0;
-}
+  .nano-radio__input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
 
-.nano-radio__label {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-2);
-  cursor: pointer;
-  user-select: none;
-  font-size: var(--text-sm);
-  line-height: var(--leading-normal);
-  color: hsl(var(--color-foreground));
-}
+    &:checked + .nano-radio__label::before {
+      border-color: hsl(var(--color-primary));
+    }
 
-.nano-radio__label::before {
-  content: "";
-  display: block;
-  width: 1.125rem;
-  height: 1.125rem;
-  flex-shrink: 0;
-  border: 1.5px solid hsl(var(--color-input));
-  border-radius: var(--radius-full);
-  background-color: hsl(var(--color-background));
-  transition: border-color var(--duration-fast) var(--ease-default);
-}
+    &:checked + .nano-radio__label::after {
+      transform: translateY(-50%) scale(1);
+    }
 
-.nano-radio__label::after {
-  content: "";
-  position: absolute;
-  left: 0.28125rem;
-  top: 50%;
-  transform: translateY(-50%) scale(0);
-  width: 0.5625rem;
-  height: 0.5625rem;
-  border-radius: var(--radius-full);
-  background-color: hsl(var(--color-primary));
-  transition: transform var(--duration-fast) var(--ease-default);
-}
+    &:focus-visible + .nano-radio__label::before {
+      outline: 2px solid hsl(var(--color-ring));
+      outline-offset: 2px;
+    }
 
-.nano-radio__input:checked + .nano-radio__label::before {
-  border-color: hsl(var(--color-primary));
-}
+    &:disabled + .nano-radio__label {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+  }
 
-.nano-radio__input:checked + .nano-radio__label::after {
-  transform: translateY(-50%) scale(1);
-}
+  .nano-radio__label {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    cursor: pointer;
+    user-select: none;
+    font-size: var(--text-sm);
+    line-height: var(--leading-normal);
+    color: hsl(var(--color-foreground));
 
-.nano-radio__input:focus-visible + .nano-radio__label::before {
-  outline: 2px solid hsl(var(--color-ring));
-  outline-offset: 2px;
-}
+    &::before {
+      content: "";
+      display: block;
+      width: 1.125rem;
+      height: 1.125rem;
+      flex-shrink: 0;
+      border: 1.5px solid hsl(var(--color-input));
+      border-radius: var(--radius-full);
+      background-color: hsl(var(--color-background));
+      transition: border-color var(--duration-fast) var(--ease-default);
+    }
 
-.nano-radio__input:disabled + .nano-radio__label {
-  opacity: 0.5;
-  cursor: not-allowed;
-}
+    &::after {
+      content: "";
+      position: absolute;
+      left: 0.28125rem;
+      top: 50%;
+      transform: translateY(-50%) scale(0);
+      width: 0.5625rem;
+      height: 0.5625rem;
+      border-radius: var(--radius-full);
+      background-color: hsl(var(--color-primary));
+      transition: transform var(--duration-fast) var(--ease-default);
+    }
+  }
 
-.nano-radio--error .nano-radio__label::before {
-  border-color: hsl(var(--color-destructive));
-}
+  &--error {
+    .nano-radio__label::before {
+      border-color: hsl(var(--color-destructive));
+    }
 
-.nano-radio--error .nano-radio__input:checked + .nano-radio__label::after {
-  background-color: hsl(var(--color-destructive));
+    .nano-radio__input:checked + .nano-radio__label::after {
+      background-color: hsl(var(--color-destructive));
+    }
+  }
 }

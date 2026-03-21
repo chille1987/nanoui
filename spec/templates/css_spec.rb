@@ -2,8 +2,8 @@ require "spec_helper"
 
 RSpec.describe "CSS templates" do
   components = %w[
-    accordion alert badge button card checkbox dialog dropdown
-    input label progress radio select switch table tabs toast tooltip
+    accordion alert avatar badge breadcrumb button card checkbox dialog dropdown
+    input label navbar progress radio select sidebar skeleton switch table tabs toast tooltip
   ]
 
   components.each do |name|
@@ -14,9 +14,9 @@ RSpec.describe "CSS templates" do
     end
   end
 
-  it "has exactly 18 component CSS files" do
+  it "has exactly 23 component CSS files" do
     files = Dir.glob(File.join(TEMPLATE_ROOT, "css/components/*.css"))
-    expect(files.size).to eq(18)
+    expect(files.size).to eq(23)
   end
 
   layout_components = %w[container]

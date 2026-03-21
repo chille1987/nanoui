@@ -8,41 +8,41 @@
   line-height: var(--leading-none);
   padding: var(--space-1) var(--space-2-5);
   white-space: nowrap;
-}
 
-.nano-badge--primary {
-  background-color: hsl(var(--color-primary));
-  color: hsl(var(--color-primary-foreground));
-}
+  &--primary {
+    background-color: hsl(var(--color-primary));
+    color: hsl(var(--color-primary-foreground));
+  }
 
-.nano-badge--secondary {
-  background-color: hsl(var(--color-secondary));
-  color: hsl(var(--color-secondary-foreground));
-}
+  &--secondary {
+    background-color: hsl(var(--color-secondary));
+    color: hsl(var(--color-secondary-foreground));
+  }
 
-.nano-badge--destructive {
-  background-color: hsl(var(--color-destructive));
-  color: hsl(var(--color-destructive-foreground));
-}
+  &--destructive {
+    background-color: hsl(var(--color-destructive));
+    color: hsl(var(--color-destructive-foreground));
+  }
 
-.nano-badge--outline {
-  background-color: transparent;
-  border: 1px solid hsl(var(--color-border));
-  color: hsl(var(--color-foreground));
-}
+  &--outline {
+    background-color: transparent;
+    border: 1px solid hsl(var(--color-border));
+    color: hsl(var(--color-foreground));
+  }
 
-.nano-badge--success {
-  background-color: hsl(var(--color-success));
-  color: hsl(var(--color-success-foreground));
-}
+  &--success {
+    background-color: hsl(var(--color-success));
+    color: hsl(var(--color-success-foreground));
+  }
 
-.nano-badge--warning {
-  background-color: hsl(var(--color-warning));
-  color: hsl(var(--color-warning-foreground));
-}
+  &--warning {
+    background-color: hsl(var(--color-warning));
+    color: hsl(var(--color-warning-foreground));
+  }
 
-.nano-badge svg {
-  width: 0.75rem;
-  height: 0.75rem;
-  flex-shrink: 0;
+  svg {
+    width: 0.75rem;
+    height: 0.75rem;
+    flex-shrink: 0;
+  }
 }

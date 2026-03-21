@@ -1,0 +1,49 @@
+@keyframes nano-shimmer {
+  from {
+    transform: translateX(-100%);
+  }
+
+  to {
+    transform: translateX(100%);
+  }
+}
+
+.nano-skeleton {
+  display: block;
+  background-color: hsl(var(--color-muted));
+  border-radius: var(--radius-md);
+  height: 1rem;
+  position: relative;
+  overflow: hidden;
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      hsl(var(--color-background) / 0.4),
+      transparent
+    );
+    animation: nano-shimmer 1.5s var(--ease-default) infinite;
+  }
+
+  &--text {
+    height: 0.75rem;
+    width: 100%;
+    margin-bottom: var(--space-2);
+  }
+
+  &--circle {
+    border-radius: var(--radius-full);
+    width: 40px;
+    aspect-ratio: 1;
+    height: auto;
+  }
+
+  &--card {
+    height: 200px;
+    border-radius: var(--radius-lg);
+  }
+}

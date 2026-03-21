@@ -13,108 +13,108 @@
   transform: scale(0.95);
   transition: opacity var(--duration-normal) var(--ease-default),
               transform var(--duration-normal) var(--ease-default);
-}
 
-.nano-dialog[open] {
-  position: fixed;
-}
+  &[open] {
+    position: fixed;
+  }
 
-.nano-dialog.is-open {
-  opacity: 1;
-  transform: scale(1);
-}
+  &.is-open {
+    opacity: 1;
+    transform: scale(1);
+  }
 
-.nano-dialog::backdrop {
-  background-color: rgb(0 0 0 / 0.5);
-  backdrop-filter: blur(4px);
-}
+  &::backdrop {
+    background-color: rgb(0 0 0 / 0.5);
+    backdrop-filter: blur(4px);
+  }
 
-.nano-dialog--sm {
-  max-width: 24rem;
-}
+  &--sm {
+    max-width: 24rem;
+  }
 
-.nano-dialog--lg {
-  max-width: 42rem;
-}
+  &--lg {
+    max-width: 42rem;
+  }
 
-.nano-dialog--full {
-  max-width: 100vw;
-  max-height: 100vh;
-  width: 100vw;
-  height: 100vh;
-  margin: 0;
-  border-radius: 0;
-}
+  &--full {
+    max-width: 100vw;
+    max-height: 100vh;
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    border-radius: 0;
+  }
 
-.nano-dialog__content {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-}
+  .nano-dialog__content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+  }
 
-.nano-dialog__header {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-1-5);
-  padding: var(--space-6);
-  padding-bottom: 0;
-  padding-right: var(--space-12);
-}
+  .nano-dialog__header {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1-5);
+    padding: var(--space-6);
+    padding-bottom: 0;
+    padding-right: var(--space-12);
+  }
 
-.nano-dialog__title {
-  font-size: var(--text-lg);
-  font-weight: var(--font-semibold);
-  line-height: var(--leading-tight);
-  letter-spacing: var(--tracking-tight);
-}
+  .nano-dialog__title {
+    font-size: var(--text-lg);
+    font-weight: var(--font-semibold);
+    line-height: var(--leading-tight);
+    letter-spacing: var(--tracking-tight);
+  }
 
-.nano-dialog__description {
-  font-size: var(--text-sm);
-  color: hsl(var(--color-muted-foreground));
-}
+  .nano-dialog__description {
+    font-size: var(--text-sm);
+    color: hsl(var(--color-muted-foreground));
+  }
 
-.nano-dialog__body {
-  padding: var(--space-6);
-}
+  .nano-dialog__body {
+    padding: var(--space-6);
+  }
 
-.nano-dialog__footer {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  gap: var(--space-2);
-  padding: var(--space-6);
-}
+  .nano-dialog__footer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: var(--space-2);
+    padding: var(--space-6);
+  }
 
-.nano-dialog__close {
-  position: absolute;
-  top: var(--space-4);
-  right: var(--space-4);
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 1.5rem;
-  height: 1.5rem;
-  padding: 0;
-  border: none;
-  border-radius: var(--radius-sm);
-  background-color: transparent;
-  color: hsl(var(--color-muted-foreground));
-  cursor: pointer;
-  transition: color var(--duration-fast) var(--ease-default),
-                background-color var(--duration-fast) var(--ease-default);
-}
+  .nano-dialog__close {
+    position: absolute;
+    top: var(--space-4);
+    right: var(--space-4);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.5rem;
+    height: 1.5rem;
+    padding: 0;
+    border: none;
+    border-radius: var(--radius-sm);
+    background-color: transparent;
+    color: hsl(var(--color-muted-foreground));
+    cursor: pointer;
+    transition: color var(--duration-fast) var(--ease-default),
+                  background-color var(--duration-fast) var(--ease-default);
 
-.nano-dialog__close:hover {
-  color: hsl(var(--color-foreground));
-  background-color: hsl(var(--color-muted));
-}
+    &:hover {
+      color: hsl(var(--color-foreground));
+      background-color: hsl(var(--color-muted));
+    }
 
-.nano-dialog__close:focus-visible {
-  outline: 2px solid hsl(var(--color-ring));
-  outline-offset: 2px;
-}
+    &:focus-visible {
+      outline: 2px solid hsl(var(--color-ring));
+      outline-offset: 2px;
+    }
 
-.nano-dialog__close svg {
-  width: 1rem;
-  height: 1rem;
+    svg {
+      width: 1rem;
+      height: 1rem;
+    }
+  }
 }

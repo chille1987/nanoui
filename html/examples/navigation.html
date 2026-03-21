@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NanoUI — Navigation & Feedback Components</title>
+  <link rel="stylesheet" href="../../lib/generators/nanoui/templates/css/nanoui.css">
+  <style>
+    .showcase {
+      max-width: 56rem;
+      margin: 0 auto;
+      padding: var(--space-8) var(--space-6);
+    }
+    .showcase h1 {
+      font-size: var(--text-4xl);
+      font-weight: var(--font-bold);
+      letter-spacing: var(--tracking-tight);
+      margin-bottom: var(--space-2);
+    }
+    .showcase > p {
+      font-size: var(--text-lg);
+      color: hsl(var(--color-muted-foreground));
+      margin-bottom: var(--space-10);
+    }
+    .section {
+      margin-bottom: var(--space-12);
+    }
+    .section h2 {
+      font-size: var(--text-2xl);
+      font-weight: var(--font-semibold);
+      letter-spacing: var(--tracking-tight);
+      margin-bottom: var(--space-1);
+    }
+    .section > p {
+      font-size: var(--text-sm);
+      color: hsl(var(--color-muted-foreground));
+      margin-bottom: var(--space-6);
+    }
+    .demo {
+      padding: var(--space-6);
+      border: 1px solid hsl(var(--color-border));
+      border-radius: var(--radius-lg);
+      margin-bottom: var(--space-4);
+    }
+    .demo-row {
+      display: flex;
+      align-items: center;
+      gap: var(--space-4);
+      flex-wrap: wrap;
+    }
+    .sidebar-demo {
+      display: flex;
+      height: 400px;
+      border: 1px solid hsl(var(--color-border));
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      margin-bottom: var(--space-4);
+    }
+    .sidebar-demo__content {
+      flex: 1;
+      padding: var(--space-6);
+      background-color: hsl(var(--color-muted) / 0.3);
+    }
+    .skeleton-group {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-3);
+      max-width: 300px;
+    }
+  </style>
+</head>
+<body>
+  <div class="showcase">
+    <h1>Navigation & Feedback</h1>
+    <p>Navbar, Sidebar, Breadcrumb, Avatar, and Skeleton components.</p>
+
+    <!-- Navbar -->
+    <div class="section">
+      <h2>Navbar</h2>
+      <p>Responsive top navigation bar with mobile hamburger menu.</p>
+
+      <div class="demo" style="padding: 0; overflow: hidden;">
+        <nav class="nano-navbar" data-controller="nanoui-navbar">
+          <a href="#" class="nano-navbar__brand">MyApp</a>
+          <ul class="nano-navbar__links" data-nanoui-navbar-target="links">
+            <li><a href="#" class="nano-navbar__link nano-navbar__link--active">Dashboard</a></li>
+            <li><a href="#" class="nano-navbar__link">Projects</a></li>
+            <li><a href="#" class="nano-navbar__link">Team</a></li>
+            <li><a href="#" class="nano-navbar__link">Settings</a></li>
+          </ul>
+          <div class="nano-navbar__actions">
+            <button class="nano-btn--outline nano-btn--sm">Log out</button>
+          </div>
+          <button class="nano-navbar__toggle" data-action="nanoui-navbar#toggle"
+                  data-nanoui-navbar-target="toggle" aria-label="Toggle menu">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M3 12h18M3 6h18M3 18h18"/>
+            </svg>
+          </button>
+        </nav>
+      </div>
+
+      <div class="demo" style="padding: 0; overflow: hidden;">
+        <nav class="nano-navbar nano-navbar--sticky">
+          <a href="#" class="nano-navbar__brand">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/></svg>
+            Acme Inc
+          </a>
+          <ul class="nano-navbar__links">
+            <li><a href="#" class="nano-navbar__link">Products</a></li>
+            <li><a href="#" class="nano-navbar__link">Pricing</a></li>
+            <li><a href="#" class="nano-navbar__link">Docs</a></li>
+          </ul>
+          <div class="nano-navbar__actions">
+            <button class="nano-btn--ghost nano-btn--sm">Sign in</button>
+            <button class="nano-btn--sm">Get started</button>
+          </div>
+        </nav>
+      </div>
+    </div>
+
+    <!-- Breadcrumb -->
+    <div class="section">
+      <h2>Breadcrumb</h2>
+      <p>Navigation trail with separators.</p>
+
+      <div class="demo">
+        <nav class="nano-breadcrumb" aria-label="Breadcrumb">
+          <ol class="nano-breadcrumb__list">
+            <li class="nano-breadcrumb__item">
+              <a href="#" class="nano-breadcrumb__link">Home</a>
+              <span class="nano-breadcrumb__separator" aria-hidden="true"></span>
+            </li>
+            <li class="nano-breadcrumb__item">
+              <a href="#" class="nano-breadcrumb__link">Projects</a>
+              <span class="nano-breadcrumb__separator" aria-hidden="true"></span>
+            </li>
+            <li class="nano-breadcrumb__item">
+              <a href="#" class="nano-breadcrumb__link">NanoUI</a>
+              <span class="nano-breadcrumb__separator" aria-hidden="true"></span>
+            </li>
+            <li class="nano-breadcrumb__item">
+              <span class="nano-breadcrumb__link" aria-current="page">Settings</span>
+            </li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+
+    <!-- Sidebar -->
+    <div class="section">
+      <h2>Sidebar</h2>
+      <p>Collapsible sidebar navigation with groups.</p>
+
+      <div class="sidebar-demo">
+        <aside class="nano-sidebar" data-controller="nanoui-sidebar">
+          <div class="nano-sidebar__header">
+            <span style="font-weight: var(--font-bold);">MyApp</span>
+            <button class="nano-sidebar__toggle" data-action="nanoui-sidebar#toggle"
+                    data-nanoui-sidebar-target="toggle" aria-label="Toggle sidebar">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+                <path d="M15 18l-6-6 6-6"/>
+              </svg>
+            </button>
+          </div>
+          <nav class="nano-sidebar__nav">
+            <div class="nano-sidebar__group">
+              <span class="nano-sidebar__group-label">Main</span>
+              <a href="#" class="nano-sidebar__item nano-sidebar__item--active">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+                <span>Dashboard</span>
+              </a>
+              <a href="#" class="nano-sidebar__item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+                <span>Users</span>
+              </a>
+              <a href="#" class="nano-sidebar__item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+                <span>Settings</span>
+              </a>
+            </div>
+            <div class="nano-sidebar__group">
+              <span class="nano-sidebar__group-label">Content</span>
+              <a href="#" class="nano-sidebar__item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                <span>Documents</span>
+              </a>
+              <a href="#" class="nano-sidebar__item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                <span>Media</span>
+              </a>
+            </div>
+          </nav>
+          <div class="nano-sidebar__footer">
+            <a href="#" class="nano-sidebar__item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+              <span>Log out</span>
+            </a>
+          </div>
+        </aside>
+        <div class="sidebar-demo__content">
+          <h3>Main Content</h3>
+          <p>Click the toggle to collapse the sidebar.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Avatar -->
+    <div class="section">
+      <h2>Avatar</h2>
+      <p>Circular avatar with image or initials fallback and status indicator.</p>
+
+      <div class="demo">
+        <h3 style="font-size: var(--text-sm); font-weight: var(--font-semibold); margin-bottom: var(--space-3);">Sizes</h3>
+        <div class="demo-row" style="margin-bottom: var(--space-6);">
+          <div class="nano-avatar nano-avatar--sm">
+            <span class="nano-avatar__fallback">SM</span>
+          </div>
+          <div class="nano-avatar">
+            <span class="nano-avatar__fallback">MD</span>
+          </div>
+          <div class="nano-avatar nano-avatar--lg">
+            <span class="nano-avatar__fallback">LG</span>
+          </div>
+          <div class="nano-avatar nano-avatar--xl">
+            <span class="nano-avatar__fallback">XL</span>
+          </div>
+        </div>
+
+        <h3 style="font-size: var(--text-sm); font-weight: var(--font-semibold); margin-bottom: var(--space-3);">With Status</h3>
+        <div class="demo-row">
+          <div class="nano-avatar">
+            <span class="nano-avatar__fallback">JD</span>
+            <span class="nano-avatar__status nano-avatar__status--online"></span>
+          </div>
+          <div class="nano-avatar">
+            <span class="nano-avatar__fallback">AB</span>
+            <span class="nano-avatar__status nano-avatar__status--busy"></span>
+          </div>
+          <div class="nano-avatar">
+            <span class="nano-avatar__fallback">XY</span>
+            <span class="nano-avatar__status nano-avatar__status--offline"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Skeleton -->
+    <div class="section">
+      <h2>Skeleton</h2>
+      <p>Loading placeholder with shimmer animation.</p>
+
+      <div class="demo">
+        <div class="demo-row" style="align-items: flex-start; gap: var(--space-8);">
+          <div class="skeleton-group">
+            <h3 style="font-size: var(--text-sm); font-weight: var(--font-semibold); margin-bottom: var(--space-2);">Text Lines</h3>
+            <div class="nano-skeleton nano-skeleton--text" style="width: 60%;"></div>
+            <div class="nano-skeleton nano-skeleton--text" style="width: 100%;"></div>
+            <div class="nano-skeleton nano-skeleton--text" style="width: 80%;"></div>
+          </div>
+
+          <div>
+            <h3 style="font-size: var(--text-sm); font-weight: var(--font-semibold); margin-bottom: var(--space-2);">Circle</h3>
+            <div class="nano-skeleton nano-skeleton--circle"></div>
+          </div>
+
+          <div style="width: 200px;">
+            <h3 style="font-size: var(--text-sm); font-weight: var(--font-semibold); margin-bottom: var(--space-2);">Card</h3>
+            <div class="nano-skeleton nano-skeleton--card"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="demo">
+        <h3 style="font-size: var(--text-sm); font-weight: var(--font-semibold); margin-bottom: var(--space-4);">Card Loading State</h3>
+        <div style="display: flex; gap: var(--space-4); align-items: flex-start;">
+          <div class="nano-skeleton nano-skeleton--circle"></div>
+          <div style="flex: 1;">
+            <div class="nano-skeleton" style="width: 40%; margin-bottom: var(--space-2);"></div>
+            <div class="nano-skeleton nano-skeleton--text" style="width: 100%;"></div>
+            <div class="nano-skeleton nano-skeleton--text" style="width: 70%;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Stimulus controllers -->
+  <script type="module">
+    import NavbarController from "../../lib/generators/nanoui/templates/js/controllers/navbar_controller.js"
+    import SidebarController from "../../lib/generators/nanoui/templates/js/controllers/sidebar_controller.js"
+
+    import { Application } from "https://cdn.jsdelivr.net/npm/@hotwired/stimulus@3.2.2/+esm"
+    const app = Application.start()
+    app.register("nanoui-navbar", NavbarController)
+    app.register("nanoui-sidebar", SidebarController)
+  </script>
+</body>
+</html>

@@ -10,44 +10,50 @@
   border-collapse: collapse;
   font-size: var(--text-sm);
   text-align: left;
-}
 
-.nano-table__head {
-  background-color: hsl(var(--color-muted));
-}
+  .nano-table__head {
+    background-color: hsl(var(--color-muted));
+  }
 
-.nano-table__header {
-  padding: var(--space-3) var(--space-4);
-  font-weight: var(--font-medium);
-  color: hsl(var(--color-muted-foreground));
-  white-space: nowrap;
-}
+  .nano-table__header {
+    padding: var(--space-3) var(--space-4);
+    font-weight: var(--font-medium);
+    color: hsl(var(--color-muted-foreground));
+    white-space: nowrap;
+  }
 
-.nano-table__body .nano-table__row {
-  border-top: 1px solid hsl(var(--color-border));
-}
+  .nano-table__body {
+    .nano-table__row {
+      border-top: 1px solid hsl(var(--color-border));
+    }
+  }
 
-.nano-table__row {
-  transition: background-color var(--duration-fast) var(--ease-default);
-}
+  .nano-table__row {
+    transition: background-color var(--duration-fast) var(--ease-default);
+  }
 
-.nano-table__cell {
-  padding: var(--space-3) var(--space-4);
-  color: hsl(var(--color-foreground));
-  vertical-align: middle;
-}
+  .nano-table__cell {
+    padding: var(--space-3) var(--space-4);
+    color: hsl(var(--color-foreground));
+    vertical-align: middle;
+  }
 
-.nano-table__actions {
-  display: flex;
-  align-items: center;
-  gap: var(--space-1);
-  justify-content: flex-end;
-}
+  .nano-table__actions {
+    display: flex;
+    align-items: center;
+    gap: var(--space-1);
+    justify-content: flex-end;
+  }
 
-.nano-table--striped .nano-table__body .nano-table__row:nth-child(even) {
-  background-color: hsl(var(--color-muted) / 0.5);
-}
+  &--striped {
+    .nano-table__body .nano-table__row:nth-child(even) {
+      background-color: hsl(var(--color-muted) / 0.5);
+    }
+  }
 
-.nano-table--hoverable .nano-table__body .nano-table__row:hover {
-  background-color: hsl(var(--color-muted));
+  &--hoverable {
+    .nano-table__body .nano-table__row:hover {
+      background-color: hsl(var(--color-muted));
+    }
+  }
 }
