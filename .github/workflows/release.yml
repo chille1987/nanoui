@@ -11,7 +11,6 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
-      id-token: write
     steps:
       - uses: actions/checkout@v4
 
@@ -24,17 +23,24 @@ jobs:
       - name: Run RSpec
         run: bundle exec rspec
 
+      - name: Verify RUBYGEMS_API_KEY is set
+        env:
+          GEM_HOST_API_KEY: ${{ secrets.RUBYGEMS_API_KEY }}
+        run: |
+          if [ -z "$GEM_HOST_API_KEY" ]; then
+            echo "::error::RUBYGEMS_API_KEY secret is not set. Add it at:"
+            echo "https://github.com/${{ github.repository }}/settings/secrets/actions"
+            exit 1
+          fi
+          echo "RUBYGEMS_API_KEY is present (length: ${#GEM_HOST_API_KEY})"
+
       - name: Build gem
         run: gem build nanoui.gemspec
 
       - name: Publish to RubyGems
         env:
-          RUBYGEMS_API_KEY: ${{ secrets.RUBYGEMS_API_KEY }}
-        run: |
-          mkdir -p ~/.gem
-          printf -- "---\n:rubygems_api_key: %s\n" "$RUBYGEMS_API_KEY" > ~/.gem/credentials
-          chmod 0600 ~/.gem/credentials
-          gem push nanoui-*.gem
+          GEM_HOST_API_KEY: ${{ secrets.RUBYGEMS_API_KEY }}
+        run: gem push nanoui-*.gem
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
