@@ -13,6 +13,7 @@ module Rails
 
       def self.argument(*args); end
       def self.class_option(*args); end
+
       def self.desc(text = nil)
         @desc = text if text
         @desc

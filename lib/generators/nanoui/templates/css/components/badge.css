@@ -9,33 +9,33 @@
   padding: var(--space-1) var(--space-2-5);
   white-space: nowrap;
 
-  &--primary {
+  &.nano-badge--primary {
     background-color: hsl(var(--color-primary));
     color: hsl(var(--color-primary-foreground));
   }
 
-  &--secondary {
+  &.nano-badge--secondary {
     background-color: hsl(var(--color-secondary));
     color: hsl(var(--color-secondary-foreground));
   }
 
-  &--destructive {
+  &.nano-badge--destructive {
     background-color: hsl(var(--color-destructive));
     color: hsl(var(--color-destructive-foreground));
   }
 
-  &--outline {
+  &.nano-badge--outline {
     background-color: transparent;
     border: 1px solid hsl(var(--color-border));
     color: hsl(var(--color-foreground));
   }
 
-  &--success {
+  &.nano-badge--success {
     background-color: hsl(var(--color-success));
     color: hsl(var(--color-success-foreground));
   }
 
-  &--warning {
+  &.nano-badge--warning {
     background-color: hsl(var(--color-warning));
     color: hsl(var(--color-warning-foreground));
   }

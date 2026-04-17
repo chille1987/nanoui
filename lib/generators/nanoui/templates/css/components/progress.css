@@ -37,7 +37,7 @@
     text-align: right;
   }
 
-  &--success {
+  &.nano-progress--success {
     .nano-progress__bar::-webkit-progress-value {
       background-color: hsl(var(--color-success));
     }
@@ -47,7 +47,7 @@
     }
   }
 
-  &--warning {
+  &.nano-progress--warning {
     .nano-progress__bar::-webkit-progress-value {
       background-color: hsl(var(--color-warning));
     }
@@ -57,7 +57,7 @@
     }
   }
 
-  &--destructive {
+  &.nano-progress--destructive {
     .nano-progress__bar::-webkit-progress-value {
       background-color: hsl(var(--color-destructive));
     }

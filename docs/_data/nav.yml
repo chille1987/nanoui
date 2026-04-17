@@ -52,3 +52,21 @@
       url: /components/avatar
     - title: Skeleton
       url: /components/skeleton
+- title: Dashboard
+  children:
+    - title: Stat
+      url: /components/stat
+    - title: Empty state
+      url: /components/empty
+    - title: Timeline
+      url: /components/timeline
+    - title: Checklist
+      url: /components/checklist
+- title: Utilities
+  children:
+    - title: Copy to clipboard
+      url: /components/copy
+    - title: Code block
+      url: /components/code
+    - title: File upload
+      url: /components/upload

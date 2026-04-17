@@ -75,32 +75,83 @@
   .nano-toast__action {
     flex-shrink: 0;
     align-self: center;
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-1);
+    padding: var(--space-1-5) var(--space-3);
+    font-size: var(--text-sm);
+    font-weight: var(--font-medium);
+    color: hsl(var(--color-foreground));
+    background-color: transparent;
+    border: 1px solid hsl(var(--color-border));
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: background-color var(--duration-fast) var(--ease-default),
+                border-color var(--duration-fast) var(--ease-default);
+
+    &:hover {
+      background-color: hsl(var(--color-muted));
+    }
+
+    &:focus-visible {
+      outline: 2px solid hsl(var(--color-ring));
+      outline-offset: 2px;
+    }
   }
 
-  &--success {
+  &.nano-toast--success {
     border-color: hsl(var(--color-success) / 0.5);
     background-color: hsl(var(--color-success) / 0.05);
 
     .nano-toast__title {
       color: hsl(var(--color-success));
     }
+
+    .nano-toast__action {
+      border-color: hsl(var(--color-success) / 0.4);
+      color: hsl(var(--color-success));
+
+      &:hover {
+        background-color: hsl(var(--color-success) / 0.1);
+      }
+    }
   }
 
-  &--destructive {
+  &.nano-toast--destructive {
     border-color: hsl(var(--color-destructive) / 0.5);
     background-color: hsl(var(--color-destructive) / 0.05);
 
     .nano-toast__title {
       color: hsl(var(--color-destructive));
     }
+
+    .nano-toast__action {
+      border-color: hsl(var(--color-destructive) / 0.4);
+      color: hsl(var(--color-destructive));
+
+      &:hover {
+        background-color: hsl(var(--color-destructive) / 0.1);
+      }
+    }
   }
 
-  &--warning {
+  &.nano-toast--warning {
     border-color: hsl(var(--color-warning) / 0.5);
     background-color: hsl(var(--color-warning) / 0.05);
 
     .nano-toast__title {
       color: hsl(var(--color-warning));
+    }
+
+    .nano-toast__action {
+      border-color: hsl(var(--color-warning) / 0.4);
+      color: hsl(var(--color-warning));
+
+      &:hover {
+        background-color: hsl(var(--color-warning) / 0.1);
+      }
     }
   }
 }

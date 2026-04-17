@@ -29,20 +29,20 @@
     animation: nano-shimmer 1.5s var(--ease-default) infinite;
   }
 
-  &--text {
+  &.nano-skeleton--text {
     height: 0.75rem;
     width: 100%;
     margin-bottom: var(--space-2);
   }
 
-  &--circle {
+  &.nano-skeleton--circle {
     border-radius: var(--radius-full);
     width: 40px;
     aspect-ratio: 1;
     height: auto;
   }
 
-  &--card {
+  &.nano-skeleton--card {
     height: 200px;
     border-radius: var(--radius-lg);
   }

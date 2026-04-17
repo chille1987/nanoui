@@ -120,6 +120,49 @@ Notification messages that appear temporarily. Requires the `nanoui-toast` Stimu
   }
 </script>
 
+## Action button
+
+Add `.nano-toast__action` alongside (or instead of) the close button when the toast needs a secondary CTA — "Undo", "View", "Retry", etc. The action's border and text inherit the toast variant colors automatically.
+
+<div class="docs-example">
+  <div class="docs-example__header">
+    <span>Preview</span>
+    <button class="docs-example__copy">Copy</button>
+  </div>
+  <div class="docs-preview">
+    <div class="nano-toast-container" style="position:static;pointer-events:auto;max-width:100%">
+      <output class="nano-toast nano-toast--success" role="status">
+        <div class="nano-toast__content">
+          <p class="nano-toast__title">Invoice recovered</p>
+          <p class="nano-toast__description">$49.00 was charged successfully.</p>
+        </div>
+        <a href="#" class="nano-toast__action">View invoice</a>
+        <button class="nano-toast__close" aria-label="Dismiss">&times;</button>
+      </output>
+      <output class="nano-toast nano-toast--destructive" role="status">
+        <div class="nano-toast__content">
+          <p class="nano-toast__title">Retry failed</p>
+          <p class="nano-toast__description">Card declined — insufficient funds.</p>
+        </div>
+        <button type="button" class="nano-toast__action">Retry now</button>
+        <button class="nano-toast__close" aria-label="Dismiss">&times;</button>
+      </output>
+    </div>
+  </div>
+  <div class="docs-example__code">
+
+<pre><code>&lt;output class="nano-toast nano-toast--success" role="status"&gt;
+  &lt;div class="nano-toast__content"&gt;
+    &lt;p class="nano-toast__title"&gt;Invoice recovered&lt;/p&gt;
+    &lt;p class="nano-toast__description"&gt;$49.00 was charged successfully.&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;a href="/invoices/123" class="nano-toast__action"&gt;View invoice&lt;/a&gt;
+  &lt;button class="nano-toast__close" aria-label="Dismiss"&gt;&amp;times;&lt;/button&gt;
+&lt;/output&gt;</code></pre>
+
+  </div>
+</div>
+
 ### Stimulus controller
 
 - **Targets:** `item` (individual toast elements)

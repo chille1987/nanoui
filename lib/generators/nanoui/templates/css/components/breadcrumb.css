@@ -29,7 +29,8 @@
       color: hsl(var(--color-foreground));
     }
 
-    &--current,
+    &.nano-breadcrumb__link--current,
+
     &[aria-current="page"] {
       color: hsl(var(--color-foreground));
       font-weight: var(--font-medium);

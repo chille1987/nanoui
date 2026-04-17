@@ -5,12 +5,12 @@
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-sm);
 
-  &--elevated {
+  &.nano-card--elevated {
     box-shadow: var(--shadow-md);
     border: none;
   }
 
-  &--bordered {
+  &.nano-card--bordered {
     border: 2px solid hsl(var(--color-border));
     box-shadow: none;
   }

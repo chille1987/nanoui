@@ -75,7 +75,7 @@
     }
   }
 
-  &--error {
+  &.nano-checkbox--error {
     .nano-checkbox__label::before {
       border-color: hsl(var(--color-destructive));
     }

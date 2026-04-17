@@ -1,0 +1,91 @@
+.nano-stat {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1-5);
+  padding: var(--space-6);
+  background-color: hsl(var(--color-card));
+  color: hsl(var(--color-card-foreground));
+  border: 1px solid hsl(var(--color-border));
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+
+  .nano-stat__label {
+    font-size: var(--text-sm);
+    font-weight: var(--font-medium);
+    color: hsl(var(--color-muted-foreground));
+    line-height: var(--leading-none);
+  }
+
+  .nano-stat__value {
+    font-size: var(--text-3xl);
+    font-weight: var(--font-bold);
+    line-height: var(--leading-tight);
+    letter-spacing: var(--tracking-tight);
+    color: hsl(var(--color-foreground));
+  }
+
+  .nano-stat__delta {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-1);
+    font-size: var(--text-xs);
+    font-weight: var(--font-medium);
+    color: hsl(var(--color-muted-foreground));
+
+    svg {
+      width: 0.875rem;
+      height: 0.875rem;
+    }
+
+    &.nano-stat__delta--up {
+      color: hsl(var(--color-success));
+    }
+
+    &.nano-stat__delta--down {
+      color: hsl(var(--color-destructive));
+    }
+  }
+
+  .nano-stat__help {
+    font-size: var(--text-xs);
+    color: hsl(var(--color-muted-foreground));
+    line-height: var(--leading-normal);
+  }
+
+  .nano-stat__footer {
+    margin-top: var(--space-2);
+    padding-top: var(--space-3);
+    border-top: 1px solid hsl(var(--color-border));
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-2);
+    font-size: var(--text-xs);
+    color: hsl(var(--color-muted-foreground));
+  }
+
+  &.nano-stat--elevated {
+    box-shadow: var(--shadow-md);
+    border: none;
+  }
+
+  &.nano-stat--bordered {
+    border: 2px solid hsl(var(--color-border));
+    box-shadow: none;
+  }
+
+  &.nano-stat--compact {
+    padding: var(--space-4);
+    gap: var(--space-1);
+
+    .nano-stat__value {
+      font-size: var(--text-2xl);
+    }
+  }
+}
+
+.nano-stat-grid {
+  display: grid;
+  gap: var(--space-4);
+  grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+}

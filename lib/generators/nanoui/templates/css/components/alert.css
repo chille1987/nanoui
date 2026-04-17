@@ -37,7 +37,7 @@
     color: hsl(var(--color-foreground));
   }
 
-  &--destructive {
+  &.nano-alert--destructive {
     border-color: hsl(var(--color-destructive) / 0.5);
     background-color: hsl(var(--color-destructive) / 0.08);
 
@@ -50,7 +50,7 @@
     }
   }
 
-  &--success {
+  &.nano-alert--success {
     border-color: hsl(var(--color-success) / 0.5);
     background-color: hsl(var(--color-success) / 0.08);
 
@@ -63,7 +63,7 @@
     }
   }
 
-  &--warning {
+  &.nano-alert--warning {
     border-color: hsl(var(--color-warning) / 0.5);
     background-color: hsl(var(--color-warning) / 0.08);
 

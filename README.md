@@ -2,15 +2,17 @@
 
 Vanilla CSS + Stimulus component library for Rails. Zero runtime dependencies.
 
-23 components. Semantic HTML. Accessible by default. No build step.
+30 components. Semantic HTML. Accessible by default. No build step.
 
-**[Documentation & Live Previews](https://chille1987.github.io/nanoui/)** — Browse all 23 components with interactive examples.
+**[Documentation & Live Previews](https://chille1987.github.io/nanoui/)** — Browse all 30 components with interactive examples.
 
-## What's New in v0.5.0
+## What's New in v0.6.0
 
-- **5 new components** — Navbar, Sidebar, Breadcrumb, Avatar, and Skeleton
-- **Native CSS nesting** — All component CSS refactored to use native nesting for better readability
-- **New component groups** — `navigation` (navbar, sidebar, breadcrumb) and `feedback` (avatar, skeleton)
+- **7 new components** — Stat, Empty state, Timeline, Checklist, Copy, Code, Upload
+- **Sortable data tables** — `nanoui-data-table` Stimulus controller with client- or server-side sorting + pagination styling
+- **Toast action buttons** — inline CTAs styled to match each toast variant
+- **New component groups** — `dashboard` (stat, empty, timeline, checklist) and `utilities` (copy, code)
+- **CI + release automation** — GitHub Actions for RSpec / Rubocop and tag-driven gem publishing
 
 ## Installation
 
@@ -61,15 +63,18 @@ If NanoUI falls back to system fonts instead of Inter:
 With Rails 8 + importmap + `eagerLoadControllersFrom`, controllers auto-register by file name. Rename the controllers with a `nanoui_` prefix:
 
 ```
-nanoui_dialog_controller.js    → data-controller="nanoui-dialog"
-nanoui_dropdown_controller.js  → data-controller="nanoui-dropdown"
-nanoui_tooltip_controller.js   → data-controller="nanoui-tooltip"
-nanoui_toast_controller.js     → data-controller="nanoui-toast"
-nanoui_tabs_controller.js      → data-controller="nanoui-tabs"
-nanoui_accordion_controller.js → data-controller="nanoui-accordion"
-nanoui_switch_controller.js    → data-controller="nanoui-switch"
-nanoui_navbar_controller.js    → data-controller="nanoui-navbar"
-nanoui_sidebar_controller.js   → data-controller="nanoui-sidebar"
+nanoui_dialog_controller.js      → data-controller="nanoui-dialog"
+nanoui_dropdown_controller.js    → data-controller="nanoui-dropdown"
+nanoui_tooltip_controller.js     → data-controller="nanoui-tooltip"
+nanoui_toast_controller.js       → data-controller="nanoui-toast"
+nanoui_tabs_controller.js        → data-controller="nanoui-tabs"
+nanoui_accordion_controller.js   → data-controller="nanoui-accordion"
+nanoui_switch_controller.js      → data-controller="nanoui-switch"
+nanoui_navbar_controller.js      → data-controller="nanoui-navbar"
+nanoui_sidebar_controller.js     → data-controller="nanoui-sidebar"
+nanoui_copy_controller.js        → data-controller="nanoui-copy"
+nanoui_upload_controller.js      → data-controller="nanoui-upload"
+nanoui_data_table_controller.js  → data-controller="nanoui-data-table"
 ```
 
 Or register manually:
@@ -583,6 +588,211 @@ Loading placeholder with shimmer animation.
 
 ---
 
+### Dashboard
+
+#### Stat
+
+Dashboard KPI card with label, value, optional delta, helper text, and footer. Group multiples with `.nano-stat-grid`.
+
+```html
+<div class="nano-stat">
+  <span class="nano-stat__label">Recovered revenue</span>
+  <span class="nano-stat__value">$4,238</span>
+  <span class="nano-stat__delta nano-stat__delta--up">12% vs last month</span>
+</div>
+
+<div class="nano-stat-grid">
+  <div class="nano-stat">…</div>
+  <div class="nano-stat nano-stat--compact">…</div>
+</div>
+```
+
+**Variants:** default, `--elevated`, `--bordered`, `--compact`
+
+#### Empty state
+
+Centered layout for "no data yet" or "get started" screens.
+
+```html
+<div class="nano-empty">
+  <div class="nano-empty__icon"><!-- SVG --></div>
+  <h3 class="nano-empty__title">No failed payments yet</h3>
+  <p class="nano-empty__description">When Stripe reports a failed charge we'll queue retries here.</p>
+  <div class="nano-empty__actions">
+    <button class="nano-btn nano-btn--primary">Connect Stripe</button>
+  </div>
+</div>
+```
+
+**Variants:** default, `--bordered` (dashed outline), `--compact`
+
+#### Timeline
+
+Vertical activity feed with color-coded markers.
+
+```html
+<ol class="nano-timeline">
+  <li class="nano-timeline__item nano-timeline__item--destructive">
+    <span class="nano-timeline__marker"><!-- SVG --></span>
+    <span class="nano-timeline__line"></span>
+    <div class="nano-timeline__body">
+      <div class="nano-timeline__header">
+        <span class="nano-timeline__title">Payment failed</span>
+        <time class="nano-timeline__time">3 days ago</time>
+      </div>
+      <span class="nano-timeline__description">Card declined — insufficient funds.</span>
+    </div>
+  </li>
+</ol>
+```
+
+**Item states:** default, `--info`, `--success`, `--warning`, `--destructive`
+
+#### Checklist
+
+Onboarding / setup checklist with pending, current, and done states. Drive the summary bar with the `--nano-checklist-progress` CSS variable.
+
+```html
+<div class="nano-checklist">
+  <div class="nano-checklist__summary">
+    <span><span class="nano-checklist__count">2 of 4</span> complete</span>
+    <span class="nano-checklist__bar" style="--nano-checklist-progress: 50%;">
+      <span class="nano-checklist__bar-fill"></span>
+    </span>
+  </div>
+  <div class="nano-checklist__item nano-checklist__item--done">
+    <span class="nano-checklist__indicator"><!-- check SVG --></span>
+    <div class="nano-checklist__body">
+      <span class="nano-checklist__title">Connect Stripe</span>
+    </div>
+  </div>
+  <div class="nano-checklist__item nano-checklist__item--current">
+    <span class="nano-checklist__indicator">3</span>
+    <div class="nano-checklist__body">
+      <span class="nano-checklist__title">Pick an email template</span>
+      <a class="nano-checklist__action" href="#">Choose template →</a>
+    </div>
+  </div>
+</div>
+```
+
+---
+
+### Utilities
+
+#### Copy to clipboard
+
+Button (or button + value) that copies to clipboard with a transient success state. Uses the Clipboard API with a `document.execCommand` fallback.
+
+```html
+<div class="nano-copy" data-controller="nanoui-copy">
+  <span class="nano-copy__value" data-nanoui-copy-target="source">
+    https://app.example.com/webhooks/stripe
+  </span>
+  <button class="nano-copy__button"
+          data-nanoui-copy-target="button"
+          data-action="nanoui-copy#copy"
+          type="button">
+    <span data-nanoui-copy-target="idle">Copy</span>
+    <span data-nanoui-copy-target="copied" hidden>Copied</span>
+  </button>
+</div>
+```
+
+Dispatches `nanoui-copy:copied` with `{ text }` in the event detail.
+
+#### Code
+
+Monospace block with optional header, inline variant, terminal (dark) variant, and wrap mode.
+
+```html
+<div class="nano-code">
+  <div class="nano-code__header">
+    <span class="nano-code__language">shell</span>
+  </div>
+  <pre class="nano-code__body"><code>stripe listen --forward-to localhost:3000/webhooks/stripe</code></pre>
+</div>
+
+<!-- Inline -->
+<p>Set <code class="nano-code nano-code--inline">STRIPE_WEBHOOK_SECRET</code> before deploying.</p>
+```
+
+**Variants:** default, `--inline`, `--terminal`, `--wrap`
+
+---
+
+### Data table enhancements (built on Table)
+
+Add sortable columns and pagination to any existing table. Installing the `table` component also copies `nanoui_data_table_controller.js`.
+
+```html
+<div class="nano-table-wrapper" data-controller="nanoui-data-table">
+  <table class="nano-table nano-table--hoverable">
+    <thead class="nano-table__head">
+      <tr>
+        <th class="nano-table__header nano-table__header--sortable"
+            data-nanoui-data-table-target="header"
+            data-sort-key="amount"
+            data-sort-type="number"
+            data-action="click->nanoui-data-table#sort">
+          <button type="button" class="nano-table__sort">Amount</button>
+        </th>
+      </tr>
+    </thead>
+    <tbody class="nano-table__body" data-nanoui-data-table-target="body">
+      <tr class="nano-table__row" data-nanoui-data-table-target="row">
+        <td class="nano-table__cell" data-sort-value="49">$49.00</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<nav class="nano-table-pagination" aria-label="Table pagination">
+  <span class="nano-table-pagination__info">Showing <strong>1–10</strong> of <strong>42</strong></span>
+  <span class="nano-table-pagination__controls">
+    <a class="nano-table-pagination__button" aria-current="page" href="?page=1">1</a>
+    <a class="nano-table-pagination__button" href="?page=2">2</a>
+  </span>
+</nav>
+```
+
+Set `data-nanoui-data-table-server-value="true"` to skip client-side sorting and only dispatch the `nanoui-data-table:sort` event (e.g. for Turbo Frames).
+
+Supported `data-sort-type` values: `string` (default), `number`, `date`.
+
+---
+
+### Forms (extended)
+
+#### Upload
+
+Drag-and-drop file input with preview, `maxSize` / `accept` validation, and accessible fallback to the native picker. Wraps a hidden `<input type="file">` so standard form submission works unchanged (including `form_with` + Active Storage).
+
+```html
+<div class="nano-upload"
+     data-controller="nanoui-upload"
+     data-nanoui-upload-accept-value="image/*"
+     data-nanoui-upload-max-size-value="2097152"
+     data-action="dragover->nanoui-upload#onDragover dragleave->nanoui-upload#onDragleave drop->nanoui-upload#onDrop">
+  <input type="file" name="logo" class="nano-upload__input"
+         data-nanoui-upload-target="input"
+         data-action="change->nanoui-upload#onChange">
+  <label class="nano-upload__dropzone"
+         data-nanoui-upload-target="dropzone"
+         data-action="click->nanoui-upload#openPicker"
+         tabindex="0">
+    <span class="nano-upload__icon"><!-- SVG --></span>
+    <span class="nano-upload__prompt"><strong>Click to upload</strong> or drag and drop</span>
+    <span class="nano-upload__hint">PNG or JPG up to 2 MB</span>
+  </label>
+  <!-- preview element is toggled automatically via data-state -->
+</div>
+```
+
+Dispatches `nanoui-upload:selected` and `nanoui-upload:removed`.
+
+---
+
 ## Design Tokens
 
 Customize your theme by editing the CSS custom properties:
@@ -614,11 +824,13 @@ All components update automatically, including dark mode.
 | Group | Components |
 |---|---|
 | **Essentials** | Button, Input, Label, Card, Badge, Alert |
-| **Forms** | Checkbox, Radio, Switch, Select |
+| **Forms** | Checkbox, Radio, Switch, Select, Upload |
 | **Overlays** | Dialog, Dropdown, Tooltip, Toast |
-| **Data** | Table, Tabs, Accordion, Progress |
+| **Data** | Table (with sortable data-table controller), Tabs, Accordion, Progress |
 | **Navigation** | Navbar, Sidebar, Breadcrumb |
 | **Feedback** | Avatar, Skeleton |
+| **Dashboard** | Stat, Empty state, Timeline, Checklist |
+| **Utilities** | Copy to clipboard, Code block |
 | **Layout** | Container |
 
 ```bash
@@ -628,6 +840,8 @@ rails generate nanoui:component --group overlays
 rails generate nanoui:component --group data
 rails generate nanoui:component --group navigation
 rails generate nanoui:component --group feedback
+rails generate nanoui:component --group dashboard
+rails generate nanoui:component --group utilities
 rails generate nanoui:component --all
 ```
 
@@ -638,9 +852,9 @@ rails generate nanoui:component --all
 - **Semantic HTML first** — `<dialog>`, `<details>`, `<progress>`, `<fieldset>`, `<output>`
 - **Native element styling** — Bare HTML elements look good without classes
 - **Accessibility is not optional** — ARIA attributes, keyboard navigation, focus management, screen reader support
-- **No build step** — No Tailwind, no PostCSS, no webpack. Vanilla CSS with native nesting
+- **No build step** — No Tailwind, no PostCSS, no webpack. Vanilla CSS with native nesting (no Sass-style `&--modifier` — always use `&.full-class-name`)
 - **You own the code** — Generator copies files into your app. Edit freely, no runtime dependency
-- **BEM naming** — `.nano-block`, `.nano-block--modifier`, `.nano-block__element`
+- **BEM naming** — `.nano-block`, `.nano-block--modifier`, `.nano-block__element`. Apply both base and modifier classes together in HTML (`class="nano-btn nano-btn--primary"`) — the component CSS selects on that compound.
 - **CSS custom properties** — One file to theme everything. Dark mode with a single class swap
 
 ## Browser Support

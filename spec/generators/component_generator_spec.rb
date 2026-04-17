@@ -3,59 +3,78 @@ require "fileutils"
 require "tmpdir"
 
 # Minimal Rails generator stubs
-module Rails
-  module Generators
-    class Base
-      def self.source_root(path = nil)
-        @source_root = path if path
-        @source_root
-      end
+unless defined?(Rails::Generators::Base)
+  module Rails
+    module Generators
+      class Base
+        def self.source_root(path = nil)
+          @source_root = path if path
+          @source_root
+        end
 
-      def self.argument(*args); end
-      def self.class_option(*args); end
-      def self.desc(text = nil); end
+        def self.argument(*args); end
+        def self.class_option(*args); end
+        def self.desc(text = nil); end
+      end
     end
   end
-end unless defined?(Rails::Generators::Base)
+end
 
 require_relative "../../lib/generators/nanoui/component_generator"
 
 RSpec.describe Nanoui::Generators::ComponentGenerator do
   describe "COMPONENT_ORDER" do
-    it "lists all 24 components" do
-      expect(described_class::COMPONENT_ORDER.size).to eq(24)
+    it "lists all 31 components" do
+      expect(described_class::COMPONENT_ORDER.size).to eq(31)
     end
 
     it "includes expected components" do
       %w[button input label card checkbox radio switch select
          badge alert dialog dropdown tooltip toast table tabs accordion progress
-         navbar sidebar breadcrumb avatar skeleton container].each do |name|
+         navbar sidebar breadcrumb avatar skeleton
+         stat empty timeline checklist copy code upload
+         container].each do |name|
         expect(described_class::COMPONENT_ORDER).to include(name)
       end
     end
   end
 
   describe "STIMULUS_COMPONENTS" do
-    it "lists 9 components with Stimulus controllers" do
-      expect(described_class::STIMULUS_COMPONENTS.size).to eq(9)
+    it "lists 12 components with Stimulus controllers" do
+      expect(described_class::STIMULUS_COMPONENTS.size).to eq(12)
     end
 
     it "does not include select" do
       expect(described_class::STIMULUS_COMPONENTS).not_to include("select")
     end
 
-    it "only lists components that have controller files" do
-      described_class::STIMULUS_COMPONENTS.each do |name|
-        controller_path = File.join(TEMPLATE_ROOT, "js/controllers/#{name}_controller.js")
-        expect(File.exist?(controller_path)).to be(true),
-          "Expected controller file for '#{name}' at #{controller_path}"
+    it "matches the keys of CONTROLLER_FILES" do
+      expect(described_class::STIMULUS_COMPONENTS).to eq(described_class::CONTROLLER_FILES.keys)
+    end
+  end
+
+  describe "CONTROLLER_FILES" do
+    it "maps each entry to existing controller template files" do
+      described_class::CONTROLLER_FILES.each do |component, controllers|
+        controllers.each do |controller|
+          path = File.join(TEMPLATE_ROOT, "js/controllers/#{controller}_controller.js")
+          expect(File.exist?(path)).to be(true),
+                                       "Expected controller '#{controller}' for component '#{component}' at #{path}"
+        end
       end
+    end
+
+    it "maps table to the data_table controller" do
+      expect(described_class::CONTROLLER_FILES["table"]).to eq(%w[data_table])
     end
   end
 
   describe "GROUPS" do
     it "defines all component groups" do
-      expect(described_class::GROUPS.keys).to contain_exactly("essentials", "forms", "overlays", "data", "navigation", "feedback", "layout")
+      expect(described_class::GROUPS.keys).to contain_exactly(
+        "essentials", "forms", "overlays", "data", "navigation",
+        "feedback", "dashboard", "utilities", "layout"
+      )
     end
 
     it "only references valid components" do
@@ -63,7 +82,7 @@ RSpec.describe Nanoui::Generators::ComponentGenerator do
       described_class::GROUPS.each do |group, components|
         components.each do |name|
           expect(all_components).to include(name),
-            "Group '#{group}' references unknown component '#{name}'"
+                                    "Group '#{group}' references unknown component '#{name}'"
         end
       end
     end

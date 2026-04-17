@@ -31,7 +31,7 @@
     opacity: 0.5;
   }
 
-  &--primary {
+  &.nano-btn--primary {
     background-color: hsl(var(--color-primary));
     color: hsl(var(--color-primary-foreground));
 
@@ -40,7 +40,7 @@
     }
   }
 
-  &--secondary {
+  &.nano-btn--secondary {
     background-color: hsl(var(--color-secondary));
     color: hsl(var(--color-secondary-foreground));
     border: 1px solid hsl(var(--color-border));
@@ -50,7 +50,7 @@
     }
   }
 
-  &--destructive {
+  &.nano-btn--destructive {
     background-color: hsl(var(--color-destructive));
     color: hsl(var(--color-destructive-foreground));
 
@@ -59,7 +59,7 @@
     }
   }
 
-  &--outline {
+  &.nano-btn--outline {
     border: 1px solid hsl(var(--color-border));
     background-color: transparent;
     color: hsl(var(--color-foreground));
@@ -69,7 +69,7 @@
     }
   }
 
-  &--ghost {
+  &.nano-btn--ghost {
     background-color: transparent;
     color: hsl(var(--color-foreground));
 
@@ -78,7 +78,7 @@
     }
   }
 
-  &--link {
+  &.nano-btn--link {
     background-color: transparent;
     color: hsl(var(--color-primary));
     text-decoration: underline dashed;
@@ -91,19 +91,19 @@
     }
   }
 
-  &--sm {
+  &.nano-btn--sm {
     font-size: var(--text-xs);
     padding: var(--space-2) var(--space-3);
     border-radius: var(--radius-sm);
   }
 
-  &--lg {
+  &.nano-btn--lg {
     font-size: var(--text-base);
     padding: var(--space-3) var(--space-6);
     border-radius: var(--radius-md);
   }
 
-  &--icon {
+  &.nano-btn--icon {
     padding: var(--space-2-5);
     aspect-ratio: 1;
   }

@@ -1,0 +1,71 @@
+plugins:
+  - rubocop-rspec
+
+AllCops:
+  TargetRubyVersion: 3.1
+  NewCops: enable
+  SuggestExtensions: false
+  Exclude:
+    - "docs/**/*"
+    - "html/**/*"
+    - "tmp/**/*"
+    - "vendor/**/*"
+    - "*.gemspec"
+    - "lib/generators/nanoui/templates/**/*"
+
+Style/Documentation:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
+
+Style/StringLiteralsInInterpolation:
+  EnforcedStyle: double_quotes
+
+Style/TrailingCommaInHashLiteral:
+  EnforcedStyleForMultiline: consistent_comma
+
+Style/TrailingCommaInArrayLiteral:
+  EnforcedStyleForMultiline: consistent_comma
+
+Layout/LineLength:
+  Max: 120
+
+Metrics/BlockLength:
+  Exclude:
+    - "spec/**/*"
+
+Metrics/MethodLength:
+  Max: 25
+
+Metrics/ClassLength:
+  Max: 200
+
+RSpec/ExampleLength:
+  Max: 15
+
+RSpec/MultipleExpectations:
+  Max: 5
+
+RSpec/DescribeClass:
+  Exclude:
+    - "spec/templates/**/*"
+
+RSpec/NestedGroups:
+  Max: 4
+
+# Loop-generated `it "... #{name} ..."` blocks are a useful pattern for
+# parameterized checks against collections of templates.
+RSpec/RepeatedDescription:
+  Enabled: false
+
+RSpec/RepeatedExampleGroupDescription:
+  Enabled: false
+
+# Generator specs live under spec/generators/ directly and that's the idiomatic
+# layout for a Rails generator gem; the default path check doesn't apply.
+RSpec/SpecFilePathFormat:
+  Enabled: false

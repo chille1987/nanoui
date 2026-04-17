@@ -36,20 +36,20 @@
     border: 2px solid hsl(var(--color-background));
     border-radius: var(--radius-full);
 
-    &--online {
+    &.nano-avatar__status--online {
       background-color: hsl(var(--color-success));
     }
 
-    &--offline {
+    &.nano-avatar__status--offline {
       background-color: hsl(var(--color-muted-foreground));
     }
 
-    &--busy {
+    &.nano-avatar__status--busy {
       background-color: hsl(var(--color-destructive));
     }
   }
 
-  &--sm {
+  &.nano-avatar--sm {
     width: 32px;
     height: 32px;
 
@@ -63,7 +63,7 @@
     }
   }
 
-  &--lg {
+  &.nano-avatar--lg {
     width: 48px;
     height: 48px;
 
@@ -72,7 +72,7 @@
     }
   }
 
-  &--xl {
+  &.nano-avatar--xl {
     width: 64px;
     height: 64px;
 

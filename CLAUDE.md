@@ -2,14 +2,16 @@
 
 ## CSS Convention: Native Nesting
 
-All component CSS uses native CSS nesting. Follow this pattern when creating or modifying components:
+All component CSS uses **native CSS nesting** (not Sass/PostCSS). Native CSS does not support
+Sass-style `&--modifier` or `&__element` concatenation — those patterns produce invalid selectors
+in browsers. Use the full class name after `&` instead. Follow this pattern:
 
 ```css
 .nano-component {
   /* base styles */
 
-  &--modifier {
-    /* variant styles */
+  &.nano-component--modifier {
+    /* variant styles — assumes the element also carries the modifier class */
   }
 
   &:hover {
@@ -18,6 +20,10 @@ All component CSS uses native CSS nesting. Follow this pattern when creating or 
 
   .nano-component__child {
     /* child element styles */
+
+    &.nano-component__child--state {
+      /* modifier on a child element, same rule */
+    }
 
     &:hover {
       /* nested pseudo-class */
@@ -28,12 +34,16 @@ All component CSS uses native CSS nesting. Follow this pattern when creating or 
 
 ### Rules
 
-- Nest modifiers (`--variant`) using `&--`
+- **Modifiers**: use `&.nano-component--modifier`, never `&--modifier` (not valid native CSS)
+- **Child elements**: use the full class `.nano-component__child` inside the parent block, never `&__child`
+- **Element modifiers**: inside a child block, use `&.nano-component__child--state`, never `&--state`
 - Nest pseudo-classes (`:hover`, `:focus-visible`, `:disabled`) using `&:`
-- Nest child elements (`.nano-component__child`) directly inside the parent block
+- Attribute selectors: `&[aria-sort="ascending"]`, `&[data-state="open"]`
 - For modifiers that override child styles, nest the child inside the modifier
 - Keep `@keyframes` and bare element selectors (`button`, `input`) at the top level
 - Never use flat/separate selector blocks for related styles
+- HTML must carry both the base class and the modifier class together
+  (e.g. `class="nano-btn nano-btn--primary"`) — the compound-selector CSS assumes this
 
 ## Naming
 

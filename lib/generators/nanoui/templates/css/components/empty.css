@@ -1,0 +1,68 @@
+.nano-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: var(--space-3);
+  padding: var(--space-12) var(--space-6);
+  color: hsl(var(--color-foreground));
+
+  .nano-empty__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 3rem;
+    height: 3rem;
+    margin-bottom: var(--space-2);
+    border-radius: var(--radius-full);
+    background-color: hsl(var(--color-muted));
+    color: hsl(var(--color-muted-foreground));
+
+    svg {
+      width: 1.5rem;
+      height: 1.5rem;
+    }
+  }
+
+  .nano-empty__title {
+    font-size: var(--text-lg);
+    font-weight: var(--font-semibold);
+    line-height: var(--leading-tight);
+  }
+
+  .nano-empty__description {
+    font-size: var(--text-sm);
+    color: hsl(var(--color-muted-foreground));
+    line-height: var(--leading-normal);
+    max-width: 28rem;
+  }
+
+  .nano-empty__actions {
+    display: flex;
+    gap: var(--space-2);
+    margin-top: var(--space-2);
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  &.nano-empty--bordered {
+    border: 1px dashed hsl(var(--color-border));
+    border-radius: var(--radius-lg);
+  }
+
+  &.nano-empty--compact {
+    padding: var(--space-6) var(--space-4);
+
+    .nano-empty__icon {
+      width: 2.5rem;
+      height: 2.5rem;
+      margin-bottom: var(--space-1);
+
+      svg {
+        width: 1.25rem;
+        height: 1.25rem;
+      }
+    }
+  }
+}

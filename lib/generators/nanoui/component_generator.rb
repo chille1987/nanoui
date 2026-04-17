@@ -27,6 +27,13 @@ module Nanoui
         breadcrumb
         avatar
         skeleton
+        stat
+        empty
+        timeline
+        checklist
+        copy
+        code
+        upload
         container
       ].freeze
 
@@ -38,25 +45,45 @@ module Nanoui
       class_option :all, type: :boolean, default: false, desc: "Install all components"
 
       GROUPS = {
-        "essentials"  => %w[button input label card badge alert],
-        "forms"       => %w[button input label checkbox radio switch select badge alert],
-        "overlays"    => %w[dialog dropdown tooltip toast],
-        "data"        => %w[table tabs accordion progress],
-        "navigation"  => %w[navbar sidebar breadcrumb],
-        "feedback"    => %w[avatar skeleton],
-        "layout"      => %w[container],
+        "essentials" => %w[button input label card badge alert],
+        "forms" => %w[button input label checkbox radio switch select badge alert upload],
+        "overlays" => %w[dialog dropdown tooltip toast],
+        "data" => %w[table tabs accordion progress],
+        "navigation" => %w[navbar sidebar breadcrumb],
+        "feedback" => %w[avatar skeleton],
+        "dashboard" => %w[stat empty timeline checklist],
+        "utilities" => %w[copy code],
+        "layout" => %w[container],
       }.freeze
 
-      STIMULUS_COMPONENTS = %w[dialog dropdown tooltip toast tabs accordion switch navbar sidebar].freeze
+      # Maps a component name to the Stimulus controller files it installs.
+      # Most components ship with a same-named controller, but `table` ships
+      # with the richer `data_table` controller for sort + pagination behavior.
+      CONTROLLER_FILES = {
+        "dialog" => %w[dialog],
+        "dropdown" => %w[dropdown],
+        "tooltip" => %w[tooltip],
+        "toast" => %w[toast],
+        "tabs" => %w[tabs],
+        "accordion" => %w[accordion],
+        "switch" => %w[switch],
+        "navbar" => %w[navbar],
+        "sidebar" => %w[sidebar],
+        "copy" => %w[copy],
+        "upload" => %w[upload],
+        "table" => %w[data_table],
+      }.freeze
+
+      STIMULUS_COMPONENTS = CONTROLLER_FILES.keys.freeze
 
       def resolve_components
         @resolved = if options[:all]
-          GROUPS.values.flatten.uniq
-        elsif options[:group]
-          GROUPS.fetch(options[:group]) { abort "Unknown group: #{options[:group]}" }
-        else
-          components
-        end
+                      GROUPS.values.flatten.uniq
+                    elsif options[:group]
+                      GROUPS.fetch(options[:group]) { abort "Unknown group: #{options[:group]}" }
+                    else
+                      components
+                    end
 
         abort "Specify components, --group, or --all" if @resolved.empty?
       end
@@ -71,9 +98,10 @@ module Nanoui
 
       def copy_stimulus_controllers
         @resolved.each do |name|
-          next unless STIMULUS_COMPONENTS.include?(name)
-          copy_file "js/controllers/#{name}_controller.js",
-                    "app/javascript/controllers/nanoui_#{name}_controller.js"
+          CONTROLLER_FILES.fetch(name, []).each do |controller|
+            copy_file "js/controllers/#{controller}_controller.js",
+                      "app/javascript/controllers/nanoui_#{controller}_controller.js"
+          end
         end
       end
 

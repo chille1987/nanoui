@@ -1,7 +1,10 @@
 require "spec_helper"
 
 RSpec.describe "Stimulus controller templates" do
-  controllers = %w[accordion dialog dropdown navbar sidebar switch tabs toast tooltip]
+  controllers = %w[
+    accordion dialog dropdown navbar sidebar switch tabs toast tooltip
+    copy upload data_table
+  ]
 
   controllers.each do |name|
     describe "#{name}_controller.js" do
@@ -22,9 +25,9 @@ RSpec.describe "Stimulus controller templates" do
     end
   end
 
-  it "has exactly 9 controller files" do
+  it "has exactly 12 controller files" do
     files = Dir.glob(File.join(TEMPLATE_ROOT, "js/controllers/*_controller.js"))
-    expect(files.size).to eq(9)
+    expect(files.size).to eq(12)
   end
 
   it "uses the toggled details element directly for accordion single mode" do
@@ -48,5 +51,27 @@ RSpec.describe "Stimulus controller templates" do
     content = File.read(path)
 
     expect(content).to include("clearTimeout(this.timeout)")
+  end
+
+  it "falls back to execCommand when the clipboard API is unavailable" do
+    path = File.join(TEMPLATE_ROOT, "js/controllers/copy_controller.js")
+    content = File.read(path)
+
+    expect(content).to include('document.execCommand("copy")')
+  end
+
+  it "dispatches a sort event with key and direction" do
+    path = File.join(TEMPLATE_ROOT, "js/controllers/data_table_controller.js")
+    content = File.read(path)
+
+    expect(content).to include('this.dispatch("sort"')
+    expect(content).to include("direction")
+  end
+
+  it "validates file size against the configured maximum" do
+    path = File.join(TEMPLATE_ROOT, "js/controllers/upload_controller.js")
+    content = File.read(path)
+
+    expect(content).to include("maxSizeValue")
   end
 end

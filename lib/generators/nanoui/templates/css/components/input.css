@@ -27,7 +27,8 @@
     cursor: not-allowed;
   }
 
-  &--error,
+  &.nano-input--error,
+
   &[aria-invalid="true"] {
     border-color: hsl(var(--color-destructive));
 

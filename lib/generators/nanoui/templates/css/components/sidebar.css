@@ -8,7 +8,7 @@
   transition: width var(--duration-normal) var(--ease-default);
   overflow: hidden;
 
-  &--collapsed {
+  &.nano-sidebar--collapsed {
     width: 60px;
 
     .nano-sidebar__header {
@@ -79,7 +79,7 @@
       outline-offset: -2px;
     }
 
-    &--active {
+    &.nano-sidebar__item--active {
       color: hsl(var(--color-foreground));
       background-color: hsl(var(--color-muted));
     }

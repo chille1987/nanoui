@@ -4,7 +4,7 @@
   line-height: var(--leading-none);
   color: hsl(var(--color-foreground));
 
-  &--required::after {
+  &.nano-label--required::after {
     content: " *";
     color: hsl(var(--color-destructive));
   }

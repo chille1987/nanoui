@@ -85,7 +85,7 @@
     }
   }
 
-  &--error {
+  &.nano-radio--error {
     .nano-radio__label::before {
       border-color: hsl(var(--color-destructive));
     }

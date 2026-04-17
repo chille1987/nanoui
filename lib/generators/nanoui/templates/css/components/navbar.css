@@ -6,7 +6,7 @@
   background-color: hsl(var(--color-background));
   border-bottom: 1px solid hsl(var(--color-border));
 
-  &--sticky {
+  &.nano-navbar--sticky {
     position: sticky;
     top: 0;
     z-index: var(--z-sticky);
@@ -54,7 +54,7 @@
       outline-offset: 2px;
     }
 
-    &--active {
+    &.nano-navbar__link--active {
       color: hsl(var(--color-foreground));
       background-color: hsl(var(--color-muted));
     }
